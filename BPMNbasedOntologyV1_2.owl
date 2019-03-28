@@ -1,0 +1,2968 @@
+<?xml version="1.0"?>
+<rdf:RDF xmlns="http://BPMNbasedOntology#"
+     xml:base="http://BPMNbasedOntology"
+     xmlns:owl="http://www.w3.org/2002/07/owl#"
+     xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+     xmlns:xml="http://www.w3.org/XML/1998/namespace"
+     xmlns:xsd="http://www.w3.org/2001/XMLSchema#"
+     xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <owl:Ontology rdf:about="http://BPMNbasedOntology"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Datatypes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://BPMNbasedOntology#DTMessageVisibleKind -->
+
+    <rdfs:Datatype rdf:about="http://BPMNbasedOntology#DTMessageVisibleKind">
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">initiating</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">non_initiating</rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://BPMNbasedOntology#DTParticipantBandKind -->
+
+    <rdfs:Datatype rdf:about="http://BPMNbasedOntology#DTParticipantBandKind">
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bottom_initiating</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bottom_non_initiating</rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">middle_initiating</rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">middle_non_initiating</rdf:first>
+                                                <rdf:rest>
+                                                    <rdf:Description>
+                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">top_initiating</rdf:first>
+                                                        <rdf:rest>
+                                                            <rdf:Description>
+                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">top_non_initiating</rdf:first>
+                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                                            </rdf:Description>
+                                                        </rdf:rest>
+                                                    </rdf:Description>
+                                                </rdf:rest>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://BPMNbasedOntology#DTtAdHocOrdering -->
+
+    <rdfs:Datatype rdf:about="http://BPMNbasedOntology#DTtAdHocOrdering">
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Parallel</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Sequential</rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://BPMNbasedOntology#DTtAssociationDirection -->
+
+    <rdfs:Datatype rdf:about="http://BPMNbasedOntology#DTtAssociationDirection">
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Both</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">None</rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">One</rdf:first>
+                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://BPMNbasedOntology#DTtChoreographyLoopType -->
+
+    <rdfs:Datatype rdf:about="http://BPMNbasedOntology#DTtChoreographyLoopType">
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MultiInstanceParallel</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MultiInstanceSequential</rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">None</rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Standard</rdf:first>
+                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://BPMNbasedOntology#DTtEventBasedGatewayType -->
+
+    <rdfs:Datatype rdf:about="http://BPMNbasedOntology#DTtEventBasedGatewayType">
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Exclusive</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Parallel</rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://BPMNbasedOntology#DTtGatewayDirection -->
+
+    <rdfs:Datatype rdf:about="http://BPMNbasedOntology#DTtGatewayDirection">
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Converging</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Diverging</rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Mixed</rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Unspecified</rdf:first>
+                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://BPMNbasedOntology#DTtImplementation -->
+
+    <rdfs:Datatype rdf:about="http://BPMNbasedOntology#DTtImplementation">
+        <owl:equivalentClass rdf:resource="http://BPMNbasedOntology#xsd:anyURI"/>
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">##WebService</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">##unspecified</rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://BPMNbasedOntology#DTtItemKind -->
+
+    <rdfs:Datatype rdf:about="http://BPMNbasedOntology#DTtItemKind">
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Information</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Physical</rdf:first>
+                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://BPMNbasedOntology#DTtMultiInstanceFlowCondition -->
+
+    <rdfs:Datatype rdf:about="http://BPMNbasedOntology#DTtMultiInstanceFlowCondition">
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">All</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Complex</rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">None</rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">One</rdf:first>
+                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://BPMNbasedOntology#DTtProcessType -->
+
+    <rdfs:Datatype rdf:about="http://BPMNbasedOntology#DTtProcessType">
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">None</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Private</rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Public</rdf:first>
+                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://BPMNbasedOntology#DTtRelationshipDirection -->
+
+    <rdfs:Datatype rdf:about="http://BPMNbasedOntology#DTtRelationshipDirection">
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Backward</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Both</rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Forward</rdf:first>
+                                        <rdf:rest>
+                                            <rdf:Description>
+                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">None</rdf:first>
+                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                            </rdf:Description>
+                                        </rdf:rest>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://BPMNbasedOntology#DTtTransactionMethod -->
+
+    <rdfs:Datatype rdf:about="http://BPMNbasedOntology#DTtTransactionMethod">
+        <owl:equivalentClass rdf:resource="http://BPMNbasedOntology#xsd:anyURI"/>
+        <owl:equivalentClass>
+            <rdfs:Datatype>
+                <owl:oneOf>
+                    <rdf:Description>
+                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">##Compensate</rdf:first>
+                        <rdf:rest>
+                            <rdf:Description>
+                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">##Image</rdf:first>
+                                <rdf:rest>
+                                    <rdf:Description>
+                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
+                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">##Store</rdf:first>
+                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
+                                    </rdf:Description>
+                                </rdf:rest>
+                            </rdf:Description>
+                        </rdf:rest>
+                    </rdf:Description>
+                </owl:oneOf>
+            </rdfs:Datatype>
+        </owl:equivalentClass>
+    </rdfs:Datatype>
+    
+
+
+    <!-- http://BPMNbasedOntology#xsd:anyURI -->
+
+    <rdfs:Datatype rdf:about="http://BPMNbasedOntology#xsd:anyURI"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Object Properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://BPMNbasedOntology#IRIT_properties -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#IRIT_properties">
+        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label xml:lang="en">IRIT_properties</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#attachedToRef -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#attachedToRef">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#BoundaryEvent"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#Activity"/>
+        <rdfs:label xml:lang="en">attachedToRef</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_activationCondition -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_activationCondition">
+        <owl:inverseOf rdf:resource="http://BPMNbasedOntology#has_complexGateway"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#ComplexGateway"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#Expression"/>
+        <rdfs:label xml:lang="en">has_activationCondition</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_activity -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_activity">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#InputOutputSpecification"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#LoopCharacteristics"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#Property"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#ResourceRole"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#Activity"/>
+        <rdfs:label xml:lang="en">has_activity</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_activityRef -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_activityRef">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#CompensateEventDefinition"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#Activity"/>
+        <rdfs:label xml:lang="en">has_activityRef</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_boundaryEventRef -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_boundaryEventRef">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#Activity"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#BoundaryEvent"/>
+        <rdfs:label xml:lang="en">has_boundaryEventRef</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_callableElements -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_callableElements">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#Interface"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#CallableElement"/>
+        <rdfs:label xml:lang="en">has_callableElements</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_calledElement -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_calledElement">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#CallActivity"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#CallableElement"/>
+        <rdfs:label xml:lang="en">has_calledElement</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_completionCondition -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_completionCondition">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#AdHocSubProcess"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#MultiInstanceLoopCharacteristics"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#Expression"/>
+        <rdfs:label xml:lang="en">has_completionCondition</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_complexGateway -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_complexGateway">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#Expression"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#ComplexGateway"/>
+        <rdfs:label xml:lang="en">has_complexGateway</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_condition -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_condition">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#ComplexBehaviorDefinition"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#ConditionalEventDefinition"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#Expression"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#FormalExpression"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
+        <rdfs:comment xml:lang="en">This relation has two source concepts. The definition is related to the source concept: (1) conditionalEventDefinition: The Expression might be underspecified and provided in the form of natural language. For executable Processes (isExecutable = true), if the trigger is Conditional, then a FormalExpression MUST be entered. (2) complexBehaviorDefinition: This attribute defines a boolean Expression that when evaluated to true, cancels the remaining Activity instances and produces a token.</rdfs:comment>
+        <rdfs:label xml:lang="en">has_condition</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_conditionExpression -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_conditionExpression">
+        <owl:inverseOf rdf:resource="http://BPMNbasedOntology#has_sequenceFlow"/>
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#Expression"/>
+        <rdfs:label xml:lang="en">has_conditionExpression</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_container -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_container">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#FlowElement"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#FlowElementsContainer"/>
+        <rdfs:label xml:lang="en">has_container</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_default -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_default">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#Activity"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#ComplexGateway"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#ExclusiveGateway"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#InclusiveGateway"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+        <rdfs:label xml:lang="en">has_default</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_error -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_error">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#ErrorEventDefinition"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#Error"/>
+        <rdfs:label xml:lang="en">has_error</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_errorRef -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_errorRef">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#Operation"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#Error"/>
+        <rdfs:label xml:lang="en">has_errorRef</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_escalationRef -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_escalationRef">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#EscalationEventDefinition"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#Escalation"/>
+        <rdfs:label xml:lang="en">has_escalationRef</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_eventDefinition -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_eventDefinition">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#CatchEvent"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#ThrowEvent"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#EventDefinition"/>
+        <rdfs:label xml:lang="en">has_eventDefinition</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_exclusiveGateway -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_exclusiveGateway">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#ExclusiveGateway"/>
+        <rdfs:label xml:lang="en">has_exclusiveGateway</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_expression -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_expression">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#ResourceAssignmentExpression"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#ResourceParameterBinding"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#Expression"/>
+        <rdfs:label xml:lang="en">has_expression</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_flowElements -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_flowElements">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#FlowElementsContainer"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#FlowElement"/>
+        <rdfs:label xml:lang="en">has_flowElements</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_inclusiveGateway -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_inclusiveGateway">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#InclusiveGateway"/>
+        <rdfs:label xml:lang="en">has_inclusiveGateway</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_incoming -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_incoming">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#FlowNode"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+        <rdfs:label xml:lang="en">has_incoming</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_inputSet -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_inputSet">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#InputOutputSpecification"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#ThrowEvent"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#InputSet"/>
+        <rdfs:label xml:lang="en">has_inputSet</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_ioBinding -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_ioBinding">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#CallableElement"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#InputOutputBinding"/>
+        <rdfs:label xml:lang="en">has_ioBinding</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_ioSpecification -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_ioSpecification">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#Activity"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#InputOutputSpecification"/>
+        <rdfs:label xml:lang="en">has_ioSpecification</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_loopCharacteristics -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_loopCharacteristics">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#Activity"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#LoopCharacteristics"/>
+        <rdfs:label xml:lang="en">has_loopCharacteristics</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_loopCondition -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_loopCondition">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#StandardLoopCharacteristics"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#Expression"/>
+        <rdfs:label xml:lang="en">has_loopCondition</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_messageRef -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_messageRef">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#MessageEventDefinition"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#Message"/>
+        <rdfs:label xml:lang="en">has_messageRef</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_noneBehaviorEventRef -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_noneBehaviorEventRef">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#MultiInstanceLoopCharacteristics"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#EventDefinition"/>
+        <rdfs:label xml:lang="en">has_noneBehaviorEventRef</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_oneBehaviorEventRef -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_oneBehaviorEventRef">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#MultiInstanceLoopCharacteristics"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#EventDefinition"/>
+        <rdfs:label xml:lang="en">has_oneBehaviorEventRef</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_operationRef -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_operationRef">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#InputOutputBinding"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#MessageEventDefinition"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#ServiceTask"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#Operation"/>
+        <rdfs:label xml:lang="en">has_operationRef</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_operations -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_operations">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#Interface"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#Operation"/>
+        <rdfs:label xml:lang="en">has_operations</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_outgoing -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_outgoing">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#FlowNode"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+        <rdfs:label xml:lang="en">has_outgoing</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_outputSet -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_outputSet">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#InputOutputSpecification"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#OutputSet"/>
+        <rdfs:label xml:lang="en">has_outputSet</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_parameterRef -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_parameterRef">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#ResourceParameterBinding"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#ResourceParameter"/>
+        <rdfs:label xml:lang="en">has_parameterRef</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_process -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_process">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#ResourceRole"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#Process"/>
+        <rdfs:label xml:lang="en">has_process</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_properties -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_properties">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#Process"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#Property"/>
+        <rdfs:label xml:lang="en">has_properties</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_resourceAssignmentExpression -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_resourceAssignmentExpression">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#ResourceRole"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#ResourceAssignmentExpression"/>
+        <rdfs:label xml:lang="en">has_resourceAssignmentExpression</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_resourceParameterBindings -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_resourceParameterBindings">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#ResourceRole"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#ResourceParameterBinding"/>
+        <rdfs:label xml:lang="en">has_resourceParameterBindings</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_resourceParameters -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_resourceParameters">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#Resource"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#ResourceParameter"/>
+        <rdfs:label xml:lang="en">has_resourceParameters</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_resourceRef -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_resourceRef">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#ResourceRole"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#Resource"/>
+        <rdfs:label xml:lang="en">has_resourceRef</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_resources -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_resources">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#Activity"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#GlobalTask"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#Process"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#ResourceRole"/>
+        <rdfs:label xml:lang="en">has_resources</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_sequenceFlow -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_sequenceFlow">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#ConditionExpression"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#FlowNode"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+        <rdfs:label xml:lang="en">has_sequenceFlow</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_signalRef -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_signalRef">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#SignalEventDefinition"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#Signal"/>
+        <rdfs:label xml:lang="en">has_signalRef</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_sourceRef -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_sourceRef">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#FlowNode"/>
+        <rdfs:label xml:lang="en">has_sourceRef</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_supportedInterfaceRefs -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_supportedInterfaceRefs">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#CallableElement"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#Interface"/>
+        <rdfs:label xml:lang="en">has_supportedInterfaceRefs</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_targetRef -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_targetRef">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#FlowNode"/>
+        <rdfs:label xml:lang="en">has_targetRef</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_timeCycle -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_timeCycle">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#TimerEventDefinition"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#Expression"/>
+        <rdfs:label xml:lang="en">has_timeCycle</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_timeDate -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_timeDate">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#TimerEventDefinition"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#Expression"/>
+        <rdfs:label xml:lang="en">has_timeDate</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_timeDuration -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_timeDuration">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#TimerEventDefinition"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#Expression"/>
+        <rdfs:label xml:lang="en">has_timeDuration</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#supports -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#supports">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#Process"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#Process"/>
+        <rdfs:label xml:lang="en">supports</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Data properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://BPMNbasedOntology#behavior -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#behavior">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#MultiInstanceLoopCharacteristics"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#DTtMultiInstanceFlowCondition"/>
+        <rdfs:label xml:lang="en">behavior</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#body -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#body">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#FormalExpression"/>
+        <rdfs:label xml:lang="en">body</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#cancelActivity -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#cancelActivity">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#BoundaryEvent"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">cancelActivity</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#cancelRemainingInstances -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#cancelRemainingInstances">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#AdHocSubProcess"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">cancelRemainingInstances</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#completionQuantity -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#completionQuantity">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#Activity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label xml:lang="en">completionQuantity</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#errorCode -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#errorCode">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#Error"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">errorCode</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#escalationCode -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#escalationCode">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#Escalation"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">escalationCode</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#eventGatewayType -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#eventGatewayType">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#EventBasedGateway"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#DTtEventBasedGatewayType"/>
+        <rdfs:label xml:lang="en">eventGatewayType</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#gatewayDirection -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#gatewayDirection">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#Gateway"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#DTtGatewayDirection"/>
+        <rdfs:label xml:lang="en">gatewayDirection</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#id -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#id">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#BPMN_Concepts"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">id</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#implementation -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#implementation">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#GlobalBusinessRuleTask"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#GlobalUserTask"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#ReceiveTask"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#SendTask"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#ServiceTask"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#UserTask"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:label xml:lang="en">implementation</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#instantiate -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#instantiate">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#EventBasedGateway"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#ReceiveTask"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">instantiate</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#isClosed -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#isClosed">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#Process"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">isClosed</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#isExecutable -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#isExecutable">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#Process"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">isExecutable</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#isForCompensation -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#isForCompensation">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#Activity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">isForCompensation</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#isImmediate -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#isImmediate">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">isImmediate</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#isInterrupting -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#isInterrupting">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#StartEvent"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">isInterrupting</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#isRequired -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#isRequired">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#ResourceParameter"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">isRequired</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#isSequential -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#isSequential">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#MultiInstanceLoopCharacteristics"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">isSequential</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#language -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#language">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#FormalExpression"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">language</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#loopMaximum -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#loopMaximum">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#StandardLoopCharacteristics"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label xml:lang="en">loopMaximum</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#method -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#method">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#Transaction"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#DTtTransactionMethod"/>
+        <rdfs:label xml:lang="en">method</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#name -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#name">
+        <rdfs:domain>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#CallableElement"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#Error"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#Escalation"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#FlowElement"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#InputSet"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#Interface"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#LinkEventDefinition"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#Message"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#Operation"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#OutputSet"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#Property"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#Resource"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#ResourceParameter"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#ResourceRole"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#Signal"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:domain>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">name</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#ordering -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#ordering">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#AdHocSubProcess"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#DTtAdHocOrdering"/>
+        <rdfs:label xml:lang="en">ordering</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#parallelMultiple -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#parallelMultiple">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#CatchEvent"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">parallelMultiple</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#processType -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#processType">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#Process"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#DTtProcessType"/>
+        <rdfs:label xml:lang="en">processType</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#script -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#script">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#ScriptTask"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">script</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#scriptFormat -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#scriptFormat">
+        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#ScriptTask"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">scriptFormat</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#scriptLanguage -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#scriptLanguage">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#GlobalScriptTask"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:label xml:lang="en">scriptLanguage</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#startQuantity -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#startQuantity">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#Activity"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:label xml:lang="en">startQuantity</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#testBefore -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#testBefore">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#StandardLoopCharacteristics"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">testBefore</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#triggeredByEvent -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#triggeredByEvent">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#SubProcess"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">triggeredByEvent</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#waitForCompletion -->
+
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#waitForCompletion">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#CompensateEventDefinition"/>
+        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:label xml:lang="en">waitForCompletion</rdfs:label>
+    </owl:DatatypeProperty>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Classes
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://BPMNbasedOntology#Activity -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Activity">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#FlowNode"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_default"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_ioSpecification"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#InputOutputSpecification"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_loopCharacteristics"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#LoopCharacteristics"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">Activity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#AdHocSubProcess -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#AdHocSubProcess">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#SubProcess"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_completionCondition"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Expression"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">AdHocSubProcess</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#BPMN_Concepts -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#BPMN_Concepts">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#id"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">BPMN_Concepts</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#BoundaryEvent -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#BoundaryEvent">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#CatchEvent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#attachedToRef"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Activity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">BoundaryEvent</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#BusinessRuleTask -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#BusinessRuleTask">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Task"/>
+        <rdfs:label xml:lang="en">BusinessRuleTask</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#CallActivity -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#CallActivity">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Activity"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_calledElement"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#CallableElement"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">CallActivity</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#CallableElement -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#CallableElement">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#RootElement"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#name"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">CallableElement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#CancelEventDefinition -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#CancelEventDefinition">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#EventDefinition"/>
+        <rdfs:label xml:lang="en">CancelEventDefinition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#CatchEvent -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#CatchEvent">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Event"/>
+        <rdfs:label xml:lang="en">CatchEvent</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Cell -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Cell">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#ManufacturingFacility"/>
+        <rdfs:label xml:lang="en">Cell</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#CompensateEventDefinition -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#CompensateEventDefinition">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#EventDefinition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_activityRef"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Activity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">CompensateEventDefinition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#ComplexBehaviorDefinition -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ComplexBehaviorDefinition">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#BPMN_Concepts"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_condition"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#FormalExpression"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">This element controls when and which Events are thrown in case behavior of the Multi-Instance Activity is set to complex.</rdfs:comment>
+        <rdfs:label xml:lang="en">ComplexBehaviorDefinition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#ComplexGateway -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ComplexGateway">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Gateway"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_default"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_activationCondition"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Expression"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">ComplexGateway</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#ComplexTask -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ComplexTask">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#IRIT_concepts"/>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#SubProcess"/>
+        <rdfs:label xml:lang="en">ComplexTask</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Component -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Component">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#MaterialResource"/>
+        <rdfs:label xml:lang="en">Component</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#ConditionExpression -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ConditionExpression">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Expression"/>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#IRIT_concepts"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_sequenceFlow"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">ConditionExpression</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#ConditionalEventDefinition -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ConditionalEventDefinition">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#EventDefinition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_condition"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#FormalExpression"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">ConditionalEventDefinition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#ConsumableResource -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ConsumableResource">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#IRIT_concepts"/>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Resource"/>
+        <rdfs:label xml:lang="en">ConsumableResource</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#DataResource -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#DataResource">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#IRIT_concepts"/>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Resource"/>
+        <rdfs:label xml:lang="en">DataResource</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Database -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Database">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#DataResource"/>
+        <rdfs:label xml:lang="en">Database</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Device -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Device">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#MaterialResource"/>
+        <rdfs:label xml:lang="en">Device</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#DocumentResource -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#DocumentResource">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#DataResource"/>
+        <rdfs:label xml:lang="en">DocumentResource</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#EndEvent -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#EndEvent">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#ThrowEvent"/>
+        <rdfs:label xml:lang="en">EndEvent</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Enterprise -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Enterprise">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#ManufacturingFacility"/>
+        <rdfs:label xml:lang="en">Enterprise</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#EquipmentDraw -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#EquipmentDraw">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#TechnicalDocument"/>
+        <rdfs:label xml:lang="en">EquipmentDraw</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Error -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Error">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#RootElement"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#name"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">Error</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#ErrorEventDefinition -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ErrorEventDefinition">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#EventDefinition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_error"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Error"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">ErrorEventDefinition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Escalation -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Escalation">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#RootElement"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#name"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">Escalation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#EscalationEventDefinition -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#EscalationEventDefinition">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#EventDefinition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_escalationRef"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Escalation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">EscalationEventDefinition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Event -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Event">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#FlowNode"/>
+        <rdfs:label xml:lang="en">Event</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#EventBasedGateway -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#EventBasedGateway">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Gateway"/>
+        <rdfs:label xml:lang="en">EventBasedGateway</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#EventDefinition -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#EventDefinition">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#RootElement"/>
+        <rdfs:label xml:lang="en">EventDefinition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#ExclusiveGateway -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ExclusiveGateway">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Gateway"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_default"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">ExclusiveGateway</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#ExecutableScript -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ExecutableScript">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#DocumentResource"/>
+        <rdfs:label xml:lang="en">ExecutableScript</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Expression -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Expression">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#BPMN_Concepts"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_complexGateway"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#ComplexGateway"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">Expression</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Factory -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Factory">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#ManufacturingFacility"/>
+        <rdfs:label xml:lang="en">Factory</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#FlowElement -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#FlowElement">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#BPMN_Concepts"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_container"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#FlowElementsContainer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#name"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">FlowElement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#FlowElementsContainer -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#FlowElementsContainer">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#BPMN_Concepts"/>
+        <rdfs:label xml:lang="en">FlowElementsContainer</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#FlowNode -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#FlowNode">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#FlowElement"/>
+        <rdfs:label xml:lang="en">FlowNode</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#FormalExpression -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#FormalExpression">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Expression"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#language"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">FormalExpression</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Function -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Function">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#IRIT_concepts"/>
+        <rdfs:label xml:lang="en">Function</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Gateway -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Gateway">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#FlowNode"/>
+        <rdfs:label xml:lang="en">Gateway</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#GlobalBusinessRuleTask -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#GlobalBusinessRuleTask">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#GlobalTask"/>
+        <rdfs:label xml:lang="en">GlobalBusinessRuleTask</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#GlobalManualTask -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#GlobalManualTask">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#GlobalTask"/>
+        <rdfs:label xml:lang="en">GlobalManualTask</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#GlobalScriptTask -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#GlobalScriptTask">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#GlobalTask"/>
+        <rdfs:label xml:lang="en">GlobalScriptTask</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#GlobalTask -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#GlobalTask">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#CallableElement"/>
+        <rdfs:label xml:lang="en">GlobalTask</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#GlobalUserTask -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#GlobalUserTask">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#GlobalTask"/>
+        <rdfs:label xml:lang="en">GlobalUserTask</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#HumanPerformer -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#HumanPerformer">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Performer"/>
+        <rdfs:label xml:lang="en">HumanPerformer</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#HumanResource -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#HumanResource">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#IRIT_concepts"/>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Resource"/>
+        <rdfs:label xml:lang="en">HumanResource</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#IRIT_concepts -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#IRIT_concepts">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label xml:lang="en">IRIT_concepts</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#ImplicitThrowEvent -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ImplicitThrowEvent">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#ThrowEvent"/>
+        <rdfs:label xml:lang="en">ImplicitThrowEvent</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#InclusiveGateway -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#InclusiveGateway">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Gateway"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_default"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">InclusiveGateway</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#InputOutputBinding -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#InputOutputBinding">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#BPMN_Concepts"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_operationRef"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Operation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">InputOutputBinding</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#InputOutputSpecification -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#InputOutputSpecification">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#BPMN_Concepts"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_inputSet"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#InputSet"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_outputSet"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#OutputSet"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_activity"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Activity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">InputOutputSpecification</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#InputSet -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#InputSet">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#BPMN_Concepts"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#name"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">InputSet</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Interface -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Interface">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#RootElement"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_operations"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Operation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#name"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">Interface</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#IntermediateCatchEvent -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#IntermediateCatchEvent">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#CatchEvent"/>
+        <rdfs:label xml:lang="en">IntermediateCatchEvent</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#IntermediateThrowEvent -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#IntermediateThrowEvent">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#ThrowEvent"/>
+        <rdfs:label xml:lang="en">IntermediateThrowEvent</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#LinkEventDefinition -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#LinkEventDefinition">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#EventDefinition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#name"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">LinkEventDefinition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#LoopCharacteristics -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#LoopCharacteristics">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#BPMN_Concepts"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_activity"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Activity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">LoopCharacteristics</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#ManualTask -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ManualTask">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Task"/>
+        <rdfs:label xml:lang="en">ManualTask</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#ManufacturingFacility -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ManufacturingFacility">
+        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:label xml:lang="en">ManufacturingFacility</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#MaterialResource -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#MaterialResource">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#IRIT_concepts"/>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Resource"/>
+        <rdfs:label xml:lang="en">MaterialResource</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Message -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Message">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#RootElement"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#name"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">Message</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#MessageEventDefinition -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#MessageEventDefinition">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#EventDefinition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_messageRef"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Message"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_operationRef"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Operation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">MessageEventDefinition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#MultiInstanceLoopCharacteristics -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#MultiInstanceLoopCharacteristics">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#LoopCharacteristics"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_completionCondition"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Expression"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_noneBehaviorEventRef"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#EventDefinition"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_oneBehaviorEventRef"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#EventDefinition"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">MultiInstanceLoopCharacteristics</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Operation -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Operation">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#BPMN_Concepts"/>
+        <rdfs:label xml:lang="en">Operation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#OutputSet -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#OutputSet">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#BPMN_Concepts"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#name"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">OutputSet</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#ParallelGateway -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ParallelGateway">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Gateway"/>
+        <rdfs:label xml:lang="en">ParallelGateway</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#ParameterValue -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ParameterValue">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#DataResource"/>
+        <rdfs:label xml:lang="en">ParameterValue</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Performer -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Performer">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#ResourceRole"/>
+        <rdfs:label xml:lang="en">Performer</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Person -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Person">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#HumanResource"/>
+        <rdfs:label xml:lang="en">Person</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#PotentialOwner -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#PotentialOwner">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#HumanPerformer"/>
+        <rdfs:label xml:lang="en">PotentialOwner</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Process -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Process">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#CallableElement"/>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#FlowElementsContainer"/>
+        <rdfs:label xml:lang="en">Process</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Property -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Property">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#BPMN_Concepts"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_activity"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Activity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#name"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Modeler-defined properties MAY be added to a Process. These properties are contained within the Process. All Tasks and Sub-Processes SHALL have access to these properties.</rdfs:comment>
+        <rdfs:label xml:lang="en">Property</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#QualitativeResourceParameter -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#QualitativeResourceParameter">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#IRIT_concepts"/>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#ResourceParameter"/>
+        <rdfs:label xml:lang="en">QualitativeResourceParameter</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#QuantitativeResourceParameter -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#QuantitativeResourceParameter">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#IRIT_concepts"/>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#ResourceParameter"/>
+        <rdfs:label xml:lang="en">QuantitativeResourceParameter</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#RawMaterial -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#RawMaterial">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#MaterialResource"/>
+        <rdfs:label xml:lang="en">RawMaterial</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#ReceiveTask -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ReceiveTask">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Task"/>
+        <rdfs:label xml:lang="en">ReceiveTask</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Resource -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Resource">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#RootElement"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#name"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">Resource</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#ResourceAssignmentExpression -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ResourceAssignmentExpression">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#BPMN_Concepts"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_expression"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Expression"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">ResourceAssignmentExpression</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#ResourceParameter -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ResourceParameter">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#BPMN_Concepts"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#name"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">ResourceParameter</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#ResourceParameterBinding -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ResourceParameterBinding">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#BPMN_Concepts"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_expression"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Expression"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_parameterRef"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#ResourceParameter"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">ResourceParameterBinding</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#ResourceRole -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ResourceRole">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#BPMN_Concepts"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_activity"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Activity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_process"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Process"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_resourceAssignmentExpression"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#ResourceAssignmentExpression"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_resourceRef"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Resource"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#name"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">ResourceRole</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#RootElement -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#RootElement">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#BPMN_Concepts"/>
+        <rdfs:label xml:lang="en">RootElement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Scheme -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Scheme">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#TechnicalDocument"/>
+        <rdfs:label xml:lang="en">Scheme</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#ScriptTask -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ScriptTask">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Task"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#script"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#scriptFormat"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">ScriptTask</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#SendTask -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#SendTask">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Task"/>
+        <rdfs:label xml:lang="en">SendTask</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#SequenceFlow -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#SequenceFlow">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#FlowElement"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_sourceRef"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#FlowNode"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_targetRef"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#FlowNode"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_conditionExpression"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Expression"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#isImmediate"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">SequenceFlow</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#ServiceTask -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ServiceTask">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Task"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_operationRef"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Operation"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">ServiceTask</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Shop -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Shop">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#ManufacturingFacility"/>
+        <rdfs:label xml:lang="en">Shop</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Signal -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Signal">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#RootElement"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#name"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">Signal</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#SignalEventDefinition -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#SignalEventDefinition">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#EventDefinition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_signalRef"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Signal"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">SignalEventDefinition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#SoftwareResource -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#SoftwareResource">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#IRIT_concepts"/>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Resource"/>
+        <rdfs:label xml:lang="en">SoftwareResource</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#SparePart -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#SparePart">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#MaterialResource"/>
+        <rdfs:label xml:lang="en">SparePart</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#StandardLoopCharacteristics -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#StandardLoopCharacteristics">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#LoopCharacteristics"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_loopCondition"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Expression"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#loopMaximum"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">StandardLoopCharacteristics</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#StartEvent -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#StartEvent">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#CatchEvent"/>
+        <rdfs:label xml:lang="en">StartEvent</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Station -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Station">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#ManufacturingFacility"/>
+        <rdfs:label xml:lang="en">Station</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#SubProcess -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#SubProcess">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Activity"/>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#FlowElementsContainer"/>
+        <rdfs:label xml:lang="en">SubProcess</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Task -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Task">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Activity"/>
+        <rdfs:label xml:lang="en">Task</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Team -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Team">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#HumanResource"/>
+        <rdfs:label xml:lang="en">Team</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#TechnicalDocument -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#TechnicalDocument">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#DocumentResource"/>
+        <rdfs:label xml:lang="en">TechnicalDocument</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Telecommand -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Telecommand">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#DataResource"/>
+        <rdfs:label xml:lang="en">Telecommand</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#TerminateEventDefinition -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#TerminateEventDefinition">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#EventDefinition"/>
+        <rdfs:label xml:lang="en">TerminateEventDefinition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#ThrowEvent -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ThrowEvent">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Event"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_inputSet"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#InputSet"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">ThrowEvent</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#TimeExpression -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#TimeExpression">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Expression"/>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#IRIT_concepts"/>
+        <rdfs:label xml:lang="en">TimeExpression</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#TimerEventDefinition -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#TimerEventDefinition">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#EventDefinition"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_timeCycle"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Expression"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_timeDate"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Expression"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_timeDuration"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Expression"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:label xml:lang="en">TimerEventDefinition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Tool -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Tool">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#MaterialResource"/>
+        <rdfs:label xml:lang="en">Tool</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Transaction -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Transaction">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#SubProcess"/>
+        <rdfs:label xml:lang="en">Transaction</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#UserManual -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#UserManual">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#TechnicalDocument"/>
+        <rdfs:label xml:lang="en">UserManual</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#UserTask -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#UserTask">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Task"/>
+        <rdfs:label xml:lang="en">UserTask</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#WorkProcedureDescription -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#WorkProcedureDescription">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#TechnicalDocument"/>
+        <rdfs:label xml:lang="en">WorkProcedureDescription</rdfs:label>
+    </owl:Class>
+</rdf:RDF>
+
+
+
+<!-- Generated by the OWL API (version 4.5.7.2018-12-02T02:23:35Z) https://github.com/owlcs/owlapi -->
+
