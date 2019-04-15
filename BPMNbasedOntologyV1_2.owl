@@ -442,21 +442,13 @@
     
 
 
-    <!-- http://BPMNbasedOntology#IRIT_properties -->
-
-    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#IRIT_properties">
-        <rdfs:domain rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-        <rdfs:label xml:lang="en">IRIT_properties</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://BPMNbasedOntology#attachedToRef -->
 
     <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#attachedToRef">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#BoundaryEvent"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#Activity"/>
+        <rdfs:comment xml:lang="en">Denotes the Activity that boundary Event is attached to.</rdfs:comment>
         <rdfs:label xml:lang="en">attachedToRef</rdfs:label>
     </owl:ObjectProperty>
     
@@ -469,6 +461,8 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#ComplexGateway"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#Expression"/>
+        <rdfs:comment xml:lang="en">Determines which combination of incoming tokens will be synchronized for
+activation of the Gateway.</rdfs:comment>
         <rdfs:label xml:lang="en">has_activationCondition</rdfs:label>
     </owl:ObjectProperty>
     
@@ -478,17 +472,8 @@
 
     <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_activity">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://BPMNbasedOntology#InputOutputSpecification"/>
-                    <rdf:Description rdf:about="http://BPMNbasedOntology#LoopCharacteristics"/>
-                    <rdf:Description rdf:about="http://BPMNbasedOntology#Property"/>
-                    <rdf:Description rdf:about="http://BPMNbasedOntology#ResourceRole"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#Activity"/>
+        <rdfs:comment xml:lang="en">[IRIT]denotes the activity related to the source element</rdfs:comment>
         <rdfs:label xml:lang="en">has_activity</rdfs:label>
     </owl:ObjectProperty>
     
@@ -500,6 +485,25 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#CompensateEventDefinition"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#Activity"/>
+        <rdfs:comment xml:lang="en">For a Start Event:
+This Event “catches” the compensation for an Event Sub-Process. No further
+information is REQUIRED. The Event Sub-Process will provide the Id necessary
+to match the Compensation Event with the Event that threw the compensation,
+or the compensation will have been a broadcast.
+For an End Event:
+The Activity to be compensated MAY be supplied. If an Activity is not supplied,
+then the compensation is broadcast to all completed Activities in the current Sub-
+Process (if present), or the entire Process instance (if at the global level).
+For an Intermediate Event within normal flow:
+The Activity to be compensated MAY be supplied. If an Activity is not supplied,
+then the compensation is broadcast to all completed Activities in the current Sub-
+Process (if present), or the entire Process instance (if at the global level). This
+“throws” the compensation.
+For an Intermediate Event attached to the boundary of an Activity:
+This Event “catches” the compensation. No further information is REQUIRED. The
+Activity the Event is attached to will provide the Id necessary to match the
+Compensation Event with the Event that threw the compensation, or the
+compensation will have been a broadcast.</rdfs:comment>
         <rdfs:label xml:lang="en">has_activityRef</rdfs:label>
     </owl:ObjectProperty>
     
@@ -510,6 +514,8 @@
     <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_boundaryEventRef">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#Activity"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#BoundaryEvent"/>
+        <rdfs:comment xml:lang="en">This references the Intermediate Events that are attached to the
+boundary of the Activity.</rdfs:comment>
         <rdfs:label xml:lang="en">has_boundaryEventRef</rdfs:label>
     </owl:ObjectProperty>
     
@@ -520,6 +526,7 @@
     <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_callableElements">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#Interface"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#CallableElement"/>
+        <rdfs:comment xml:lang="en">The CallableElements that use this Interface.</rdfs:comment>
         <rdfs:label xml:lang="en">has_callableElements</rdfs:label>
     </owl:ObjectProperty>
     
@@ -531,6 +538,8 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#CallActivity"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#CallableElement"/>
+        <rdfs:comment xml:lang="en">The element to be called, which will be either a Process or a
+GlobalTask.</rdfs:comment>
         <rdfs:label xml:lang="en">has_calledElement</rdfs:label>
     </owl:ObjectProperty>
     
@@ -549,6 +558,7 @@
             </owl:Class>
         </rdfs:domain>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#Expression"/>
+        <rdfs:comment xml:lang="en">This attribute defines a boolean Expression that when evaluated to true, cancels the remaining Activity instances and produces a token.</rdfs:comment>
         <rdfs:label xml:lang="en">has_completionCondition</rdfs:label>
     </owl:ObjectProperty>
     
@@ -560,6 +570,7 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#Expression"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#ComplexGateway"/>
+        <rdfs:comment xml:lang="en">[IRIT] references the ComplexGateway which is concerned with the Expression</rdfs:comment>
         <rdfs:label xml:lang="en">has_complexGateway</rdfs:label>
     </owl:ObjectProperty>
     
@@ -597,6 +608,9 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#Expression"/>
+        <rdfs:comment xml:lang="en">An optional boolean Expression that acts as a gating condition. A token will only
+be placed on this Sequence Flow if this conditionExpression evaluates to
+true.</rdfs:comment>
         <rdfs:label xml:lang="en">has_conditionExpression</rdfs:label>
     </owl:ObjectProperty>
     
@@ -608,6 +622,7 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#FlowElement"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#FlowElementsContainer"/>
+        <rdfs:comment xml:lang="en">[IRIT] this relation references the FlowElementContainer that includes the FlowElement</rdfs:comment>
         <rdfs:label xml:lang="en">has_container</rdfs:label>
     </owl:ObjectProperty>
     
@@ -616,6 +631,7 @@
     <!-- http://BPMNbasedOntology#has_default -->
 
     <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_default">
+        <owl:inverseOf rdf:resource="http://BPMNbasedOntology#has_defaultSource"/>
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain>
             <owl:Class>
@@ -628,7 +644,26 @@
             </owl:Class>
         </rdfs:domain>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+        <rdfs:comment xml:lang="en">The Sequence Flow that will receive a token when none of the conditionExpressions on other outgoing Sequence Flows evaluate to true. The default Sequence Flow should not have a conditionExpression. Any such Expression SHALL be ignored.</rdfs:comment>
         <rdfs:label xml:lang="en">has_default</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_defaultSource -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_defaultSource">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+        <rdfs:range>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#Activity"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#ComplexGateway"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#ExclusiveGateway"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#InclusiveGateway"/>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:range>
     </owl:ObjectProperty>
     
 
@@ -639,6 +674,7 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#ErrorEventDefinition"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#Error"/>
+        <rdfs:comment xml:lang="en">If the trigger is an Error, then an Error payload MAY be provided.</rdfs:comment>
         <rdfs:label xml:lang="en">has_error</rdfs:label>
     </owl:ObjectProperty>
     
@@ -649,6 +685,7 @@
     <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_errorRef">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#Operation"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#Error"/>
+        <rdfs:comment xml:lang="en">specifies errors that the Operation may return. An Operation MAY refer to zero or more Error elements.</rdfs:comment>
         <rdfs:label xml:lang="en">has_errorRef</rdfs:label>
     </owl:ObjectProperty>
     
@@ -660,6 +697,7 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#EscalationEventDefinition"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#Escalation"/>
+        <rdfs:comment xml:lang="en">If the trigger is an Escalation, then an Escalation payload MAY be provided.</rdfs:comment>
         <rdfs:label xml:lang="en">has_escalationRef</rdfs:label>
     </owl:ObjectProperty>
     
@@ -677,6 +715,10 @@
             </owl:Class>
         </rdfs:domain>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#EventDefinition"/>
+        <rdfs:comment xml:lang="en">Defines the event EventDefinitions that are triggers expected for a catch Event. These EventDefinitions are only valid inside the current Event.
+• If there is no EventDefinition defined, then this is considered a catch None Event and the Event will not have an internal marker (see Figure 10.91).
+• If there is more than one EventDefinition defined, this is considered a catch Multiple Event and the Event will have the pentagon internal marker (see Figure 10.90).
+This is an ordered set.</rdfs:comment>
         <rdfs:label xml:lang="en">has_eventDefinition</rdfs:label>
     </owl:ObjectProperty>
     
@@ -687,6 +729,7 @@
     <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_exclusiveGateway">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#ExclusiveGateway"/>
+        <rdfs:comment xml:lang="en">[IRIT] specifies the exclusive gateway referenced by the default sequence flow</rdfs:comment>
         <rdfs:label xml:lang="en">has_exclusiveGateway</rdfs:label>
     </owl:ObjectProperty>
     
@@ -696,15 +739,9 @@
 
     <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_expression">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://BPMNbasedOntology#ResourceAssignmentExpression"/>
-                    <rdf:Description rdf:about="http://BPMNbasedOntology#ResourceParameterBinding"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#Expression"/>
+        <rdfs:comment xml:lang="en">The Expression that evaluates the value used to bind the
+ResourceParameter. (ResourceParameterBinding)</rdfs:comment>
         <rdfs:label xml:lang="en">has_expression</rdfs:label>
     </owl:ObjectProperty>
     
@@ -715,6 +752,10 @@
     <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_flowElements">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#FlowElementsContainer"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#FlowElement"/>
+        <rdfs:comment xml:lang="en">This association specifies the particular flow elements contained in a
+FlowElementContainer. Flow elements are Events, Gateways, Sequence
+Flows, Activities, Data Objects, Data Associations, and Choreography
+Activities.</rdfs:comment>
         <rdfs:label xml:lang="en">has_flowElements</rdfs:label>
     </owl:ObjectProperty>
     
@@ -725,6 +766,7 @@
     <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_inclusiveGateway">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#InclusiveGateway"/>
+        <rdfs:comment xml:lang="en">[IRIT] specifies the inclusive gateway referenced by the default sequence flow</rdfs:comment>
         <rdfs:label xml:lang="en">has_inclusiveGateway</rdfs:label>
     </owl:ObjectProperty>
     
@@ -735,6 +777,7 @@
     <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_incoming">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#FlowNode"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+        <rdfs:comment xml:lang="en">identifies the incoming Sequence Flow of the FlowNode.</rdfs:comment>
         <rdfs:label xml:lang="en">has_incoming</rdfs:label>
     </owl:ObjectProperty>
     
@@ -752,6 +795,7 @@
             </owl:Class>
         </rdfs:domain>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#InputSet"/>
+        <rdfs:comment xml:lang="en">A reference to the InputSets defined by the InputOutputSpecification. Every InputOutputSpecification MUST define at least one InputSet.</rdfs:comment>
         <rdfs:label xml:lang="en">has_inputSet</rdfs:label>
     </owl:ObjectProperty>
     
@@ -762,6 +806,7 @@
     <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_ioBinding">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#CallableElement"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#InputOutputBinding"/>
+        <rdfs:comment xml:lang="en">The InputOutputBinding defines a combination of one InputSet and one OutputSet in order to bind this to an operation defined in an interface.</rdfs:comment>
         <rdfs:label xml:lang="en">has_ioBinding</rdfs:label>
     </owl:ObjectProperty>
     
@@ -773,7 +818,19 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#Activity"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#InputOutputSpecification"/>
+        <rdfs:comment xml:lang="en">The InputOutputSpecification defines the inputs and outputs and the InputSets and OutputSets for the Activity. See page 211 for more information on the InputOutputSpecification.
+
+</rdfs:comment>
         <rdfs:label xml:lang="en">has_ioSpecification</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_leader -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_leader">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#Group"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#Person"/>
     </owl:ObjectProperty>
     
 
@@ -784,6 +841,10 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#Activity"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#LoopCharacteristics"/>
+        <rdfs:comment xml:lang="en">An Activity MAY be performed once or MAY be repeated. If repeated,
+the Activity MUST have loopCharacteristics that define the repetition
+criteria (if the isExecutable attribute of the Process is set to
+true).</rdfs:comment>
         <rdfs:label xml:lang="en">has_loopCharacteristics</rdfs:label>
     </owl:ObjectProperty>
     
@@ -795,7 +856,17 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#StandardLoopCharacteristics"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#Expression"/>
+        <rdfs:comment xml:lang="en">A boolean Expression that controls the loop. The Activity will only loop as long as this condition is true. The looping behavior MAY be underspecified, meaning that the modeler can simply document the condition, in which case the loop cannot be formally executed.</rdfs:comment>
         <rdfs:label xml:lang="en">has_loopCondition</rdfs:label>
+    </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_member -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_member">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#Group"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#Person"/>
     </owl:ObjectProperty>
     
 
@@ -806,6 +877,7 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#MessageEventDefinition"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#Message"/>
+        <rdfs:comment xml:lang="en">The Message MUST be supplied (if the isExecutable attribute of the Process is set to true).</rdfs:comment>
         <rdfs:label xml:lang="en">has_messageRef</rdfs:label>
     </owl:ObjectProperty>
     
@@ -828,6 +900,7 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#MultiInstanceLoopCharacteristics"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#EventDefinition"/>
+        <rdfs:comment xml:lang="en">The EventDefinition which is thrown when behavior is set to one and the first internal Activity instance has completed.</rdfs:comment>
         <rdfs:label xml:lang="en">has_oneBehaviorEventRef</rdfs:label>
     </owl:ObjectProperty>
     
@@ -847,6 +920,7 @@
             </owl:Class>
         </rdfs:domain>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#Operation"/>
+        <rdfs:comment xml:lang="en">This attribute specifies the operation that is invoked</rdfs:comment>
         <rdfs:label xml:lang="en">has_operationRef</rdfs:label>
     </owl:ObjectProperty>
     
@@ -857,6 +931,7 @@
     <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_operations">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#Interface"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#Operation"/>
+        <rdfs:comment xml:lang="en">This attribute specifies operations that are defined as part of the Interface. An Interface has at least one Operation.</rdfs:comment>
         <rdfs:label xml:lang="en">has_operations</rdfs:label>
     </owl:ObjectProperty>
     
@@ -867,6 +942,7 @@
     <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_outgoing">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#FlowNode"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+        <rdfs:comment xml:lang="en">identifies the outgoing Sequence Flow of the FlowNode.</rdfs:comment>
         <rdfs:label xml:lang="en">has_outgoing</rdfs:label>
     </owl:ObjectProperty>
     
@@ -877,8 +953,21 @@
     <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_outputSet">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#InputOutputSpecification"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#OutputSet"/>
+        <rdfs:comment xml:lang="en">A reference to the OutputSets defined by the InputOutputSpecification. Every InputOutputSpecification MUST define at least one OutputSet.</rdfs:comment>
         <rdfs:label xml:lang="en">has_outputSet</rdfs:label>
     </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_parameter -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_parameter"/>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_parameterExpectedValue -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_parameterExpectedValue"/>
     
 
 
@@ -886,10 +975,16 @@
 
     <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_parameterRef">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://BPMNbasedOntology#ResourceParameterBinding"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#ResourceParameter"/>
+        <rdfs:comment xml:lang="en">Reference to the parameter defined by the Resource.</rdfs:comment>
         <rdfs:label xml:lang="en">has_parameterRef</rdfs:label>
     </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_parameterValue -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_parameterValue"/>
     
 
 
@@ -897,8 +992,8 @@
 
     <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_process">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://BPMNbasedOntology#ResourceRole"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#Process"/>
+        <rdfs:comment xml:lang="en">the process assigned to the resource role</rdfs:comment>
         <rdfs:label xml:lang="en">has_process</rdfs:label>
     </owl:ObjectProperty>
     
@@ -909,6 +1004,7 @@
     <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_properties">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#Process"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#Property"/>
+        <rdfs:comment xml:lang="en">Modeler-defined properties MAY be added to a Process. These properties are contained within the Process. All Tasks and Sub-Processes SHALL have access to these properties.</rdfs:comment>
         <rdfs:label xml:lang="en">has_properties</rdfs:label>
     </owl:ObjectProperty>
     
@@ -918,8 +1014,9 @@
 
     <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_resourceAssignmentExpression">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://BPMNbasedOntology#ResourceRole"/>
-        <rdfs:range rdf:resource="http://BPMNbasedOntology#ResourceAssignmentExpression"/>
+        <rdfs:comment xml:lang="en">This defines the Expression used for the Resource
+assignment (see below). Should not be specified when a
+resourceRef is provided.</rdfs:comment>
         <rdfs:label xml:lang="en">has_resourceAssignmentExpression</rdfs:label>
     </owl:ObjectProperty>
     
@@ -928,8 +1025,9 @@
     <!-- http://BPMNbasedOntology#has_resourceParameterBindings -->
 
     <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_resourceParameterBindings">
-        <rdfs:domain rdf:resource="http://BPMNbasedOntology#ResourceRole"/>
-        <rdfs:range rdf:resource="http://BPMNbasedOntology#ResourceParameterBinding"/>
+        <rdfs:comment xml:lang="en">This defines the Parameter bindings used for the
+Resource assignment (see below). Is only applicable if a
+resourceRef is specified.</rdfs:comment>
         <rdfs:label xml:lang="en">has_resourceParameterBindings</rdfs:label>
     </owl:ObjectProperty>
     
@@ -940,6 +1038,7 @@
     <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_resourceParameters">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#Resource"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#ResourceParameter"/>
+        <rdfs:comment xml:lang="en">This model association specifies the definition of the parameters needed at runtime to resolve the Resource.</rdfs:comment>
         <rdfs:label xml:lang="en">has_resourceParameters</rdfs:label>
     </owl:ObjectProperty>
     
@@ -949,8 +1048,10 @@
 
     <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_resourceRef">
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:domain rdf:resource="http://BPMNbasedOntology#ResourceRole"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#Resource"/>
+        <rdfs:comment xml:lang="en">The Resource that is associated with Activity. Should not
+be specified when resourceAssignmentExpression is
+provided.</rdfs:comment>
         <rdfs:label xml:lang="en">has_resourceRef</rdfs:label>
     </owl:ObjectProperty>
     
@@ -968,7 +1069,7 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
-        <rdfs:range rdf:resource="http://BPMNbasedOntology#ResourceRole"/>
+        <rdfs:comment xml:lang="en">Defines the resource that will perform or will be responsible for the Process. The resource, e.g., a performer, can be specified in the form of a specific individual, a group, an organization role or position, or an organization. Note that the assigned resources of the Process does not determine the assigned resources of the Activities that are contained by the Process. See more details about resource assignment on page 154.</rdfs:comment>
         <rdfs:label xml:lang="en">has_resources</rdfs:label>
     </owl:ObjectProperty>
     
@@ -987,6 +1088,7 @@
             </owl:Class>
         </rdfs:domain>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+        <rdfs:comment xml:lang="en">[IRIT] specifies the SequenceFlow of the FlowNode</rdfs:comment>
         <rdfs:label xml:lang="en">has_sequenceFlow</rdfs:label>
     </owl:ObjectProperty>
     
@@ -998,6 +1100,7 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#SignalEventDefinition"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#Signal"/>
+        <rdfs:comment xml:lang="en">[IRIT] specifies the Signal of the SignalEventDefinition</rdfs:comment>
         <rdfs:label xml:lang="en">has_signalRef</rdfs:label>
     </owl:ObjectProperty>
     
@@ -1009,6 +1112,9 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#FlowNode"/>
+        <rdfs:comment xml:lang="en">The FlowNode that the Sequence Flow is connecting from.
+For a Process: Of the types of FlowNode, only Activities, Gateways, and Events can be the source. However, Activities that are Event Sub-Processes are not allowed to be a source.
+For a Choreography: Of the types of FlowNode, only Choreography Activities, Gateways, and Events can be the source.</rdfs:comment>
         <rdfs:label xml:lang="en">has_sourceRef</rdfs:label>
     </owl:ObjectProperty>
     
@@ -1019,6 +1125,7 @@
     <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_supportedInterfaceRefs">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#CallableElement"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#Interface"/>
+        <rdfs:comment xml:lang="en">The Interfaces describing the external behavior provided by this element.</rdfs:comment>
         <rdfs:label xml:lang="en">has_supportedInterfaceRefs</rdfs:label>
     </owl:ObjectProperty>
     
@@ -1030,6 +1137,9 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#FlowNode"/>
+        <rdfs:comment xml:lang="en">The FlowNode that the Sequence Flow is connecting to.
+For a Process: Of the types of FlowNode, only Activities, Gateways, and Events can be the target. However, Activities that are Event Sub-Processes are not allowed to be a target.
+For a Choreography: Of the types of FlowNode, only Choreography Activities, Gateways, and Events can be the target.</rdfs:comment>
         <rdfs:label xml:lang="en">has_targetRef</rdfs:label>
     </owl:ObjectProperty>
     
@@ -1041,6 +1151,9 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#TimerEventDefinition"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#Expression"/>
+        <owl:propertyDisjointWith rdf:resource="http://BPMNbasedOntology#has_timeDate"/>
+        <owl:propertyDisjointWith rdf:resource="http://BPMNbasedOntology#has_timeDuration"/>
+        <rdfs:comment xml:lang="en">If the trigger is a Timer, then a timeCycle MAY be entered. Timer attributes are mutually exclusive and if any of the other Timer attributes is set, timeCycle MUST NOT be set (if the isExecutable attribute of the Process is set to true). The return type of the attribute timeCycle MUST conform to the ISO-8601 format for recurring time interval representations.</rdfs:comment>
         <rdfs:label xml:lang="en">has_timeCycle</rdfs:label>
     </owl:ObjectProperty>
     
@@ -1052,6 +1165,8 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#TimerEventDefinition"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#Expression"/>
+        <owl:propertyDisjointWith rdf:resource="http://BPMNbasedOntology#has_timeDuration"/>
+        <rdfs:comment xml:lang="en">If the trigger is a Timer, then a timeDate MAY be entered. Timer attributes are mutually exclusive and if any of the other Timer attributes is set, timeDate MUST NOT be set (if the isExecutable attribute of the Process is set to true). The return type of the attribute timeDate MUST conform to the ISO-8601 format for date and time representations.</rdfs:comment>
         <rdfs:label xml:lang="en">has_timeDate</rdfs:label>
     </owl:ObjectProperty>
     
@@ -1063,8 +1178,16 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#TimerEventDefinition"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#Expression"/>
+        <rdfs:comment xml:lang="en">If the trigger is a Timer, then a timeDuration MAY be entered. Timer attributes are mutually exclusive and if any of the other Timer attributes is set, timeDuration MUST NOT be set (if the isExecutable attribute of the Process is set to true).
+The return type of the attribute timeDuration MUST conform to the ISO-8601 format for time interval representations.</rdfs:comment>
         <rdfs:label xml:lang="en">has_timeDuration</rdfs:label>
     </owl:ObjectProperty>
+    
+
+
+    <!-- http://BPMNbasedOntology#has_unitOfMeasure -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_unitOfMeasure"/>
     
 
 
@@ -1073,6 +1196,10 @@
     <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#supports">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#Process"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#Process"/>
+        <rdfs:comment xml:lang="en">Modelers can declare that they intend all executions or performances
+of one Process to also be valid for another Process. This means they
+expect all the executions or performances of the first Processes to also
+follow the steps laid out in the second Process.</rdfs:comment>
         <rdfs:label xml:lang="en">supports</rdfs:label>
     </owl:ObjectProperty>
     
@@ -1094,6 +1221,18 @@
     <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#behavior">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#MultiInstanceLoopCharacteristics"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#DTtMultiInstanceFlowCondition"/>
+        <rdfs:comment xml:lang="en">The attribute behavior acts as a shortcut for specifying when events SHALL be thrown from an Activity instance that is about to complete. It can assume values of None, One, All, and Complex, resulting in the following behavior:
+• None: the EventDefinition which is associated through the
+noneEvent association will be thrown for each instance completing.
+• One: the EventDefinition referenced through the oneEvent
+association will be thrown upon the first instance completing.
+• All: no Event is ever thrown, a token is produced after completion of all instances.
+• Complex: the complexBehaviorDefinitions are consulted to
+determine if and which Events to throw.
+For the behaviors of none and one, a default
+SignalEventDefinition will be thrown which automatically carries
+the current runtime attributes of the MI Activity.
+Any thrown Events can be caught by boundary Events on the Multi-Instance Activity.</rdfs:comment>
         <rdfs:label xml:lang="en">behavior</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1103,6 +1242,7 @@
 
     <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#body">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#FormalExpression"/>
+        <rdfs:comment xml:lang="en">The body of the Expression.</rdfs:comment>
         <rdfs:label xml:lang="en">body</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1113,6 +1253,8 @@
     <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#cancelActivity">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#BoundaryEvent"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="en">Denotes whether the Activity should be cancelled or not, i.e., whether the boundary catch Event acts as an Error or an Escalation. If the Activity is not cancelled, multiple instances of that handler can run concurrently.
+This attribute cannot be applied to Error Events (where it’s always true), or Compensation Events (where it doesn’t apply).</rdfs:comment>
         <rdfs:label xml:lang="en">cancelActivity</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1123,6 +1265,7 @@
     <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#cancelRemainingInstances">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#AdHocSubProcess"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="en">This attribute is used only if ordering is parallel. It determines whether running instances are cancelled when the completionCondition becomes true.</rdfs:comment>
         <rdfs:label xml:lang="en">cancelRemainingInstances</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1133,6 +1276,8 @@
     <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#completionQuantity">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#Activity"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment xml:lang="en">This attribute defines the number of tokens that MUST be generated from the Activity. This number of tokens will be sent done any outgoing Sequence Flow (assuming any Sequence Flow conditions are satisfied).
+Note that any value for the attribute that is greater than 1 is an advanced type of modeling and should be used with caution.</rdfs:comment>
         <rdfs:label xml:lang="en">completionQuantity</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1143,6 +1288,12 @@
     <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#errorCode">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#Error"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">For an End Event:
+If the result is an Error, then the errorCode MUST be supplied (if the processType attribute of the Process is set to executable) This “throws” the Error.
+For an Intermediate Event within normal flow:
+If the trigger is an Error, then the errorCode MUST be entered (if the processType attribute of the Process is set to executable). This “throws” the Error.
+For an Intermediate Event attached to the boundary of an Activity:
+If the trigger is an Error, then the errorCode MAY be entered. This Event “catches” the Error. If there is no errorCode, then any error SHALL trigger the Event. If there is an errorCode, then only an Error that matches the errorCode SHALL trigger the Event.</rdfs:comment>
         <rdfs:label xml:lang="en">errorCode</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1153,6 +1304,9 @@
     <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#escalationCode">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#Escalation"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">For an End Event:
+If the Result is an Escalation, then the escalationCode MUST be supplied (if the processType attribute of the Process is set to executable). This “throws” the Escalation.
+For an Intermediate Event within normal flow: If the trigger is an Escalation, then the escalationCode MUST be entered (if the processType attribute of the Process is set to executable). This “throws” the Escalation. For an Intermediate Event attached to the boundary of an Activity: If the trigger is an Escalation, then the escalationCode MAY be entered. This Event “catches” the Escalation. If there is no escalationCode, then any Escalation SHALL trigger the Event. If there is an escalationCode, then only an Escalation that matches the escalationCode SHALL trigger the Event.</rdfs:comment>
         <rdfs:label xml:lang="en">escalationCode</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1163,6 +1317,8 @@
     <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#eventGatewayType">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#EventBasedGateway"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#DTtEventBasedGatewayType"/>
+        <rdfs:comment xml:lang="en">The eventGatewayType determines the behavior of the Gateway when used to instantiate a Process (as described above).
+The attribute can only be set to parallel when the instantiate attribute is set to true.</rdfs:comment>
         <rdfs:label xml:lang="en">eventGatewayType</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1173,6 +1329,11 @@
     <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#gatewayDirection">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#Gateway"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#DTtGatewayDirection"/>
+        <rdfs:comment xml:lang="en">An attribute that adds constraints on how the Gateway MAY be used.
+• Unspecified: There are no constraints. The Gateway MAY have any number of incoming and outgoing Sequence Flows.
+• Converging: This Gateway MAY have multiple incoming Sequence Flows but MUST have no more than one (1) outgoing Sequence Flow.
+• Diverging: This Gateway MAY have multiple outgoing Sequence Flows but MUST have no more than one (1) incoming Sequence Flow.
+• Mixed: This Gateway contains multiple outgoing and multiple incoming Sequence Flows.</rdfs:comment>
         <rdfs:label xml:lang="en">gatewayDirection</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1184,6 +1345,7 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#BPMN_Concepts"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">This attribute is used to uniquely identify BPMN elements. The id is REQUIRED if this element is referenced or intended to be referenced by something else. If the element is not currently referenced and is never intended to be referenced, the id MAY be omitted.</rdfs:comment>
         <rdfs:label xml:lang="en">id</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1204,6 +1366,7 @@
                 </owl:unionOf>
             </owl:Class>
         </rdfs:domain>
+        <rdfs:comment xml:lang="en">This attribute specifies the technology that will be used to send and receive the Messages. Valid values are ##unspecified for leaving the implementation technology open, ##WebService for the Web service technology or a URI identifying any other technology or coordination protocol. A Web service is the default technology.</rdfs:comment>
         <rdfs:label xml:lang="en">implementation</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1221,6 +1384,7 @@
             </owl:Class>
         </rdfs:domain>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="en">When true, receipt of one of the Events will instantiate the Process instance.</rdfs:comment>
         <rdfs:label xml:lang="en">instantiate</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1231,6 +1395,7 @@
     <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#isClosed">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#Process"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="en">A boolean value specifying whether interactions, such as sending and receiving Messages and Events, not modeled in the Process can occur when the Process is executed or performed. If the value is true, they MAY NOT occur. If the value is false, they MAY occur.</rdfs:comment>
         <rdfs:label xml:lang="en">isClosed</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1241,6 +1406,10 @@
     <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#isExecutable">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#Process"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="en">An optional Boolean value specifying whether the Process is executable.
+An executable Process is a private Process that has been modeled for the purpose of being executed according to the semantics of Chapter 14 (see page 426). Of course, during the development cycle of the Process, there will be stages where the Process does not have enough detail to be “executable.”
+A non-executable Process is a private Process that has been modeled for the purpose of documenting Process behavior at a modeler-defined level of detail. Thus, information needed for execution, such as formal condition expressions are typically not included in a non-executable Process.
+For public Processes, no value has the same semantics as if the value were false. The value MAY not be true for public Processes.</rdfs:comment>
         <rdfs:label xml:lang="en">isExecutable</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1251,6 +1420,9 @@
     <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#isForCompensation">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#Activity"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="en">A flag that identifies whether this Activity is intended for the purposes of compensation.
+If false, then this Activity executes as a result of normal execution flow.
+If true, this Activity is only activated when a Compensation Event is detected and initiated under Compensation Event visibility scope (see page 281 for more information on scopes).</rdfs:comment>
         <rdfs:label xml:lang="en">isForCompensation</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1262,6 +1434,11 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="en">An optional boolean value specifying whether Activities or Choreography Activities not in the model containing the Sequence Flow can occur between the elements connected by the Sequence Flow. If the value is true, they MAY NOT occur. If the value is false, they MAY occur. Also see the isClosed attribute on Process, Choreography, and Collaboration. When the attribute has no value, the
+default semantics depends on the kind of model containing Sequence Flows:
+• For non-executable Processes (public Processes and non-executable private Processes) and Choreographies no value has the same semantics as if the value were false.
+• For an executable Processes no value has the same semantics as if the value were true.
+• For executable Processes, the attribute MUST NOT be false.</rdfs:comment>
         <rdfs:label xml:lang="en">isImmediate</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1272,6 +1449,7 @@
     <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#isInterrupting">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#StartEvent"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="en">This attribute only applies to Start Events of Event Sub-Processes, it is ignored for other Start Events. This attribute denotes whether the Sub-Process encompassing the Event Sub-Process should be cancelled or not, If the encompassing Sub-Process is not cancelled, multiple instances of the Event Sub-Process can run concurrently. This attribute cannot be applied to Error Events (where it’s always true), or Compensation Events (where it doesn’t apply).</rdfs:comment>
         <rdfs:label xml:lang="en">isInterrupting</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1282,6 +1460,7 @@
     <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#isRequired">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#ResourceParameter"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="en">Specifies, if a parameter is optional or mandatory.</rdfs:comment>
         <rdfs:label xml:lang="en">isRequired</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1292,6 +1471,7 @@
     <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#isSequential">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#MultiInstanceLoopCharacteristics"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="en">This attribute is a flag that controls whether the Activity instances will execute sequentially or in parallel.</rdfs:comment>
         <rdfs:label xml:lang="en">isSequential</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1303,6 +1483,7 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#FormalExpression"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Overrides the Expression language specified in the Definitions. The language MUST be specified in a URI format.</rdfs:comment>
         <rdfs:label xml:lang="en">language</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1314,6 +1495,7 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#StandardLoopCharacteristics"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment xml:lang="en">Serves as a cap on the number of iterations.</rdfs:comment>
         <rdfs:label xml:lang="en">loopMaximum</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1324,6 +1506,7 @@
     <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#method">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#Transaction"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#DTtTransactionMethod"/>
+        <rdfs:comment xml:lang="en">The method is an attribute that defines the Transaction method used to commit or cancel a Transaction. For executable Processes, it SHOULD be set to a technology specific URI, e.g., http://schemas.xmlsoap.org/ws/2004/10/wsat for WSAtomicTransaction, or http://docs.oasis-open.org/ws-tx/wsba/2006/06/AtomicOutcome for WS-BusinessActivity. For compatibility with BPMN 1.1, it can also be set to ##compensate, ##store, or ##image.</rdfs:comment>
         <rdfs:label xml:lang="en">method</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1332,28 +1515,8 @@
     <!-- http://BPMNbasedOntology#name -->
 
     <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#name">
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://BPMNbasedOntology#CallableElement"/>
-                    <rdf:Description rdf:about="http://BPMNbasedOntology#Error"/>
-                    <rdf:Description rdf:about="http://BPMNbasedOntology#Escalation"/>
-                    <rdf:Description rdf:about="http://BPMNbasedOntology#FlowElement"/>
-                    <rdf:Description rdf:about="http://BPMNbasedOntology#InputSet"/>
-                    <rdf:Description rdf:about="http://BPMNbasedOntology#Interface"/>
-                    <rdf:Description rdf:about="http://BPMNbasedOntology#LinkEventDefinition"/>
-                    <rdf:Description rdf:about="http://BPMNbasedOntology#Message"/>
-                    <rdf:Description rdf:about="http://BPMNbasedOntology#Operation"/>
-                    <rdf:Description rdf:about="http://BPMNbasedOntology#OutputSet"/>
-                    <rdf:Description rdf:about="http://BPMNbasedOntology#Property"/>
-                    <rdf:Description rdf:about="http://BPMNbasedOntology#Resource"/>
-                    <rdf:Description rdf:about="http://BPMNbasedOntology#ResourceParameter"/>
-                    <rdf:Description rdf:about="http://BPMNbasedOntology#ResourceRole"/>
-                    <rdf:Description rdf:about="http://BPMNbasedOntology#Signal"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">The descriptive name of the element.</rdfs:comment>
         <rdfs:label xml:lang="en">name</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1364,6 +1527,7 @@
     <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#ordering">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#AdHocSubProcess"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#DTtAdHocOrdering"/>
+        <rdfs:comment xml:lang="en">This attribute defines if the Activities within the Process can be performed in parallel or MUST be performed sequentially. The default setting is parallel and the setting of sequential is a restriction on the performance that can be needed due to shared resources. When the setting is sequential, then only one Activity can be performed at a time. When the setting is parallel, then zero (0) to all the Activities of the Sub-Process can be performed in parallel.</rdfs:comment>
         <rdfs:label xml:lang="en">ordering</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1374,6 +1538,7 @@
     <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#parallelMultiple">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#CatchEvent"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="en">This attribute is only relevant when the catch Event has more than EventDefinition (Multiple). If this value is true, then all of the types of triggers that are listed in the catch Event MUST be triggered before the Process is instantiated.</rdfs:comment>
         <rdfs:label xml:lang="en">parallelMultiple</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1384,6 +1549,10 @@
     <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#processType">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#Process"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#DTtProcessType"/>
+        <rdfs:comment xml:lang="en">The processType attribute Provides additional information about the level of abstraction modeled by this Process.
+A public Process shows only those flow elements that are relevant to external consumers. Internal details are not modeled. These Processes are publicly visible and can be used within a Collaboration. Note that the public processType was named
+abstract in BPMN 1.2.
+A private Process is one that is internal to a specific organization. By default, the processType is “none,” meaning undefined.</rdfs:comment>
         <rdfs:label xml:lang="en">processType</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1395,6 +1564,7 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#ScriptTask"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">The modeler MAY include a script that can be run when the Task is performed. If a script is not included, then the Task will act as the equivalent of an Abstract Task.</rdfs:comment>
         <rdfs:label xml:lang="en">script</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1406,6 +1576,7 @@
         <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#ScriptTask"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en">Defines the format of the script. This attribute value MUST be specified with a mime-type format. And it MUST be specified if a script is provided.</rdfs:comment>
         <rdfs:label xml:lang="en">scriptFormat</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1416,6 +1587,7 @@
     <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#scriptLanguage">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#GlobalScriptTask"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
+        <rdfs:comment xml:lang="en"></rdfs:comment>
         <rdfs:label xml:lang="en">scriptLanguage</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1426,6 +1598,7 @@
     <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#startQuantity">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#Activity"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
+        <rdfs:comment xml:lang="en"> This attribute defines the number of tokens that MUST arrive before the Activity can begin. Note that any value for the attribute that is greater than 1 is an advanced type of modeling and should be used with caution.</rdfs:comment>
         <rdfs:label xml:lang="en">startQuantity</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1436,6 +1609,7 @@
     <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#testBefore">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#StandardLoopCharacteristics"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="en">Flag that controls whether the loop condition is evaluated at the beginning (testBefore = true) or at the end (testBefore = false) of the loop iteration.</rdfs:comment>
         <rdfs:label xml:lang="en">testBefore</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1446,6 +1620,10 @@
     <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#triggeredByEvent">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#SubProcess"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="en">A flag that identifies whether this Sub-Process is an Event Sub-Process.
+• If false, then this Sub-Process is a normal Sub-Process.
+• If true, then this Sub-Process is an Event Sub-Process and is
+subject to additional constraints (see page 176).</rdfs:comment>
         <rdfs:label xml:lang="en">triggeredByEvent</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1456,6 +1634,7 @@
     <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#waitForCompletion">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#CompensateEventDefinition"/>
         <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
+        <rdfs:comment xml:lang="en">For a throw Compensation Event, this flag determines whether the throw Intermediate Event waits for the triggered compensation to complete (the default), or just triggers the compensation and immediately continues (the BPMN 1.2 behavior).</rdfs:comment>
         <rdfs:label xml:lang="en">waitForCompletion</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -1497,6 +1676,7 @@
                 <owl:onClass rdf:resource="http://BPMNbasedOntology#LoopCharacteristics"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Work that a company or organization performs using business processes. An activity can be atomic or non-atomic (compound). The types of activities that are a part of a Process Model are: Process, Sub-Process, and Task.</rdfs:comment>
         <rdfs:label xml:lang="en">Activity</rdfs:label>
     </owl:Class>
     
@@ -1513,8 +1693,15 @@
                 <owl:onClass rdf:resource="http://BPMNbasedOntology#Expression"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">An Ad-Hoc Sub-Process is a specialized type of Sub-Process that is a group of Activities that have no REQUIRED sequence relationships. A set of Activities can be defined for the Process, but the sequence and number of performances for the Activities is determined by the performers of the Activities.</rdfs:comment>
         <rdfs:label xml:lang="en">AdHocSubProcess</rdfs:label>
     </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Agent -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Agent"/>
     
 
 
@@ -1529,6 +1716,7 @@
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Concept créé pour regrouper les concepts utilisés de BPMN</rdfs:comment>
         <rdfs:label xml:lang="en">BPMN_Concepts</rdfs:label>
     </owl:Class>
     
@@ -1545,6 +1733,7 @@
                 <owl:onClass rdf:resource="http://BPMNbasedOntology#Activity"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Intermediate Events that can be attached to the boundary of an Activity</rdfs:comment>
         <rdfs:label xml:lang="en">BoundaryEvent</rdfs:label>
     </owl:Class>
     
@@ -1554,6 +1743,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#BusinessRuleTask">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Task"/>
+        <rdfs:comment xml:lang="en">A Business Rule Task provides a mechanism for the Process to provide input to a Business Rules Engine and to get the output of calculations that the Business Rules Engine might provide. The InputOutputSpecification of the Task (see page 211) will allow the Process to send data to and receive data from the Business Rules Engine.</rdfs:comment>
         <rdfs:label xml:lang="en">BusinessRuleTask</rdfs:label>
     </owl:Class>
     
@@ -1570,6 +1760,7 @@
                 <owl:onClass rdf:resource="http://BPMNbasedOntology#CallableElement"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A Call Activity identifies a point in the Process where a global Process or a Global Task is used. The Call Activity acts as a ‘wrapper’ for the invocation of a global Process or Global Task within the execution. The activation of a call Activity results in the transfer of control to the called global Process or Global Task.</rdfs:comment>
         <rdfs:label xml:lang="en">CallActivity</rdfs:label>
     </owl:Class>
     
@@ -1586,7 +1777,28 @@
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">CallableElement is the abstract super class of all Activities that have been defined outside of a Process or Choreography but which can be called (or reused), by a Call Activity, from within a Process or Choreography. It MAY reference Interfaces that define the service operations that it provides. The BPMN elements that can be called by Call Activities (i.e., are CallableElements) are: Process and GlobalTask (see Figure 10.43).</rdfs:comment>
         <rdfs:label xml:lang="en">CallableElement</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#CancelEvent -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#CancelEvent">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#Event"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_eventDefinition"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://BPMNbasedOntology#CancelEventDefinition"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Event"/>
     </owl:Class>
     
 
@@ -1595,6 +1807,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#CancelEventDefinition">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#EventDefinition"/>
+        <rdfs:comment xml:lang="en">Cancel Events are only used in the context of modeling Transaction Sub-Processes (see page 178 for more details on Transactions). There are two variations: a catch Intermediate Event and an End Event.</rdfs:comment>
         <rdfs:label xml:lang="en">CancelEventDefinition</rdfs:label>
     </owl:Class>
     
@@ -1604,6 +1817,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#CatchEvent">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Event"/>
+        <rdfs:comment xml:lang="en">Events that catch a trigger. All Start Events and some Intermediate Events are catching Events.</rdfs:comment>
         <rdfs:label xml:lang="en">CatchEvent</rdfs:label>
     </owl:Class>
     
@@ -1613,6 +1827,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#Cell">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#ManufacturingFacility"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">Cell</rdfs:label>
     </owl:Class>
     
@@ -1629,7 +1844,28 @@
                 <owl:onClass rdf:resource="http://BPMNbasedOntology#Activity"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Compensation Events are used in the context of triggering or handling compensation (see page 302 for more details on compensation). There are four variations: a Start Event, both a catch and throw Intermediate Event, and an End Event.</rdfs:comment>
         <rdfs:label xml:lang="en">CompensateEventDefinition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#CompensationEvent -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#CompensationEvent">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#Event"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_eventDefinition"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://BPMNbasedOntology#CompensateEventDefinition"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Event"/>
     </owl:Class>
     
 
@@ -1657,18 +1893,19 @@
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Gateway"/>
         <rdfs:subClassOf>
             <owl:Restriction>
-                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_default"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
                 <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_activationCondition"/>
                 <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
                 <owl:onClass rdf:resource="http://BPMNbasedOntology#Expression"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_default"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">The Complex Gateway can be used to model complex synchronization behavior. An Expression activationCondition is used to describe the precise behavior. For example, this Expression could specify that tokens on three out of five incoming Sequence Flows are needed to activate the Gateway. What tokens are produced by the Gateway is determined by conditions on the outgoing Sequence Flows as in the split behavior of the Inclusive Gateway. If tokens arrive later on the two remaining Sequence Flows, those tokens cause a reset of the Gateway and new token can be produced on the outgoing Sequence Flows. To determine whether it needs to wait for additional tokens before it can reset, the Gateway uses the synchronization semantics of the Inclusive Gateway.</rdfs:comment>
         <rdfs:label xml:lang="en">ComplexGateway</rdfs:label>
     </owl:Class>
     
@@ -1677,8 +1914,8 @@
     <!-- http://BPMNbasedOntology#ComplexTask -->
 
     <owl:Class rdf:about="http://BPMNbasedOntology#ComplexTask">
-        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#IRIT_concepts"/>
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#SubProcess"/>
+        <rdfs:comment xml:lang="en">concept IRIT ???</rdfs:comment>
         <rdfs:label xml:lang="en">ComplexTask</rdfs:label>
     </owl:Class>
     
@@ -1688,7 +1925,16 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#Component">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#MaterialResource"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">Component</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Computer -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Computer">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#MaterialResource"/>
     </owl:Class>
     
 
@@ -1697,7 +1943,6 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#ConditionExpression">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Expression"/>
-        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#IRIT_concepts"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_sequenceFlow"/>
@@ -1705,7 +1950,28 @@
                 <owl:onClass rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">ConditionExpression</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#ConditionalEvent -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ConditionalEvent">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#Event"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_eventDefinition"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://BPMNbasedOntology#ConditionalEventDefinition"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Event"/>
     </owl:Class>
     
 
@@ -1721,7 +1987,27 @@
                 <owl:onClass rdf:resource="http://BPMNbasedOntology#FormalExpression"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">ConditionalEventDefinition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#ConditionalSequenceFlow -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ConditionalSequenceFlow">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#SequenceFlow"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_conditionExpression"/>
+                        <owl:someValuesFrom rdf:resource="http://BPMNbasedOntology#Expression"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
     </owl:Class>
     
 
@@ -1729,9 +2015,34 @@
     <!-- http://BPMNbasedOntology#ConsumableResource -->
 
     <owl:Class rdf:about="http://BPMNbasedOntology#ConsumableResource">
-        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#IRIT_concepts"/>
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Resource"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">ConsumableResource</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#ConvergingGateway -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ConvergingGateway">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#Gateway"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_incoming"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_outgoing"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Gateway"/>
     </owl:Class>
     
 
@@ -1739,8 +2050,8 @@
     <!-- http://BPMNbasedOntology#DataResource -->
 
     <owl:Class rdf:about="http://BPMNbasedOntology#DataResource">
-        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#IRIT_concepts"/>
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Resource"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">DataResource</rdfs:label>
     </owl:Class>
     
@@ -1750,7 +2061,37 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#Database">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#DataResource"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">Database</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#DefaultSequenceFlow -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#DefaultSequenceFlow">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#SequenceFlow"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_defaultSource"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://BPMNbasedOntology#Activity"/>
+                                    <rdf:Description rdf:about="http://BPMNbasedOntology#ComplexGateway"/>
+                                    <rdf:Description rdf:about="http://BPMNbasedOntology#ExclusiveGateway"/>
+                                    <rdf:Description rdf:about="http://BPMNbasedOntology#InclusiveGateway"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:onClass>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
     </owl:Class>
     
 
@@ -1759,7 +2100,33 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#Device">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#MaterialResource"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">Device</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#DivergingGateway -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#DivergingGateway">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#Gateway"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_outgoing"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_incoming"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Gateway"/>
     </owl:Class>
     
 
@@ -1768,6 +2135,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#DocumentResource">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#DataResource"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">DocumentResource</rdfs:label>
     </owl:Class>
     
@@ -1777,6 +2145,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#EndEvent">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#ThrowEvent"/>
+        <rdfs:comment xml:lang="en">As the name implies, the End Event indicates where a Process will end. In terms of Sequence Flows, the End Event ends the flow of the Process, and thus, will not have any outgoing Sequence Flows—no Sequence Flow can connect from an End Event.</rdfs:comment>
         <rdfs:label xml:lang="en">EndEvent</rdfs:label>
     </owl:Class>
     
@@ -1786,6 +2155,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#Enterprise">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#ManufacturingFacility"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">Enterprise</rdfs:label>
     </owl:Class>
     
@@ -1795,6 +2165,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#EquipmentDraw">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#TechnicalDocument"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">EquipmentDraw</rdfs:label>
     </owl:Class>
     
@@ -1811,7 +2182,28 @@
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">An Error represents the content of an Error Event or the Fault of a failed Operation. An ItemDefinition is used to specify the structure of the Error. An Error is generated when there is a critical problem in the processing of an Activity or when the execution of an Operation failed.</rdfs:comment>
         <rdfs:label xml:lang="en">Error</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#ErrorEvent -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ErrorEvent">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#Event"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_eventDefinition"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://BPMNbasedOntology#ErrorEventDefinition"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Event"/>
     </owl:Class>
     
 
@@ -1827,6 +2219,7 @@
                 <owl:onClass rdf:resource="http://BPMNbasedOntology#Error"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">ErrorEventDefinition</rdfs:label>
     </owl:Class>
     
@@ -1843,7 +2236,28 @@
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">An Escalation identifies a business situation that a Process might need to react to. An ItemDefinition is used to specify the structure of the Escalation.</rdfs:comment>
         <rdfs:label xml:lang="en">Escalation</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#EscalationEvent -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#EscalationEvent">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#Event"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_eventDefinition"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://BPMNbasedOntology#EscalationEventDefinition"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Event"/>
     </owl:Class>
     
 
@@ -1859,6 +2273,7 @@
                 <owl:onClass rdf:resource="http://BPMNbasedOntology#Escalation"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">EscalationEventDefinition</rdfs:label>
     </owl:Class>
     
@@ -1868,6 +2283,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#Event">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#FlowNode"/>
+        <rdfs:comment xml:lang="en">An Event is something that “happens” during the course of a Process. These Events affect the flow of the Process and usually have a cause or an impact and in general require or allow for a reaction. The term “event” is general enough to cover many things in a Process. The start of an Activity, the end of an Activity, the change of state of a document, a Message that arrives, etc., all could be considered Events.</rdfs:comment>
         <rdfs:label xml:lang="en">Event</rdfs:label>
     </owl:Class>
     
@@ -1877,7 +2293,39 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#EventBasedGateway">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Gateway"/>
+        <rdfs:comment xml:lang="en">The Event-Based Gateway represents a branching point in the Process where the alternative paths that follow the Gateway are based on Events that occur, rather than the evaluation of Expressions using Process data (as with an Exclusive or Inclusive Gateway). A specific Event, usually the receipt of a Message, determines the path that will be taken. Basically, the decision is made by another Participant, based on data that is not visible to Process, thus, requiring the use of the Event-Based Gateway.</rdfs:comment>
         <rdfs:label xml:lang="en">EventBasedGateway</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#EventBasedSubProcess -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#EventBasedSubProcess">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#SubProcess"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_incoming"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:maxQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_outgoing"/>
+                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:maxQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_flowElements"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#StartEventForEventBasedSubProcess"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -1886,7 +2334,17 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#EventDefinition">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#RootElement"/>
+        <rdfs:comment xml:lang="en">Event Definitions refers to the triggers of Catch Events (Start and receive Intermediate Events) and the Results of Throw Events (End Events and send Intermediate Events). The types of Event Definitions are: CancelEventDefinition, CompensationEventDefinition, ConditionalEventDefinition ErrorEventDefinition, EscalationEventDefinition, MessageEventDefinitio, LinkEventDefinition, SignalEventDefinition, TerminateEventDefinition, an TimerEventDefinition (see Table 10.93). A None Event is determined by an Event that does not specify an
+ Event Definition. A Multiple Event is determined by an Event that specifies more than one Event Definition. The different types of Events (Start, End, and Intermediate) utilize a subset of the available types of Event Definitions.</rdfs:comment>
         <rdfs:label xml:lang="en">EventDefinition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#ExclusiveEventBasedGateway -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ExclusiveEventBasedGateway">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#EventBasedGateway"/>
     </owl:Class>
     
 
@@ -1898,10 +2356,11 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_default"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
                 <owl:onClass rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A diverging Exclusive Gateway (Decision) is used to create alternative paths within a Process flow. This is basically the “diversion point in the road” for a Process. For a given instance of the Process, only one of the paths can be taken.</rdfs:comment>
         <rdfs:label xml:lang="en">ExclusiveGateway</rdfs:label>
     </owl:Class>
     
@@ -1911,6 +2370,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#ExecutableScript">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#DocumentResource"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">ExecutableScript</rdfs:label>
     </owl:Class>
     
@@ -1927,6 +2387,7 @@
                 <owl:onClass rdf:resource="http://BPMNbasedOntology#ComplexGateway"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">The Expression class is used to specify an Expression using natural-language text. These Expressions are not executable. The natural language text is captured using the documentation attribute, inherited from BaseElement.</rdfs:comment>
         <rdfs:label xml:lang="en">Expression</rdfs:label>
     </owl:Class>
     
@@ -1936,6 +2397,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#Factory">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#ManufacturingFacility"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">Factory</rdfs:label>
     </owl:Class>
     
@@ -1959,6 +2421,7 @@
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">FlowElement is the abstract super class for all elements that can appear in a Process flow, which are FlowNodes (see page 99, which consist of Activities (see page 151), Choreography Activities (see page 321) Gateways (see page 287), and Events (see page 233), Data Objects (see page 205), Data Associations (see page 221), and Sequence Flows (see page 97).</rdfs:comment>
         <rdfs:label xml:lang="en">FlowElement</rdfs:label>
     </owl:Class>
     
@@ -1968,6 +2431,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#FlowElementsContainer">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#BPMN_Concepts"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">FlowElementsContainer</rdfs:label>
     </owl:Class>
     
@@ -1977,6 +2441,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#FlowNode">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#FlowElement"/>
+        <rdfs:comment xml:lang="en">The FlowNode element is used to provide a single element as the source and target Sequence Flow associations (see Figure 8.35) instead of the individual associations of the elements that can connect to Sequence Flows (see the section above). Only the Gateway, Activity, Choreography Activity, and Event elements can connect to Sequence Flows and thus, these elements are the only ones that are sub-classes of FlowNode.</rdfs:comment>
         <rdfs:label xml:lang="en">FlowNode</rdfs:label>
     </owl:Class>
     
@@ -1993,16 +2458,8 @@
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">The FormalExpression class is used to specify an executable Expression using a specified Expression language. A natural-language description of the Expression can also be specified, in addition to the formal specification.</rdfs:comment>
         <rdfs:label xml:lang="en">FormalExpression</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://BPMNbasedOntology#Function -->
-
-    <owl:Class rdf:about="http://BPMNbasedOntology#Function">
-        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#IRIT_concepts"/>
-        <rdfs:label xml:lang="en">Function</rdfs:label>
     </owl:Class>
     
 
@@ -2011,6 +2468,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#Gateway">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#FlowNode"/>
+        <rdfs:comment xml:lang="en">Gateways are used to control how Sequence Flows interact as they converge and diverge within a Process. If the flow does not need to be controlled, then a Gateway is not needed. The term “Gateway” implies that there is a gating mechanism that either allows or disallows passage through the Gateway--that is, as tokens arrive at a Gateway, they can be merged together on input and/or split apart on output as the Gateway mechanisms are invoked.</rdfs:comment>
         <rdfs:label xml:lang="en">Gateway</rdfs:label>
     </owl:Class>
     
@@ -2020,6 +2478,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#GlobalBusinessRuleTask">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#GlobalTask"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">GlobalBusinessRuleTask</rdfs:label>
     </owl:Class>
     
@@ -2029,6 +2488,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#GlobalManualTask">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#GlobalTask"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">GlobalManualTask</rdfs:label>
     </owl:Class>
     
@@ -2038,6 +2498,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#GlobalScriptTask">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#GlobalTask"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">GlobalScriptTask</rdfs:label>
     </owl:Class>
     
@@ -2047,6 +2508,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#GlobalTask">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#CallableElement"/>
+        <rdfs:comment xml:lang="en">A Global Task is a reusable, atomic Task definition that can be called from within any Process by a Call Activity.</rdfs:comment>
         <rdfs:label xml:lang="en">GlobalTask</rdfs:label>
     </owl:Class>
     
@@ -2056,16 +2518,34 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#GlobalUserTask">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#GlobalTask"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">GlobalUserTask</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://BPMNbasedOntology#HumanPerformer -->
+    <!-- http://BPMNbasedOntology#Group -->
 
-    <owl:Class rdf:about="http://BPMNbasedOntology#HumanPerformer">
-        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Performer"/>
-        <rdfs:label xml:lang="en">HumanPerformer</rdfs:label>
+    <owl:Class rdf:about="http://BPMNbasedOntology#Group">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Agent"/>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#HumanResource"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_member"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Person"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_leader"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Person"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#Person"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
+        <rdfs:label xml:lang="en">Team</rdfs:label>
     </owl:Class>
     
 
@@ -2073,18 +2553,9 @@
     <!-- http://BPMNbasedOntology#HumanResource -->
 
     <owl:Class rdf:about="http://BPMNbasedOntology#HumanResource">
-        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#IRIT_concepts"/>
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Resource"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">HumanResource</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://BPMNbasedOntology#IRIT_concepts -->
-
-    <owl:Class rdf:about="http://BPMNbasedOntology#IRIT_concepts">
-        <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
-        <rdfs:label xml:lang="en">IRIT_concepts</rdfs:label>
     </owl:Class>
     
 
@@ -2093,6 +2564,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#ImplicitThrowEvent">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#ThrowEvent"/>
+        <rdfs:comment xml:lang="en">A sub-type of throw Event is the ImplicitThrowEvent. This is a non-graphical Event that is used for Multi-Instance Activities (see page 191).</rdfs:comment>
         <rdfs:label xml:lang="en">ImplicitThrowEvent</rdfs:label>
     </owl:Class>
     
@@ -2105,10 +2577,11 @@
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_default"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
                 <owl:onClass rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A diverging Inclusive Gateway (Inclusive Decision) can be used to create alternative but also parallel paths within a Process flow. Unlike the Exclusive Gateway, all condition Expressions are evaluated. The true evaluation of one condition Expression does not exclude the evaluation of other condition Expressions. All Sequence Flows with a true evaluation will be traversed by a token. Since each path is considered to be independent, all combinations of the paths MAY be taken, from zero to all. However, it should be designed so that at least one path is taken.</rdfs:comment>
         <rdfs:label xml:lang="en">InclusiveGateway</rdfs:label>
     </owl:Class>
     
@@ -2125,6 +2598,7 @@
                 <owl:onClass rdf:resource="http://BPMNbasedOntology#Operation"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">When a CallableElement is exposed as a Service, it has to define one or more InputOutputBinding elements. An InputOutputBinding element binds one Input and one Output of the InputOutputSpecification to an Operation of a Service Interface.</rdfs:comment>
         <rdfs:label xml:lang="en">InputOutputBinding</rdfs:label>
     </owl:Class>
     
@@ -2155,6 +2629,7 @@
                 <owl:onClass rdf:resource="http://BPMNbasedOntology#Activity"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">InputOutputSpecification</rdfs:label>
     </owl:Class>
     
@@ -2171,6 +2646,7 @@
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">An InputSet is a collection of DataInput elements that together define a valid set of data inputs for an InputOutputSpecification. An InputOutputSpecification MUST have at least one InputSet element. An InputSet MAY reference zero or more DataInput elements. A single DataInput MAY be associated with multiple InputSet elements, but it MUST always be referenced by at least one InputSet.</rdfs:comment>
         <rdfs:label xml:lang="en">InputSet</rdfs:label>
     </owl:Class>
     
@@ -2194,6 +2670,7 @@
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">An interface defines a set of operations that are implemented by Services.</rdfs:comment>
         <rdfs:label xml:lang="en">Interface</rdfs:label>
     </owl:Class>
     
@@ -2203,7 +2680,31 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#IntermediateCatchEvent">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#CatchEvent"/>
+        <rdfs:comment xml:lang="en">A Message Intermediate Event can be used to either send a Message or receive a Message. When used to “catch” the Message,
+then the Event marker MUST be unfilled (see the lower figure on the right).</rdfs:comment>
         <rdfs:label xml:lang="en">IntermediateCatchEvent</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#IntermediateEvent -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#IntermediateEvent">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#IntermediateCatchEvent"/>
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#IntermediateThrowEvent"/>
+                </owl:unionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Event"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_outgoing"/>
+                <owl:someValuesFrom rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -2212,7 +2713,34 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#IntermediateThrowEvent">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#ThrowEvent"/>
+        <rdfs:comment xml:lang="en">A Message Intermediate Event can be used to either send a Message or receive a Message. When used to “throw” the Message, the Event marker MUST be filled (see the upper figure on the right). </rdfs:comment>
         <rdfs:label xml:lang="en">IntermediateThrowEvent</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#Job -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#Job"/>
+    
+
+
+    <!-- http://BPMNbasedOntology#LinkEvent -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#LinkEvent">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#Event"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_eventDefinition"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://BPMNbasedOntology#LinkEventDefinition"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Event"/>
     </owl:Class>
     
 
@@ -2228,6 +2756,7 @@
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A Link Event is a mechanism for connecting two sections of a Process. Link Events can be used to create looping situations or to avoid long Sequence Flow lines. The use of Link Events is limited to a single Process level (i.e., they cannot link a parent Process with a Sub-Process).</rdfs:comment>
         <rdfs:label xml:lang="en">LinkEventDefinition</rdfs:label>
     </owl:Class>
     
@@ -2244,6 +2773,7 @@
                 <owl:onClass rdf:resource="http://BPMNbasedOntology#Activity"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Activities MAY be repeated sequentially, essentially behaving like a loop. The presence of LoopCharacteristics signifies that the Activity has looping behavior. LoopCharacteristics is an abstract class. Concrete subclasses define specific kinds of looping behavior.</rdfs:comment>
         <rdfs:label xml:lang="en">LoopCharacteristics</rdfs:label>
     </owl:Class>
     
@@ -2253,6 +2783,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#ManualTask">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Task"/>
+        <rdfs:comment xml:lang="en">A Manual Task is a Task that is expected to be performed without the aid of any business process execution engine or any application. An example of this could be a telephone technician installing a telephone at a customer location.</rdfs:comment>
         <rdfs:label xml:lang="en">ManualTask</rdfs:label>
     </owl:Class>
     
@@ -2262,6 +2793,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#ManufacturingFacility">
         <rdfs:subClassOf rdf:resource="http://www.w3.org/2002/07/owl#Thing"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">ManufacturingFacility</rdfs:label>
     </owl:Class>
     
@@ -2270,8 +2802,8 @@
     <!-- http://BPMNbasedOntology#MaterialResource -->
 
     <owl:Class rdf:about="http://BPMNbasedOntology#MaterialResource">
-        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#IRIT_concepts"/>
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Resource"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">MaterialResource</rdfs:label>
     </owl:Class>
     
@@ -2288,6 +2820,7 @@
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A Message represents the content of a communication between two Participants. In BPMN 2.0, a Message is a graphical decorator (it was a supporting element in BPMN 1.2). An ItemDefinition is used to specify the Message structure.</rdfs:comment>
         <rdfs:label xml:lang="en">Message</rdfs:label>
     </owl:Class>
     
@@ -2311,7 +2844,33 @@
                 <owl:onClass rdf:resource="http://BPMNbasedOntology#Operation"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">MessageEventDefinition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#MixedGateway -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#MixedGateway">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#Gateway"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_incoming"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_outgoing"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Gateway"/>
     </owl:Class>
     
 
@@ -2341,7 +2900,76 @@
                 <owl:onClass rdf:resource="http://BPMNbasedOntology#EventDefinition"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">The MultiInstanceLoopCharacteristics class allows for creation of a desired number of Activity instances. The instances MAY execute in parallel or MAY be sequential. Either an Expression is used to specify or calculate the desired number of instances or a data driven setup can be used. In that case a data input can be specified, which is able to handle a collection of data. The number of items in the collection determines the number of Activity instances. This data input can be produced by an input Data Association. The modeler can also configure this loop to control the tokens produced.</rdfs:comment>
         <rdfs:label xml:lang="en">MultiInstanceLoopCharacteristics</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#MultipleEvent -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#MultipleEvent">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#Event"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_eventDefinition"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://BPMNbasedOntology#EventDefinition"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Event"/>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#NoneEvent -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#NoneEvent">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#Event"/>
+                    <owl:Class>
+                        <owl:complementOf>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_eventDefinition"/>
+                                <owl:someValuesFrom rdf:resource="http://BPMNbasedOntology#EventDefinition"/>
+                            </owl:Restriction>
+                        </owl:complementOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Event"/>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#NormalSequenceFlow -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#NormalSequenceFlow">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#SequenceFlow"/>
+                    <owl:Class>
+                        <owl:complementOf>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://BPMNbasedOntology#ConditionalSequenceFlow"/>
+                                    <rdf:Description rdf:about="http://BPMNbasedOntology#DefaultSequenceFlow"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:complementOf>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
     </owl:Class>
     
 
@@ -2350,6 +2978,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#Operation">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#BPMN_Concepts"/>
+        <rdfs:comment xml:lang="en">An Operation defines Messages that are consumed and, optionally, produced when the Operation is called. It can also define zero or more errors that are returned when operation fails. The Operation inherits the attributes and model associations of BaseElement</rdfs:comment>
         <rdfs:label xml:lang="en">Operation</rdfs:label>
     </owl:Class>
     
@@ -2366,7 +2995,16 @@
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">An OutputSet is a collection of DataOutputs elements that together can be produced as output from an Activity or Event. An InputOutputSpecification element MUST define at least OutputSet element. An OutputSet MAY reference zero or more DataOutput elements. A single DataOutput MAY be associated with multiple OutputSet elements, but it MUST always be referenced by at least one OutputSet.</rdfs:comment>
         <rdfs:label xml:lang="en">OutputSet</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#ParallelEventBasedGateway -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ParallelEventBasedGateway">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#EventBasedGateway"/>
     </owl:Class>
     
 
@@ -2375,25 +3013,63 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#ParallelGateway">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Gateway"/>
+        <rdfs:comment xml:lang="en">A Parallel Gateway is used to synchronize (combine) parallel flows and to create parallel flows.</rdfs:comment>
         <rdfs:label xml:lang="en">ParallelGateway</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://BPMNbasedOntology#ParameterValue -->
+    <!-- http://BPMNbasedOntology#ParallelMultipleEvent -->
 
-    <owl:Class rdf:about="http://BPMNbasedOntology#ParameterValue">
-        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#DataResource"/>
-        <rdfs:label xml:lang="en">ParameterValue</rdfs:label>
+    <owl:Class rdf:about="http://BPMNbasedOntology#ParallelMultipleEvent">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#MultipleEvent"/>
+        <rdfs:comment>all of the types of triggers that are listed in the Event MUST be triggered before the Process is instantiated.</rdfs:comment>
     </owl:Class>
     
 
 
-    <!-- http://BPMNbasedOntology#Performer -->
+    <!-- http://BPMNbasedOntology#Parameter -->
 
-    <owl:Class rdf:about="http://BPMNbasedOntology#Performer">
-        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#ResourceRole"/>
-        <rdfs:label xml:lang="en">Performer</rdfs:label>
+    <owl:Class rdf:about="http://BPMNbasedOntology#Parameter"/>
+    
+
+
+    <!-- http://BPMNbasedOntology#ParameterExpectedValue -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ParameterExpectedValue"/>
+    
+
+
+    <!-- http://BPMNbasedOntology#ParameterValue -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ParameterValue"/>
+    
+
+
+    <!-- http://BPMNbasedOntology#ParameterValueBinding -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ParameterValueBinding">
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_parameter"/>
+                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Parameter"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_parameterExpectedValue"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#ParameterExpectedValue"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_parameterValue"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#ParameterValue"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
     </owl:Class>
     
 
@@ -2401,17 +3077,10 @@
     <!-- http://BPMNbasedOntology#Person -->
 
     <owl:Class rdf:about="http://BPMNbasedOntology#Person">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Agent"/>
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#HumanResource"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">Person</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://BPMNbasedOntology#PotentialOwner -->
-
-    <owl:Class rdf:about="http://BPMNbasedOntology#PotentialOwner">
-        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#HumanPerformer"/>
-        <rdfs:label xml:lang="en">PotentialOwner</rdfs:label>
     </owl:Class>
     
 
@@ -2421,6 +3090,7 @@
     <owl:Class rdf:about="http://BPMNbasedOntology#Process">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#CallableElement"/>
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#FlowElementsContainer"/>
+        <rdfs:comment xml:lang="en">A sequence or flow of Activities in an organization with the objective of carrying out work. In BPMN, a Process is depicted as a graph of Flow Elements, which are a set of Activities, Events, Gateways, and Sequence Flow that adhere to a finite execution semantics.</rdfs:comment>
         <rdfs:label xml:lang="en">Process</rdfs:label>
     </owl:Class>
     
@@ -2450,31 +3120,30 @@
     
 
 
-    <!-- http://BPMNbasedOntology#QualitativeResourceParameter -->
+    <!-- http://BPMNbasedOntology#QualitativeParameter -->
 
-    <owl:Class rdf:about="http://BPMNbasedOntology#QualitativeResourceParameter">
-        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#IRIT_concepts"/>
-        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#ResourceParameter"/>
+    <owl:Class rdf:about="http://BPMNbasedOntology#QualitativeParameter">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Parameter"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#QuantitativeParameter"/>
+        <rdfs:comment xml:lang="en">Resource parameters that have qualitative values</rdfs:comment>
         <rdfs:label xml:lang="en">QualitativeResourceParameter</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://BPMNbasedOntology#QuantitativeResourceParameter -->
+    <!-- http://BPMNbasedOntology#QuantitativeParameter -->
 
-    <owl:Class rdf:about="http://BPMNbasedOntology#QuantitativeResourceParameter">
-        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#IRIT_concepts"/>
-        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#ResourceParameter"/>
+    <owl:Class rdf:about="http://BPMNbasedOntology#QuantitativeParameter">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Parameter"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_unitOfMeasure"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#UnitOfMeasure"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Resource parameters that have quantitative parameters</rdfs:comment>
         <rdfs:label xml:lang="en">QuantitativeResourceParameter</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://BPMNbasedOntology#RawMaterial -->
-
-    <owl:Class rdf:about="http://BPMNbasedOntology#RawMaterial">
-        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#MaterialResource"/>
-        <rdfs:label xml:lang="en">RawMaterial</rdfs:label>
     </owl:Class>
     
 
@@ -2483,6 +3152,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#ReceiveTask">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Task"/>
+        <rdfs:comment xml:lang="en">A Receive Task is a simple Task that is designed to wait for a Message to arrive from an external Participant (relative to the Process). Once the Message has been received, the Task is completed.</rdfs:comment>
         <rdfs:label xml:lang="en">ReceiveTask</rdfs:label>
     </owl:Class>
     
@@ -2499,24 +3169,15 @@
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">The Resource class is used to specify resources that can be referenced by Activities. These Resources can be Human Resources as well as any other resource assigned to Activities during Process execution time. The definition of a Resource is “abstract,” because it only defines the Resource, without detailing how e.g., actual user IDs are associated at runtime. Multiple Activities can utilize the same Resource.</rdfs:comment>
         <rdfs:label xml:lang="en">Resource</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://BPMNbasedOntology#ResourceAssignmentExpression -->
+    <!-- http://BPMNbasedOntology#ResourceCollection -->
 
-    <owl:Class rdf:about="http://BPMNbasedOntology#ResourceAssignmentExpression">
-        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#BPMN_Concepts"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_expression"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://BPMNbasedOntology#Expression"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label xml:lang="en">ResourceAssignmentExpression</rdfs:label>
-    </owl:Class>
+    <owl:Class rdf:about="http://BPMNbasedOntology#ResourceCollection"/>
     
 
 
@@ -2524,6 +3185,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#ResourceParameter">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#BPMN_Concepts"/>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Parameter"/>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://BPMNbasedOntology#name"/>
@@ -2531,75 +3193,21 @@
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Every Resource can define a set of ResourceParameters. These parameters can be used at runtime to define query e.g., into an Organizational Directory. Every Activity referencing a parameterized Resource can bind values available in the scope of the Activity to these parameters.</rdfs:comment>
         <rdfs:label xml:lang="en">ResourceParameter</rdfs:label>
     </owl:Class>
     
 
 
-    <!-- http://BPMNbasedOntology#ResourceParameterBinding -->
+    <!-- http://BPMNbasedOntology#ResourceState -->
 
-    <owl:Class rdf:about="http://BPMNbasedOntology#ResourceParameterBinding">
-        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#BPMN_Concepts"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_expression"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://BPMNbasedOntology#Expression"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_parameterRef"/>
-                <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://BPMNbasedOntology#ResourceParameter"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label xml:lang="en">ResourceParameterBinding</rdfs:label>
-    </owl:Class>
+    <owl:Class rdf:about="http://BPMNbasedOntology#ResourceState"/>
     
 
 
-    <!-- http://BPMNbasedOntology#ResourceRole -->
+    <!-- http://BPMNbasedOntology#Role -->
 
-    <owl:Class rdf:about="http://BPMNbasedOntology#ResourceRole">
-        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#BPMN_Concepts"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_activity"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="http://BPMNbasedOntology#Activity"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_process"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="http://BPMNbasedOntology#Process"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_resourceAssignmentExpression"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="http://BPMNbasedOntology#ResourceAssignmentExpression"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_resourceRef"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="http://BPMNbasedOntology#Resource"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://BPMNbasedOntology#name"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:label xml:lang="en">ResourceRole</rdfs:label>
-    </owl:Class>
+    <owl:Class rdf:about="http://BPMNbasedOntology#Role"/>
     
 
 
@@ -2607,6 +3215,8 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#RootElement">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#BPMN_Concepts"/>
+        <rdfs:comment xml:lang="en">RootElement is the abstract super class for all BPMN elements that are contained within Definitions. When contained within Definitions, these elements have their own defined life-cycle and are not deleted with the deletion of other elements. Examples of concrete RootElements include Collaboration, Process, and Choreography. Depending on their use, RootElements can be referenced by multiple other elements (i.e., they can be reused). Some RootElements MAY be contained within other elements instead of Definitions. This is done to avoid the maintenance overhead of an independent life-cycle. For example, an EventDefinition would be contained in a Process since it is used only there. In this case the EventDefinition would be dependent on the tool life-cycle of
+the Process.</rdfs:comment>
         <rdfs:label xml:lang="en">RootElement</rdfs:label>
     </owl:Class>
     
@@ -2616,6 +3226,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#Scheme">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#TechnicalDocument"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">Scheme</rdfs:label>
     </owl:Class>
     
@@ -2639,6 +3250,7 @@
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A Script Task is executed by a business process engine. The modeler or implementer defines a script in a language that the engine can interpret. When the Task is ready to start, the engine will execute the script. When the script is completed, the Task will also be completed.</rdfs:comment>
         <rdfs:label xml:lang="en">ScriptTask</rdfs:label>
     </owl:Class>
     
@@ -2648,6 +3260,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#SendTask">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Task"/>
+        <rdfs:comment xml:lang="en">A Send Task is a simple Task that is designed to send a Message to an external Participant (relative to the Process). Once the Message has been sent, the Task is completed.</rdfs:comment>
         <rdfs:label xml:lang="en">SendTask</rdfs:label>
     </owl:Class>
     
@@ -2685,6 +3298,7 @@
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A connecting object that shows the order in which activities are performed in a Process and is represented with a solid graphical line. Each Flow has only one source and only one target. A Sequence Flow can cross the boundaries between Lanes of a Pool but cannot cross the boundaries of a Pool.</rdfs:comment>
         <rdfs:label xml:lang="en">SequenceFlow</rdfs:label>
     </owl:Class>
     
@@ -2701,6 +3315,7 @@
                 <owl:onClass rdf:resource="http://BPMNbasedOntology#Operation"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A Service Task is a Task that uses some sort of service, which could be a Web service or an automated application.</rdfs:comment>
         <rdfs:label xml:lang="en">ServiceTask</rdfs:label>
     </owl:Class>
     
@@ -2710,6 +3325,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#Shop">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#ManufacturingFacility"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">Shop</rdfs:label>
     </owl:Class>
     
@@ -2726,7 +3342,28 @@
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#string"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">A BPMN Signal is similar to a signal flare that shot into the sky for anyone who might be interested to notice and then react. Thus, there is a source of the Signal, but no specific intended target.</rdfs:comment>
         <rdfs:label xml:lang="en">Signal</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#SignalEvent -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#SignalEvent">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#Event"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_eventDefinition"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://BPMNbasedOntology#SignalEventDefinition"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Event"/>
     </owl:Class>
     
 
@@ -2742,6 +3379,7 @@
                 <owl:onClass rdf:resource="http://BPMNbasedOntology#Signal"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">SignalEventDefinition</rdfs:label>
     </owl:Class>
     
@@ -2750,8 +3388,8 @@
     <!-- http://BPMNbasedOntology#SoftwareResource -->
 
     <owl:Class rdf:about="http://BPMNbasedOntology#SoftwareResource">
-        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#IRIT_concepts"/>
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Resource"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">SoftwareResource</rdfs:label>
     </owl:Class>
     
@@ -2761,6 +3399,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#SparePart">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#MaterialResource"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">SparePart</rdfs:label>
     </owl:Class>
     
@@ -2784,6 +3423,7 @@
                 <owl:onDataRange rdf:resource="http://www.w3.org/2001/XMLSchema#integer"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">The StandardLoopCharacteristics class defines looping behavior based on a boolean condition. The Activity will loop as long as the boolean condition is true. The condition is evaluated for every loop iteration, and MAY be evaluated at the beginning or at the end of the iteration. In addition, a numeric cap can be optionally specified. The number of iterations MAY NOT exceed this cap.</rdfs:comment>
         <rdfs:label xml:lang="en">StandardLoopCharacteristics</rdfs:label>
     </owl:Class>
     
@@ -2793,7 +3433,45 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#StartEvent">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#CatchEvent"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_outgoing"/>
+                <owl:someValuesFrom rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">As the name implies, the Start Event indicates where a particular Process will start. In terms of Sequence Flows, the Start Event starts the flow of the Process, and thus, will not have any incoming Sequence Flows—no Sequence Flow can connect to a Start Event.
+flow of the Process and does not have any incoming Sequence Flow, but can have a Trigger. The Start Event is displayed as a circle, drawn with a single thin line.</rdfs:comment>
         <rdfs:label xml:lang="en">StartEvent</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#StartEventForEventBasedSubProcess -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#StartEventForEventBasedSubProcess">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#StartEvent"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_eventDefinition"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://BPMNbasedOntology#CompensateEventDefinition"/>
+                                    <rdf:Description rdf:about="http://BPMNbasedOntology#ConditionalEventDefinition"/>
+                                    <rdf:Description rdf:about="http://BPMNbasedOntology#ErrorEventDefinition"/>
+                                    <rdf:Description rdf:about="http://BPMNbasedOntology#EscalationEventDefinition"/>
+                                    <rdf:Description rdf:about="http://BPMNbasedOntology#MessageEventDefinition"/>
+                                    <rdf:Description rdf:about="http://BPMNbasedOntology#SignalEventDefinition"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#StartEvent"/>
     </owl:Class>
     
 
@@ -2802,6 +3480,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#Station">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#ManufacturingFacility"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">Station</rdfs:label>
     </owl:Class>
     
@@ -2812,6 +3491,7 @@
     <owl:Class rdf:about="http://BPMNbasedOntology#SubProcess">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Activity"/>
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#FlowElementsContainer"/>
+        <rdfs:comment xml:lang="en">?</rdfs:comment>
         <rdfs:label xml:lang="en">SubProcess</rdfs:label>
     </owl:Class>
     
@@ -2821,16 +3501,8 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#Task">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Activity"/>
+        <rdfs:comment xml:lang="en">An atomic activity that is included within a Process. A Task is used when the work in the Process is not broken down to a finer level of Process Model detail. Generally, an end-user, an application, or both will perform the Task. A Task object shares the same shape as the Sub-Process, which is a rectangle that has rounded corners.</rdfs:comment>
         <rdfs:label xml:lang="en">Task</rdfs:label>
-    </owl:Class>
-    
-
-
-    <!-- http://BPMNbasedOntology#Team -->
-
-    <owl:Class rdf:about="http://BPMNbasedOntology#Team">
-        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#HumanResource"/>
-        <rdfs:label xml:lang="en">Team</rdfs:label>
     </owl:Class>
     
 
@@ -2839,6 +3511,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#TechnicalDocument">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#DocumentResource"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">TechnicalDocument</rdfs:label>
     </owl:Class>
     
@@ -2848,7 +3521,28 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#Telecommand">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#DataResource"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">Telecommand</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#TerminateEvent -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#TerminateEvent">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#Event"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_eventDefinition"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://BPMNbasedOntology#TerminateEventDefinition"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Event"/>
     </owl:Class>
     
 
@@ -2857,6 +3551,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#TerminateEventDefinition">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#EventDefinition"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">TerminateEventDefinition</rdfs:label>
     </owl:Class>
     
@@ -2873,6 +3568,7 @@
                 <owl:onClass rdf:resource="http://BPMNbasedOntology#InputSet"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Events that throw a Result. All End Events and some Intermediate Events are throwing Events that MAY eventually be caught by another Event. Typically the trigger carries information out of the scope where the throw Event occurred into the scope of the catching Events. The throwing of a trigger MAY be either implicit as defined by this standard or an extension to it or explicit by a throw Event</rdfs:comment>
         <rdfs:label xml:lang="en">ThrowEvent</rdfs:label>
     </owl:Class>
     
@@ -2882,8 +3578,28 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#TimeExpression">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Expression"/>
-        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#IRIT_concepts"/>
+        <rdfs:comment xml:lang="en">An expression that specifies a duration, time</rdfs:comment>
         <rdfs:label xml:lang="en">TimeExpression</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#TimerEvent -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#TimerEvent">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#Event"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_eventDefinition"/>
+                        <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
+                        <owl:onClass rdf:resource="http://BPMNbasedOntology#TimerEventDefinition"/>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Event"/>
     </owl:Class>
     
 
@@ -2913,6 +3629,7 @@
                 <owl:onClass rdf:resource="http://BPMNbasedOntology#Expression"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">TimerEventDefinition</rdfs:label>
     </owl:Class>
     
@@ -2922,6 +3639,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#Tool">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#MaterialResource"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">Tool</rdfs:label>
     </owl:Class>
     
@@ -2931,7 +3649,40 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#Transaction">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#SubProcess"/>
+        <rdfs:comment xml:lang="en">A Sub-Process that represents a set of coordinated activities carried out by independent, loosely-coupled systems in accordance with a contractually defined business relationship. This coordination leads to an agreed, consistent, and verifiable outcome across all participants.</rdfs:comment>
         <rdfs:label xml:lang="en">Transaction</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#UnderspecifiedExpression -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#UnderspecifiedExpression">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#Expression"/>
+                    <owl:Class>
+                        <owl:complementOf rdf:resource="http://BPMNbasedOntology#FormalExpression"/>
+                    </owl:Class>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Expression"/>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#UnitOfMeasure -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#UnitOfMeasure"/>
+    
+
+
+    <!-- http://BPMNbasedOntology#UnspecifiedGateway -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#UnspecifiedGateway">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Gateway"/>
     </owl:Class>
     
 
@@ -2940,6 +3691,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#UserManual">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#TechnicalDocument"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">UserManual</rdfs:label>
     </owl:Class>
     
@@ -2949,6 +3701,7 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#UserTask">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Task"/>
+        <rdfs:comment xml:lang="en">A User Task is a typical “workflow” Task where a human performer performs the Task with the assistance of a software application and is scheduled through a task list manager of some sort.</rdfs:comment>
         <rdfs:label xml:lang="en">UserTask</rdfs:label>
     </owl:Class>
     
@@ -2958,7 +3711,16 @@
 
     <owl:Class rdf:about="http://BPMNbasedOntology#WorkProcedureDescription">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#TechnicalDocument"/>
+        <rdfs:comment xml:lang="en">/</rdfs:comment>
         <rdfs:label xml:lang="en">WorkProcedureDescription</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#WorkProduct -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#WorkProduct">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Resource"/>
     </owl:Class>
 </rdf:RDF>
 
