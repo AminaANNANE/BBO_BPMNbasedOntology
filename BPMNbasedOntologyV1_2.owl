@@ -2155,6 +2155,29 @@ subject to additional constraints (see page 176).</rdfs:comment>
     <owl:Class rdf:about="http://BPMNbasedOntology#AdHocSubProcess">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#SubProcess"/>
         <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_flowElements"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://BPMNbasedOntology#EndEvent"/>
+                                    <rdf:Description rdf:about="http://BPMNbasedOntology#StartEvent"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:complementOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_flowElements"/>
+                <owl:someValuesFrom rdf:resource="http://BPMNbasedOntology#Activity"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_completionCondition"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
@@ -2484,10 +2507,15 @@ subject to additional constraints (see page 176).</rdfs:comment>
                         <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_conditionExpression"/>
                         <owl:someValuesFrom rdf:resource="http://BPMNbasedOntology#Expression"/>
                     </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_sourceRef"/>
+                        <owl:someValuesFrom rdf:resource="http://BPMNbasedOntology#Gateway"/>
+                    </owl:Restriction>
                 </owl:intersectionOf>
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#DefaultSequenceFlow"/>
     </owl:Class>
     
 
@@ -2625,6 +2653,22 @@ subject to additional constraints (see page 176).</rdfs:comment>
 
     <owl:Class rdf:about="http://BPMNbasedOntology#EndEvent">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#ThrowEvent"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_outgoing"/>
+                        <owl:someValuesFrom rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+                    </owl:Restriction>
+                </owl:complementOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_incoming"/>
+                <owl:someValuesFrom rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">As the name implies, the End Event indicates where a Process will end. In terms of Sequence Flows, the End Event ends the flow of the Process, and thus, will not have any outgoing Sequence Flows—no Sequence Flow can connect from an End Event.</rdfs:comment>
         <rdfs:label xml:lang="en">EndEvent</rdfs:label>
     </owl:Class>
@@ -2773,6 +2817,23 @@ subject to additional constraints (see page 176).</rdfs:comment>
 
     <owl:Class rdf:about="http://BPMNbasedOntology#EventBasedGateway">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Gateway"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_outgoing"/>
+                        <owl:someValuesFrom rdf:resource="http://BPMNbasedOntology#ConditionalSequenceFlow"/>
+                    </owl:Restriction>
+                </owl:complementOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_outgoing"/>
+                <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">The Event-Based Gateway represents a branching point in the Process where the alternative paths that follow the Gateway are based on Events that occur, rather than the evaluation of Expressions using Process data (as with an Exclusive or Inclusive Gateway). A specific Event, usually the receipt of a Message, determines the path that will be taken. Basically, the decision is made by another Participant, based on data that is not visible to Process, thus, requiring the use of the Event-Based Gateway.</rdfs:comment>
         <rdfs:label xml:lang="en">EventBasedGateway</rdfs:label>
     </owl:Class>
@@ -2785,18 +2846,16 @@ subject to additional constraints (see page 176).</rdfs:comment>
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#SubProcess"/>
         <rdfs:subClassOf>
             <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
+                <owl:unionOf rdf:parseType="Collection">
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_incoming"/>
-                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:maxQualifiedCardinality>
-                        <owl:onClass rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+                        <owl:someValuesFrom rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
                     </owl:Restriction>
                     <owl:Restriction>
                         <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_outgoing"/>
-                        <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">0</owl:maxQualifiedCardinality>
-                        <owl:onClass rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+                        <owl:someValuesFrom rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
                     </owl:Restriction>
-                </owl:intersectionOf>
+                </owl:unionOf>
             </owl:Class>
         </rdfs:subClassOf>
         <rdfs:subClassOf>
@@ -2806,6 +2865,7 @@ subject to additional constraints (see page 176).</rdfs:comment>
                 <owl:onClass rdf:resource="http://BPMNbasedOntology#StartEventForEventBasedSubProcess"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment>EventBasedSubProcess</rdfs:comment>
     </owl:Class>
     
 
@@ -2980,6 +3040,22 @@ subject to additional constraints (see page 176).</rdfs:comment>
 
     <owl:Class rdf:about="http://BPMNbasedOntology#Gateway">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#FlowNode"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_incoming"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+                    </owl:Restriction>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_outgoing"/>
+                        <owl:minQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">2</owl:minQualifiedCardinality>
+                        <owl:onClass rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+                    </owl:Restriction>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">Gateways are used to control how Sequence Flows interact as they converge and diverge within a Process. If the flow does not need to be controlled, then a Gateway is not needed. The term “Gateway” implies that there is a gating mechanism that either allows or disallows passage through the Gateway--that is, as tokens arrive at a Gateway, they can be merged together on input and/or split apart on output as the Gateway mechanisms are invoked.</rdfs:comment>
         <rdfs:label xml:lang="en">Gateway</rdfs:label>
     </owl:Class>
@@ -3256,6 +3332,14 @@ then the Event marker MUST be unfilled (see the lower figure on the right).</rdf
     
 
 
+    <!-- http://BPMNbasedOntology#InterruptingEvent -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#InterruptingEvent">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Event"/>
+    </owl:Class>
+    
+
+
     <!-- http://BPMNbasedOntology#Job -->
 
     <owl:Class rdf:about="http://BPMNbasedOntology#Job">
@@ -3520,6 +3604,14 @@ then the Event marker MUST be unfilled (see the lower figure on the right).</rdf
     
 
 
+    <!-- http://BPMNbasedOntology#NonInterruptingEvent -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#NonInterruptingEvent">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Event"/>
+    </owl:Class>
+    
+
+
     <!-- http://BPMNbasedOntology#NoneEvent -->
 
     <owl:Class rdf:about="http://BPMNbasedOntology#NoneEvent">
@@ -3643,7 +3735,8 @@ then the Event marker MUST be unfilled (see the lower figure on the right).</rdf
 
     <owl:Class rdf:about="http://BPMNbasedOntology#ParallelMultipleEvent">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#MultipleEvent"/>
-        <rdfs:comment>all of the types of triggers that are listed in the Event MUST be triggered before the Process is instantiated.</rdfs:comment>
+        <rdfs:comment>all of the types of EventDefinition that are listed in the Event MUST be triggered.</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">ParallelMultipleEvent</rdfs:label>
     </owl:Class>
     
 
@@ -4157,6 +4250,16 @@ the Process.</rdfs:comment>
     <owl:Class rdf:about="http://BPMNbasedOntology#StartEvent">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#CatchEvent"/>
         <rdfs:subClassOf>
+            <owl:Class>
+                <owl:complementOf>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_incoming"/>
+                        <owl:someValuesFrom rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+                    </owl:Restriction>
+                </owl:complementOf>
+            </owl:Class>
+        </rdfs:subClassOf>
+        <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_outgoing"/>
                 <owl:someValuesFrom rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
@@ -4195,6 +4298,8 @@ flow of the Process and does not have any incoming Sequence Flow, but can have a
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#StartEvent"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The StartEvent of an EventBasedSubProcess</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StartEventForEventBasedSubProcess</rdfs:label>
     </owl:Class>
     
 
@@ -4330,6 +4435,7 @@ flow of the Process and does not have any incoming Sequence Flow, but can have a
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Event"/>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">TimerEvent</rdfs:label>
     </owl:Class>
     
 
@@ -4338,6 +4444,84 @@ flow of the Process and does not have any incoming Sequence Flow, but can have a
 
     <owl:Class rdf:about="http://BPMNbasedOntology#TimerEventDefinition">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#EventDefinition"/>
+        <rdfs:subClassOf>
+            <owl:Class>
+                <owl:unionOf rdf:parseType="Collection">
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <owl:Class>
+                                <owl:complementOf>
+                                    <owl:Class>
+                                        <owl:unionOf rdf:parseType="Collection">
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_timeCycle"/>
+                                                <owl:someValuesFrom rdf:resource="http://BPMNbasedOntology#Expression"/>
+                                            </owl:Restriction>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_timeDate"/>
+                                                <owl:someValuesFrom rdf:resource="http://BPMNbasedOntology#Expression"/>
+                                            </owl:Restriction>
+                                        </owl:unionOf>
+                                    </owl:Class>
+                                </owl:complementOf>
+                            </owl:Class>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_timeDuration"/>
+                                <owl:someValuesFrom rdf:resource="http://BPMNbasedOntology#Expression"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <owl:Class>
+                                <owl:complementOf>
+                                    <owl:Class>
+                                        <owl:unionOf rdf:parseType="Collection">
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_timeCycle"/>
+                                                <owl:someValuesFrom rdf:resource="http://BPMNbasedOntology#Expression"/>
+                                            </owl:Restriction>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_timeDuration"/>
+                                                <owl:someValuesFrom rdf:resource="http://BPMNbasedOntology#Expression"/>
+                                            </owl:Restriction>
+                                        </owl:unionOf>
+                                    </owl:Class>
+                                </owl:complementOf>
+                            </owl:Class>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_timeDate"/>
+                                <owl:someValuesFrom rdf:resource="http://BPMNbasedOntology#Expression"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                    <owl:Class>
+                        <owl:intersectionOf rdf:parseType="Collection">
+                            <owl:Class>
+                                <owl:complementOf>
+                                    <owl:Class>
+                                        <owl:unionOf rdf:parseType="Collection">
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_timeDate"/>
+                                                <owl:someValuesFrom rdf:resource="http://BPMNbasedOntology#Expression"/>
+                                            </owl:Restriction>
+                                            <owl:Restriction>
+                                                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_timeDuration"/>
+                                                <owl:someValuesFrom rdf:resource="http://BPMNbasedOntology#Expression"/>
+                                            </owl:Restriction>
+                                        </owl:unionOf>
+                                    </owl:Class>
+                                </owl:complementOf>
+                            </owl:Class>
+                            <owl:Restriction>
+                                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_timeCycle"/>
+                                <owl:someValuesFrom rdf:resource="http://BPMNbasedOntology#Expression"/>
+                            </owl:Restriction>
+                        </owl:intersectionOf>
+                    </owl:Class>
+                </owl:unionOf>
+            </owl:Class>
+        </rdfs:subClassOf>
         <rdfs:subClassOf>
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_timeCycle"/>
