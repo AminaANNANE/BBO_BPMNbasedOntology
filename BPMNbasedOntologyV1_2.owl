@@ -24,343 +24,6 @@ Copyright © 2019 MELODI @ Toulouse Institute of Computer Science Research</rdfs
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
-    // Datatypes
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
-
-    
-
-
-    <!-- http://BPMNbasedOntology#DTMessageVisibleKind -->
-
-    <rdfs:Datatype rdf:about="http://BPMNbasedOntology#DTMessageVisibleKind">
-        <owl:equivalentClass>
-            <rdfs:Datatype>
-                <owl:oneOf>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">initiating</rdf:first>
-                        <rdf:rest>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">non_initiating</rdf:first>
-                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                            </rdf:Description>
-                        </rdf:rest>
-                    </rdf:Description>
-                </owl:oneOf>
-            </rdfs:Datatype>
-        </owl:equivalentClass>
-    </rdfs:Datatype>
-    
-
-
-    <!-- http://BPMNbasedOntology#DTParticipantBandKind -->
-
-    <rdfs:Datatype rdf:about="http://BPMNbasedOntology#DTParticipantBandKind">
-        <owl:equivalentClass>
-            <rdfs:Datatype>
-                <owl:oneOf>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bottom_initiating</rdf:first>
-                        <rdf:rest>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">bottom_non_initiating</rdf:first>
-                                <rdf:rest>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">middle_initiating</rdf:first>
-                                        <rdf:rest>
-                                            <rdf:Description>
-                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">middle_non_initiating</rdf:first>
-                                                <rdf:rest>
-                                                    <rdf:Description>
-                                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">top_initiating</rdf:first>
-                                                        <rdf:rest>
-                                                            <rdf:Description>
-                                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">top_non_initiating</rdf:first>
-                                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                                                            </rdf:Description>
-                                                        </rdf:rest>
-                                                    </rdf:Description>
-                                                </rdf:rest>
-                                            </rdf:Description>
-                                        </rdf:rest>
-                                    </rdf:Description>
-                                </rdf:rest>
-                            </rdf:Description>
-                        </rdf:rest>
-                    </rdf:Description>
-                </owl:oneOf>
-            </rdfs:Datatype>
-        </owl:equivalentClass>
-    </rdfs:Datatype>
-    
-
-
-    <!-- http://BPMNbasedOntology#DTtAssociationDirection -->
-
-    <rdfs:Datatype rdf:about="http://BPMNbasedOntology#DTtAssociationDirection">
-        <owl:equivalentClass>
-            <rdfs:Datatype>
-                <owl:oneOf>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Both</rdf:first>
-                        <rdf:rest>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">None</rdf:first>
-                                <rdf:rest>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">One</rdf:first>
-                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                                    </rdf:Description>
-                                </rdf:rest>
-                            </rdf:Description>
-                        </rdf:rest>
-                    </rdf:Description>
-                </owl:oneOf>
-            </rdfs:Datatype>
-        </owl:equivalentClass>
-    </rdfs:Datatype>
-    
-
-
-    <!-- http://BPMNbasedOntology#DTtChoreographyLoopType -->
-
-    <rdfs:Datatype rdf:about="http://BPMNbasedOntology#DTtChoreographyLoopType">
-        <owl:equivalentClass>
-            <rdfs:Datatype>
-                <owl:oneOf>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MultiInstanceParallel</rdf:first>
-                        <rdf:rest>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">MultiInstanceSequential</rdf:first>
-                                <rdf:rest>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">None</rdf:first>
-                                        <rdf:rest>
-                                            <rdf:Description>
-                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Standard</rdf:first>
-                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                                            </rdf:Description>
-                                        </rdf:rest>
-                                    </rdf:Description>
-                                </rdf:rest>
-                            </rdf:Description>
-                        </rdf:rest>
-                    </rdf:Description>
-                </owl:oneOf>
-            </rdfs:Datatype>
-        </owl:equivalentClass>
-    </rdfs:Datatype>
-    
-
-
-    <!-- http://BPMNbasedOntology#DTtImplementation -->
-
-    <rdfs:Datatype rdf:about="http://BPMNbasedOntology#DTtImplementation">
-        <owl:equivalentClass rdf:resource="http://BPMNbasedOntology#xsd:anyURI"/>
-        <owl:equivalentClass>
-            <rdfs:Datatype>
-                <owl:oneOf>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">##WebService</rdf:first>
-                        <rdf:rest>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">##unspecified</rdf:first>
-                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                            </rdf:Description>
-                        </rdf:rest>
-                    </rdf:Description>
-                </owl:oneOf>
-            </rdfs:Datatype>
-        </owl:equivalentClass>
-    </rdfs:Datatype>
-    
-
-
-    <!-- http://BPMNbasedOntology#DTtItemKind -->
-
-    <rdfs:Datatype rdf:about="http://BPMNbasedOntology#DTtItemKind">
-        <owl:equivalentClass>
-            <rdfs:Datatype>
-                <owl:oneOf>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Information</rdf:first>
-                        <rdf:rest>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Physical</rdf:first>
-                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                            </rdf:Description>
-                        </rdf:rest>
-                    </rdf:Description>
-                </owl:oneOf>
-            </rdfs:Datatype>
-        </owl:equivalentClass>
-    </rdfs:Datatype>
-    
-
-
-    <!-- http://BPMNbasedOntology#DTtMultiInstanceFlowCondition -->
-
-    <rdfs:Datatype rdf:about="http://BPMNbasedOntology#DTtMultiInstanceFlowCondition">
-        <owl:equivalentClass>
-            <rdfs:Datatype>
-                <owl:oneOf>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">All</rdf:first>
-                        <rdf:rest>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Complex</rdf:first>
-                                <rdf:rest>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">None</rdf:first>
-                                        <rdf:rest>
-                                            <rdf:Description>
-                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">One</rdf:first>
-                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                                            </rdf:Description>
-                                        </rdf:rest>
-                                    </rdf:Description>
-                                </rdf:rest>
-                            </rdf:Description>
-                        </rdf:rest>
-                    </rdf:Description>
-                </owl:oneOf>
-            </rdfs:Datatype>
-        </owl:equivalentClass>
-    </rdfs:Datatype>
-    
-
-
-    <!-- http://BPMNbasedOntology#DTtProcessType -->
-
-    <rdfs:Datatype rdf:about="http://BPMNbasedOntology#DTtProcessType">
-        <owl:equivalentClass>
-            <rdfs:Datatype>
-                <owl:oneOf>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">None</rdf:first>
-                        <rdf:rest>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Private</rdf:first>
-                                <rdf:rest>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Public</rdf:first>
-                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                                    </rdf:Description>
-                                </rdf:rest>
-                            </rdf:Description>
-                        </rdf:rest>
-                    </rdf:Description>
-                </owl:oneOf>
-            </rdfs:Datatype>
-        </owl:equivalentClass>
-    </rdfs:Datatype>
-    
-
-
-    <!-- http://BPMNbasedOntology#DTtRelationshipDirection -->
-
-    <rdfs:Datatype rdf:about="http://BPMNbasedOntology#DTtRelationshipDirection">
-        <owl:equivalentClass>
-            <rdfs:Datatype>
-                <owl:oneOf>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Backward</rdf:first>
-                        <rdf:rest>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Both</rdf:first>
-                                <rdf:rest>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Forward</rdf:first>
-                                        <rdf:rest>
-                                            <rdf:Description>
-                                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">None</rdf:first>
-                                                <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                                            </rdf:Description>
-                                        </rdf:rest>
-                                    </rdf:Description>
-                                </rdf:rest>
-                            </rdf:Description>
-                        </rdf:rest>
-                    </rdf:Description>
-                </owl:oneOf>
-            </rdfs:Datatype>
-        </owl:equivalentClass>
-    </rdfs:Datatype>
-    
-
-
-    <!-- http://BPMNbasedOntology#DTtTransactionMethod -->
-
-    <rdfs:Datatype rdf:about="http://BPMNbasedOntology#DTtTransactionMethod">
-        <owl:equivalentClass rdf:resource="http://BPMNbasedOntology#xsd:anyURI"/>
-        <owl:equivalentClass>
-            <rdfs:Datatype>
-                <owl:oneOf>
-                    <rdf:Description>
-                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">##Compensate</rdf:first>
-                        <rdf:rest>
-                            <rdf:Description>
-                                <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">##Image</rdf:first>
-                                <rdf:rest>
-                                    <rdf:Description>
-                                        <rdf:type rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#List"/>
-                                        <rdf:first rdf:datatype="http://www.w3.org/2001/XMLSchema#string">##Store</rdf:first>
-                                        <rdf:rest rdf:resource="http://www.w3.org/1999/02/22-rdf-syntax-ns#nil"/>
-                                    </rdf:Description>
-                                </rdf:rest>
-                            </rdf:Description>
-                        </rdf:rest>
-                    </rdf:Description>
-                </owl:oneOf>
-            </rdfs:Datatype>
-        </owl:equivalentClass>
-    </rdfs:Datatype>
-    
-
-
-    <!-- http://BPMNbasedOntology#xsd:anyURI -->
-
-    <rdfs:Datatype rdf:about="http://BPMNbasedOntology#xsd:anyURI"/>
-    
-
-
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
     // Object Properties
     //
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -1660,6 +1323,15 @@ The return type of the attribute timeDuration MUST conform to the ISO-8601 forma
     
 
 
+    <!-- http://BPMNbasedOntology#processType -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#processType">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#Process"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#DTtProcessType"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://BPMNbasedOntology#supports -->
 
     <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#supports">
@@ -1700,28 +1372,6 @@ follow the steps laid out in the second Process.</rdfs:comment>
     ///////////////////////////////////////////////////////////////////////////////////////
      -->
 
-    
-
-
-    <!-- http://BPMNbasedOntology#behavior -->
-
-    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#behavior">
-        <rdfs:domain rdf:resource="http://BPMNbasedOntology#MultiInstanceLoopCharacteristics"/>
-        <rdfs:range rdf:resource="http://BPMNbasedOntology#DTtMultiInstanceFlowCondition"/>
-        <rdfs:comment xml:lang="en">The attribute behavior acts as a shortcut for specifying when events SHALL be thrown from an Activity instance that is about to complete. It can assume values of None, One, All, and Complex, resulting in the following behavior:
-• None: the EventDefinition which is associated through the
-noneEvent association will be thrown for each instance completing.
-• One: the EventDefinition referenced through the oneEvent
-association will be thrown upon the first instance completing.
-• All: no Event is ever thrown, a token is produced after completion of all instances.
-• Complex: the complexBehaviorDefinitions are consulted to
-determine if and which Events to throw.
-For the behaviors of none and one, a default
-SignalEventDefinition will be thrown which automatically carries
-the current runtime attributes of the MI Activity.
-Any thrown Events can be caught by boundary Events on the Multi-Instance Activity.</rdfs:comment>
-        <rdfs:label xml:lang="en">behavior</rdfs:label>
-    </owl:DatatypeProperty>
     
 
 
@@ -1983,8 +1633,7 @@ default semantics depends on the kind of model containing Sequence Flows:
 
     <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#method">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#Transaction"/>
-        <rdfs:range rdf:resource="http://BPMNbasedOntology#DTtTransactionMethod"/>
-        <rdfs:comment xml:lang="en">The method is an attribute that defines the Transaction method used to commit or cancel a Transaction. For executable Processes, it SHOULD be set to a technology specific URI, e.g., http://schemas.xmlsoap.org/ws/2004/10/wsat for WSAtomicTransaction, or http://docs.oasis-open.org/ws-tx/wsba/2006/06/AtomicOutcome for WS-BusinessActivity. For compatibility with BPMN 1.1, it can also be set to ##compensate, ##store, or ##image.</rdfs:comment>
+        <rdfs:comment xml:lang="en">The method is an attribute that defines the Transaction method used to commit or cancel a Transaction. For executable Processes, it SHOULD be set to a technology specific URI, e.g., http://schemas.xmlsoap.org/ws/2004/10/wsat for WSAtomicTransaction, or http://docs.oasis-open.org/ws-tx/wsba/2006/06/AtomicOutcome for WS-BusinessActivity.</rdfs:comment>
         <rdfs:label xml:lang="en">method</rdfs:label>
     </owl:DatatypeProperty>
     
@@ -2019,15 +1668,7 @@ default semantics depends on the kind of model containing Sequence Flows:
 
     <!-- http://BPMNbasedOntology#processType -->
 
-    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#processType">
-        <rdfs:domain rdf:resource="http://BPMNbasedOntology#Process"/>
-        <rdfs:range rdf:resource="http://BPMNbasedOntology#DTtProcessType"/>
-        <rdfs:comment xml:lang="en">The processType attribute Provides additional information about the level of abstraction modeled by this Process.
-A public Process shows only those flow elements that are relevant to external consumers. Internal details are not modeled. These Processes are publicly visible and can be used within a Collaboration. Note that the public processType was named
-abstract in BPMN 1.2.
-A private Process is one that is internal to a specific organization. By default, the processType is “none,” meaning undefined.</rdfs:comment>
-        <rdfs:label xml:lang="en">processType</rdfs:label>
-    </owl:DatatypeProperty>
+    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#processType"/>
     
 
 
@@ -2229,6 +1870,16 @@ A private Process is one that is internal to a specific organization. By default
     <owl:Class rdf:about="http://BPMNbasedOntology#Agent">
         <rdfs:comment xml:lang="en">Person or a Software that performs an activity</rdfs:comment>
         <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">Agent</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#AllMultiInstanceLoopCharacteristics -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#AllMultiInstanceLoopCharacteristics">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#MultiInstanceLoopCharacteristics"/>
+        <rdfs:comment xml:lang="en">All: no Event is ever thrown, a token is produced after completion of all instances.
+Any thrown Events can be caught by boundary Events on the Multi-Instance Activity.</rdfs:comment>
     </owl:Class>
     
 
@@ -2449,12 +2100,12 @@ A private Process is one that is internal to a specific organization. By default
     
 
 
-    <!-- http://BPMNbasedOntology#ComplexTask -->
+    <!-- http://BPMNbasedOntology#ComplexMultiInstanceLoopCharacteristics -->
 
-    <owl:Class rdf:about="http://BPMNbasedOntology#ComplexTask">
-        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#SubProcess"/>
-        <rdfs:comment xml:lang="en">concept IRIT ???</rdfs:comment>
-        <rdfs:label xml:lang="en">ComplexTask</rdfs:label>
+    <owl:Class rdf:about="http://BPMNbasedOntology#ComplexMultiInstanceLoopCharacteristics">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#MultiInstanceLoopCharacteristics"/>
+        <rdfs:comment xml:lang="en">Complex: the complexBehaviorDefinitions are consulted to determine if and which Events to throw.
+Any thrown Events can be caught by boundary Events on the Multi-Instance Activity.</rdfs:comment>
     </owl:Class>
     
 
@@ -2584,6 +2235,12 @@ A private Process is one that is internal to a specific organization. By default
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Gateway"/>
     </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#DTtProcessType -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#DTtProcessType"/>
     
 
 
@@ -3686,6 +3343,16 @@ then the Event marker MUST be unfilled (see the lower figure on the right).</rdf
     
 
 
+    <!-- http://BPMNbasedOntology#NoneMultiInstanceLoopCharacteristics -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#NoneMultiInstanceLoopCharacteristics">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#MultiInstanceLoopCharacteristics"/>
+        <rdfs:comment xml:lang="en">None: the EventDefinition which is associated through the noneEvent association will be thrown for each instance completing.
+Any thrown Events can be caught by boundary Events on the Multi-Instance Activity.</rdfs:comment>
+    </owl:Class>
+    
+
+
     <!-- http://BPMNbasedOntology#NormalSequenceFlow -->
 
     <owl:Class rdf:about="http://BPMNbasedOntology#NormalSequenceFlow">
@@ -3707,6 +3374,16 @@ then the Event marker MUST be unfilled (see the lower figure on the right).</rdf
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#OneMultiInstanceLoopCharacteristics -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#OneMultiInstanceLoopCharacteristics">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#MultiInstanceLoopCharacteristics"/>
+        <rdfs:comment xml:lang="en">One: the EventDefinition referenced through the oneEvent association will be thrown upon the first instance completing.
+Any thrown Events can be caught by boundary Events on the Multi-Instance Activity.</rdfs:comment>
     </owl:Class>
     
 
@@ -4802,6 +4479,24 @@ flow of the Process and does not have any incoming Sequence Flow, but can have a
     <owl:Class rdf:about="http://BPMNbasedOntology#WorkProduct">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Resource"/>
     </owl:Class>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
+    // Annotations
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    <rdf:Description rdf:about="http://BPMNbasedOntology#processType">
+        <rdfs:comment xml:lang="en">The processType attribute Provides additional information about the level of abstraction modeled by this Process.
+A public Process shows only those flow elements that are relevant to external consumers. Internal details are not modeled. These Processes are publicly visible and can be used within a Collaboration. Note that the public processType was named
+abstract in BPMN 1.2.
+A private Process is one that is internal to a specific organization. By default, the processType is “none,” meaning undefined.</rdfs:comment>
+        <rdfs:label xml:lang="en">processType</rdfs:label>
+    </rdf:Description>
     
 
 
