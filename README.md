@@ -1,6 +1,6 @@
 # BPMN Based Ontology (BBO)
 
-The core element of BBO is a fragment of BPMN 2.0 including concepts, relations an attributes to describe business processes (mainly Chapter 10 of BPMN 2.0 specification). We enriched this fragment with taxonomies, new concepts and relations to have a fine grained description.
+The core element of BBO is a fragment of BPMN 2.0 including concepts, relations an attributes to describe business processes (mainly Chapter 10 of BPMN 2.0 specification). We enriched this fragment with taxonomies, new concepts and relations to have a fine grained representation of business processes.
 
 ## competency questions
 The file named "Competency questions.docx" contains the main competency questions that we collected from industrial companies and literature. 
