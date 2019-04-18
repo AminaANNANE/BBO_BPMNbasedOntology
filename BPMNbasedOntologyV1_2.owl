@@ -1327,7 +1327,6 @@ The return type of the attribute timeDuration MUST conform to the ISO-8601 forma
 
     <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#processType">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#Process"/>
-        <rdfs:range rdf:resource="http://BPMNbasedOntology#DTtProcessType"/>
     </owl:ObjectProperty>
     
 
@@ -1381,18 +1380,6 @@ follow the steps laid out in the second Process.</rdfs:comment>
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#FormalExpression"/>
         <rdfs:comment xml:lang="en">The body of the Expression.</rdfs:comment>
         <rdfs:label xml:lang="en">body</rdfs:label>
-    </owl:DatatypeProperty>
-    
-
-
-    <!-- http://BPMNbasedOntology#cancelActivity -->
-
-    <owl:DatatypeProperty rdf:about="http://BPMNbasedOntology#cancelActivity">
-        <rdfs:domain rdf:resource="http://BPMNbasedOntology#BoundaryEvent"/>
-        <rdfs:range rdf:resource="http://www.w3.org/2001/XMLSchema#boolean"/>
-        <rdfs:comment xml:lang="en">Denotes whether the Activity should be cancelled or not, i.e., whether the boundary catch Event acts as an Error or an Escalation. If the Activity is not cancelled, multiple instances of that handler can run concurrently.
-This attribute cannot be applied to Error Events (where it’s always true), or Compensation Events (where it doesn’t apply).</rdfs:comment>
-        <rdfs:label xml:lang="en">cancelActivity</rdfs:label>
     </owl:DatatypeProperty>
     
 
@@ -1895,6 +1882,9 @@ Any thrown Events can be caught by boundary Events on the Multi-Instance Activit
                 <owl:onClass rdf:resource="http://BPMNbasedOntology#Activity"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#LinkEvent"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#NoneEvent"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#TerminateEvent"/>
         <rdfs:comment xml:lang="en">Intermediate Events that can be attached to the boundary of an Activity</rdfs:comment>
         <rdfs:label xml:lang="en">BoundaryEvent</rdfs:label>
     </owl:Class>
@@ -1968,6 +1958,11 @@ Any thrown Events can be caught by boundary Events on the Multi-Instance Activit
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Event"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#EventSubProcessStartEvent"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#IntermediateCatchEvent"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#IntermediateThrowEvent"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#NonEventSubProcessStartEvent"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#ProcessStartEvent"/>
     </owl:Class>
     
 
@@ -2042,6 +2037,9 @@ Any thrown Events can be caught by boundary Events on the Multi-Instance Activit
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Event"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#IntermediateCatchEvent"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#NonEventSubProcessStartEvent"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#ProcessStartEvent"/>
     </owl:Class>
     
 
@@ -2162,6 +2160,9 @@ Any thrown Events can be caught by boundary Events on the Multi-Instance Activit
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Event"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#EndEvent"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#IntermediateThrowEvent"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#NonEventSubProcessStartEvent"/>
     </owl:Class>
     
 
@@ -2235,12 +2236,6 @@ Any thrown Events can be caught by boundary Events on the Multi-Instance Activit
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Gateway"/>
     </owl:Class>
-    
-
-
-    <!-- http://BPMNbasedOntology#DTtProcessType -->
-
-    <owl:Class rdf:about="http://BPMNbasedOntology#DTtProcessType"/>
     
 
 
@@ -2358,6 +2353,9 @@ Any thrown Events can be caught by boundary Events on the Multi-Instance Activit
                 <owl:someValuesFrom rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#LinkEvent"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#ParallelMultipleEvent"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#TimerEvent"/>
         <rdfs:comment xml:lang="en">As the name implies, the End Event indicates where a Process will end. In terms of Sequence Flows, the End Event ends the flow of the Process, and thus, will not have any outgoing Sequence Flows—no Sequence Flow can connect from an End Event.</rdfs:comment>
         <rdfs:label xml:lang="en">EndEvent</rdfs:label>
     </owl:Class>
@@ -2417,6 +2415,10 @@ Any thrown Events can be caught by boundary Events on the Multi-Instance Activit
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Event"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#IntermediateCatchEvent"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#IntermediateThrowEvent"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#NonEventSubProcessStartEvent"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#ProcessStartEvent"/>
     </owl:Class>
     
 
@@ -2471,6 +2473,9 @@ Any thrown Events can be caught by boundary Events on the Multi-Instance Activit
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Event"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#IntermediateCatchEvent"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#NonEventSubProcessStartEvent"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#ProcessStartEvent"/>
     </owl:Class>
     
 
@@ -2530,9 +2535,27 @@ Any thrown Events can be caught by boundary Events on the Multi-Instance Activit
     
 
 
-    <!-- http://BPMNbasedOntology#EventBasedSubProcess -->
+    <!-- http://BPMNbasedOntology#EventDefinition -->
 
-    <owl:Class rdf:about="http://BPMNbasedOntology#EventBasedSubProcess">
+    <owl:Class rdf:about="http://BPMNbasedOntology#EventDefinition">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#RootElement"/>
+        <rdfs:subClassOf>
+            <owl:Restriction>
+                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_eventDefinitionEvent"/>
+                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#Event"/>
+            </owl:Restriction>
+        </rdfs:subClassOf>
+        <rdfs:comment xml:lang="en">Event Definitions refers to the triggers of Catch Events (Start and receive Intermediate Events) and the Results of Throw Events (End Events and send Intermediate Events). The types of Event Definitions are: CancelEventDefinition, CompensationEventDefinition, ConditionalEventDefinition ErrorEventDefinition, EscalationEventDefinition, MessageEventDefinitio, LinkEventDefinition, SignalEventDefinition, TerminateEventDefinition, an TimerEventDefinition (see Table 10.93). A None Event is determined by an Event that does not specify an
+ Event Definition. A Multiple Event is determined by an Event that specifies more than one Event Definition. The different types of Events (Start, End, and Intermediate) utilize a subset of the available types of Event Definitions.</rdfs:comment>
+        <rdfs:label xml:lang="en">EventDefinition</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#EventSubProcess -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#EventSubProcess">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#SubProcess"/>
         <rdfs:subClassOf>
             <owl:Class>
@@ -2552,7 +2575,7 @@ Any thrown Events can be caught by boundary Events on the Multi-Instance Activit
             <owl:Restriction>
                 <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_flowElements"/>
                 <owl:qualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:qualifiedCardinality>
-                <owl:onClass rdf:resource="http://BPMNbasedOntology#StartEventForEventBasedSubProcess"/>
+                <owl:onClass rdf:resource="http://BPMNbasedOntology#EventSubProcessStartEvent"/>
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment>EventBasedSubProcess</rdfs:comment>
@@ -2560,20 +2583,37 @@ Any thrown Events can be caught by boundary Events on the Multi-Instance Activit
     
 
 
-    <!-- http://BPMNbasedOntology#EventDefinition -->
+    <!-- http://BPMNbasedOntology#EventSubProcessStartEvent -->
 
-    <owl:Class rdf:about="http://BPMNbasedOntology#EventDefinition">
-        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#RootElement"/>
-        <rdfs:subClassOf>
-            <owl:Restriction>
-                <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_eventDefinitionEvent"/>
-                <owl:maxQualifiedCardinality rdf:datatype="http://www.w3.org/2001/XMLSchema#nonNegativeInteger">1</owl:maxQualifiedCardinality>
-                <owl:onClass rdf:resource="http://BPMNbasedOntology#Event"/>
-            </owl:Restriction>
-        </rdfs:subClassOf>
-        <rdfs:comment xml:lang="en">Event Definitions refers to the triggers of Catch Events (Start and receive Intermediate Events) and the Results of Throw Events (End Events and send Intermediate Events). The types of Event Definitions are: CancelEventDefinition, CompensationEventDefinition, ConditionalEventDefinition ErrorEventDefinition, EscalationEventDefinition, MessageEventDefinitio, LinkEventDefinition, SignalEventDefinition, TerminateEventDefinition, an TimerEventDefinition (see Table 10.93). A None Event is determined by an Event that does not specify an
- Event Definition. A Multiple Event is determined by an Event that specifies more than one Event Definition. The different types of Events (Start, End, and Intermediate) utilize a subset of the available types of Event Definitions.</rdfs:comment>
-        <rdfs:label xml:lang="en">EventDefinition</rdfs:label>
+    <owl:Class rdf:about="http://BPMNbasedOntology#EventSubProcessStartEvent">
+        <owl:equivalentClass>
+            <owl:Class>
+                <owl:intersectionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#SubProcessStartEvent"/>
+                    <owl:Restriction>
+                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_eventDefinition"/>
+                        <owl:someValuesFrom>
+                            <owl:Class>
+                                <owl:unionOf rdf:parseType="Collection">
+                                    <rdf:Description rdf:about="http://BPMNbasedOntology#CompensateEventDefinition"/>
+                                    <rdf:Description rdf:about="http://BPMNbasedOntology#ConditionalEventDefinition"/>
+                                    <rdf:Description rdf:about="http://BPMNbasedOntology#ErrorEventDefinition"/>
+                                    <rdf:Description rdf:about="http://BPMNbasedOntology#EscalationEventDefinition"/>
+                                    <rdf:Description rdf:about="http://BPMNbasedOntology#MessageEventDefinition"/>
+                                    <rdf:Description rdf:about="http://BPMNbasedOntology#SignalEventDefinition"/>
+                                </owl:unionOf>
+                            </owl:Class>
+                        </owl:someValuesFrom>
+                    </owl:Restriction>
+                </owl:intersectionOf>
+            </owl:Class>
+        </owl:equivalentClass>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#SubProcessStartEvent"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#LinkEvent"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#NoneEvent"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#TerminateEvent"/>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The StartEvent of an EventBasedSubProcess</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">EventSubProcessStartEvent</rdfs:label>
     </owl:Class>
     
 
@@ -2992,6 +3032,8 @@ Any thrown Events can be caught by boundary Events on the Multi-Instance Activit
 
     <owl:Class rdf:about="http://BPMNbasedOntology#IntermediateCatchEvent">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#CatchEvent"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#NoneEvent"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#TerminateEvent"/>
         <rdfs:comment xml:lang="en">A Message Intermediate Event can be used to either send a Message or receive a Message. When used to “catch” the Message,
 then the Event marker MUST be unfilled (see the lower figure on the right).</rdfs:comment>
         <rdfs:label xml:lang="en">IntermediateCatchEvent</rdfs:label>
@@ -3005,6 +3047,7 @@ then the Event marker MUST be unfilled (see the lower figure on the right).</rdf
         <owl:equivalentClass>
             <owl:Class>
                 <owl:unionOf rdf:parseType="Collection">
+                    <rdf:Description rdf:about="http://BPMNbasedOntology#BoundaryEvent"/>
                     <rdf:Description rdf:about="http://BPMNbasedOntology#IntermediateCatchEvent"/>
                     <rdf:Description rdf:about="http://BPMNbasedOntology#IntermediateThrowEvent"/>
                 </owl:unionOf>
@@ -3017,6 +3060,8 @@ then the Event marker MUST be unfilled (see the lower figure on the right).</rdf
                 <owl:someValuesFrom rdf:resource="http://BPMNbasedOntology#SequenceFlow"/>
             </owl:Restriction>
         </rdfs:subClassOf>
+        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The Intermediate Event indicates where something happens (an Event) somewhere between the start and end of a Process. It will affect the flow of the Process, but will not start or (directly) terminate the process.</rdfs:comment>
+        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">IntermediateEvent</rdfs:label>
     </owl:Class>
     
 
@@ -3025,7 +3070,10 @@ then the Event marker MUST be unfilled (see the lower figure on the right).</rdf
 
     <owl:Class rdf:about="http://BPMNbasedOntology#IntermediateThrowEvent">
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#ThrowEvent"/>
-        <rdfs:comment xml:lang="en">A Message Intermediate Event can be used to either send a Message or receive a Message. When used to “throw” the Message, the Event marker MUST be filled (see the upper figure on the right). </rdfs:comment>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#ParallelMultipleEvent"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#TerminateEvent"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#TimerEvent"/>
+        <rdfs:comment xml:lang="en">A Message Intermediate Event can be used to either send a Message or receive a Message.</rdfs:comment>
         <rdfs:label xml:lang="en">IntermediateThrowEvent</rdfs:label>
     </owl:Class>
     
@@ -3034,7 +3082,16 @@ then the Event marker MUST be unfilled (see the lower figure on the right).</rdf
     <!-- http://BPMNbasedOntology#InterruptingEvent -->
 
     <owl:Class rdf:about="http://BPMNbasedOntology#InterruptingEvent">
-        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Event"/>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#BoundaryEvent"/>
+        <rdfs:comment xml:lang="en">the Activity attached to this event should be cancelled</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#InterruptingEventSubProcessStartEvent -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#InterruptingEventSubProcessStartEvent">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#EventSubProcessStartEvent"/>
     </owl:Class>
     
 
@@ -3070,6 +3127,8 @@ then the Event marker MUST be unfilled (see the lower figure on the right).</rdf
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Event"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#NonEventSubProcessStartEvent"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#ProcessStartEvent"/>
     </owl:Class>
     
 
@@ -3299,6 +3358,18 @@ then the Event marker MUST be unfilled (see the lower figure on the right).</rdf
             </owl:Class>
         </owl:equivalentClass>
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Event"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#NonEventSubProcessStartEvent"/>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#NonEventSubProcessStartEvent -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#NonEventSubProcessStartEvent">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#SubProcessStartEvent"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#SignalEvent"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#TerminateEvent"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#TimerEvent"/>
     </owl:Class>
     
 
@@ -3315,7 +3386,16 @@ then the Event marker MUST be unfilled (see the lower figure on the right).</rdf
     <!-- http://BPMNbasedOntology#NonInterruptingEvent -->
 
     <owl:Class rdf:about="http://BPMNbasedOntology#NonInterruptingEvent">
-        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Event"/>
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#BoundaryEvent"/>
+        <rdfs:comment xml:lang="en">the Activity attached to this event should not be cancelled</rdfs:comment>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#NonInterruptingEventSubProcessStartEvent -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#NonInterruptingEventSubProcessStartEvent">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#EventSubProcessStartEvent"/>
     </owl:Class>
     
 
@@ -3566,6 +3646,15 @@ Any thrown Events can be caught by boundary Events on the Multi-Instance Activit
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">A sequence or flow of Activities in an organization with the objective of carrying out work. In BPMN, a Process is depicted as a graph of Flow Elements, which are a set of Activities, Events, Gateways, and Sequence Flow that adhere to a finite execution semantics.</rdfs:comment>
         <rdfs:label xml:lang="en">Process</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#ProcessStartEvent -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#ProcessStartEvent">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#StartEvent"/>
+        <owl:disjointWith rdf:resource="http://BPMNbasedOntology#TerminateEvent"/>
     </owl:Class>
     
 
@@ -4098,38 +4187,6 @@ flow of the Process and does not have any incoming Sequence Flow, but can have a
     
 
 
-    <!-- http://BPMNbasedOntology#StartEventForEventBasedSubProcess -->
-
-    <owl:Class rdf:about="http://BPMNbasedOntology#StartEventForEventBasedSubProcess">
-        <owl:equivalentClass>
-            <owl:Class>
-                <owl:intersectionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://BPMNbasedOntology#StartEvent"/>
-                    <owl:Restriction>
-                        <owl:onProperty rdf:resource="http://BPMNbasedOntology#has_eventDefinition"/>
-                        <owl:someValuesFrom>
-                            <owl:Class>
-                                <owl:unionOf rdf:parseType="Collection">
-                                    <rdf:Description rdf:about="http://BPMNbasedOntology#CompensateEventDefinition"/>
-                                    <rdf:Description rdf:about="http://BPMNbasedOntology#ConditionalEventDefinition"/>
-                                    <rdf:Description rdf:about="http://BPMNbasedOntology#ErrorEventDefinition"/>
-                                    <rdf:Description rdf:about="http://BPMNbasedOntology#EscalationEventDefinition"/>
-                                    <rdf:Description rdf:about="http://BPMNbasedOntology#MessageEventDefinition"/>
-                                    <rdf:Description rdf:about="http://BPMNbasedOntology#SignalEventDefinition"/>
-                                </owl:unionOf>
-                            </owl:Class>
-                        </owl:someValuesFrom>
-                    </owl:Restriction>
-                </owl:intersectionOf>
-            </owl:Class>
-        </owl:equivalentClass>
-        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#StartEvent"/>
-        <rdfs:comment rdf:datatype="http://www.w3.org/2001/XMLSchema#string">The StartEvent of an EventBasedSubProcess</rdfs:comment>
-        <rdfs:label rdf:datatype="http://www.w3.org/2001/XMLSchema#string">StartEventForEventBasedSubProcess</rdfs:label>
-    </owl:Class>
-    
-
-
     <!-- http://BPMNbasedOntology#Station -->
 
     <owl:Class rdf:about="http://BPMNbasedOntology#Station">
@@ -4154,6 +4211,15 @@ flow of the Process and does not have any incoming Sequence Flow, but can have a
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#FlowElementsContainer"/>
         <rdfs:comment xml:lang="en">A Process that is included within another Process.</rdfs:comment>
         <rdfs:label xml:lang="en">SubProcess</rdfs:label>
+    </owl:Class>
+    
+
+
+    <!-- http://BPMNbasedOntology#SubProcessStartEvent -->
+
+    <owl:Class rdf:about="http://BPMNbasedOntology#SubProcessStartEvent">
+        <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#StartEvent"/>
+        <rdfs:label xml:lang="en">SubProcessStartEvent</rdfs:label>
     </owl:Class>
     
 
