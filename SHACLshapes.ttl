@@ -1,0 +1,992 @@
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix schema: <http://schema.org/> .
+@prefix sh: <http://www.w3.org/ns/shacl#> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix BBO: <http://BPMNbasedOntology#> .
+
+BBO:has_activityLoopCharacteristicsDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_activityLoopCharacteristics;
+	sh:class BBO:Activity.
+BBO:has_activityLoopCharacteristicsRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_activityLoopCharacteristics;
+	sh:class BBO:LoopCharacteristics.
+BBO:belongsDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:belongs;
+	sh:class BBO:Person.
+BBO:belongsRange a sh:NodeShape;
+	sh:targetObjectOf BBO:belongs;
+	sh:class BBO:Group.
+BBO:dependsOnDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:dependsOn;
+	sh:class BBO:Activity.
+BBO:dependsOnRange a sh:NodeShape;
+	sh:targetObjectOf BBO:dependsOn;
+	sh:class BBO:Activity.
+BBO:describesDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:describes;
+	sh:class BBO:WorkProcedureDocument.
+BBO:describesRange a sh:NodeShape;
+	sh:targetObjectOf BBO:describes;
+	 sh:or ([sh:class BBO:Process]
+	[sh:class BBO:Activity]).
+BBO:has_defaultDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_default;
+	sh:or ([sh:class BBO:Activity]
+	[sh:class BBO:ComplexGateway]
+	[sh:class BBO:ExclusiveGateway]
+	[sh:class BBO:InclusiveGateway]).
+BBO:has_defaultRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_default;
+	sh:class BBO:SequenceFlow.
+BBO:has_ioSpecificationDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_ioSpecification;
+	sh:or ([sh:class BBO:Activity]
+	[sh:class BBO:CallableElement]
+	[sh:class BBO:InputSet]
+	[sh:class BBO:OutputSet]).
+BBO:has_ioSpecificationRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_ioSpecification;
+	sh:class BBO:InputOutputSpecification.
+BBO:has_completionConditionDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_completionCondition;
+	sh:or ([sh:class BBO:AdHocSubProcess]
+	[sh:class BBO:MultiInstanceLoopCharacteristics]).
+BBO:has_completionConditionRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_completionCondition;
+	sh:class BBO:Expression.
+BBO:has_boundaryEventRefsDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_boundaryEventRefs;
+	sh:class BBO:Activity.
+BBO:has_boundaryEventRefsRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_boundaryEventRefs;
+	sh:class BBO:BoundaryEvent.
+BBO:has_callableElementsDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_callableElements;
+	sh:class BBO:Interface.
+BBO:has_callableElementsRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_callableElements;
+	sh:class BBO:CallableElement.
+BBO:has_callActivityDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_callActivity;
+	sh:class BBO:CallableElement.
+BBO:has_callActivityRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_callActivity;
+	sh:class BBO:CallActivity.
+BBO:isAttachedToRefDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:isAttachedToRef;
+	sh:class BBO:BoundaryEvent.
+BBO:isAttachedToRefRange a sh:NodeShape;
+	sh:targetObjectOf BBO:isAttachedToRef;
+	sh:class BBO:Activity.
+BBO:has_calledElementRefDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_calledElementRef;
+	sh:class BBO:CallActivity.
+BBO:has_calledElementRefRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_calledElementRef;
+	sh:class BBO:CallableElement.
+BBO:has_complexBehaviorDefinitionDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_complexBehaviorDefinition;
+	sh:class BBO:MultiInstanceLoopCharacteristics.
+BBO:has_complexBehaviorDefinitionRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_complexBehaviorDefinition;
+	sh:class BBO:ComplexBehaviorDefinition.
+BBO:is_partOfDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:is_partOf;
+	sh:or ([sh:class BBO:Cell]
+	[sh:class BBO:Factory]
+	[sh:class BBO:Shop]
+	[sh:class BBO:Station]).
+BBO:is_partOfRange a sh:NodeShape;
+	sh:targetObjectOf BBO:is_partOf;
+	 sh:or ([sh:class BBO:Shop]
+	[sh:class BBO:Enterprise]
+	[sh:class BBO:Factory]
+	[sh:class BBO:Cell]).
+BBO:has_activityRefDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_activityRef;
+	sh:class BBO:CompensateEventDefinition.
+BBO:has_activityRefRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_activityRef;
+	sh:class BBO:Activity.
+BBO:has_conditionDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_condition;
+	sh:or ([sh:class BBO:ComplexBehaviorDefinition]
+	[sh:class BBO:ConditionalEventDefinition]).
+BBO:has_conditionRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_condition;
+	 sh:or ([sh:class BBO:FormalExpression]
+	[sh:class BBO:Expression]).
+BBO:has_eventDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_event;
+	sh:class BBO:ComplexBehaviorDefinition.
+BBO:has_eventRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_event;
+	sh:class BBO:ImplicitThrowEvent.
+BBO:has_dataResourceInputDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_dataResourceInput;
+	sh:class BBO:ThrowEvent.
+BBO:has_dataResourceInputRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_dataResourceInput;
+	sh:class BBO:DataResource.
+BBO:has_dataResourceOutputDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_dataResourceOutput;
+	sh:class BBO:CatchEvent.
+BBO:has_dataResourceOutputRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_dataResourceOutput;
+	sh:class BBO:DataResource.
+BBO:has_multiInstanceLoopCharacteristicsDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_multiInstanceLoopCharacteristics;
+	sh:class BBO:ComplexBehaviorDefinition.
+BBO:has_multiInstanceLoopCharacteristicsRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_multiInstanceLoopCharacteristics;
+	sh:class BBO:MultiInstanceLoopCharacteristics.
+BBO:has_activationConditionDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_activationCondition;
+	sh:class BBO:ComplexGateway.
+BBO:has_activationConditionRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_activationCondition;
+	sh:class BBO:Expression.
+BBO:has_errorRefDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_errorRef;
+	sh:or ([sh:class BBO:ErrorEventDefinition]
+	[sh:class BBO:Operation]).
+BBO:has_errorRefRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_errorRef;
+	sh:class BBO:Error.
+BBO:has_escalationRefDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_escalationRef;
+	sh:class BBO:EscalationEventDefinition.
+BBO:has_escalationRefRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_escalationRef;
+	sh:class BBO:Escalation.
+BBO:has_eventDefinitionEventDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_eventDefinitionEvent;
+	sh:class BBO:EventDefinition.
+BBO:has_eventDefinitionEventRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_eventDefinitionEvent;
+	sh:class BBO:Event.
+BBO:has_expressionElementDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_expressionElement;
+	sh:class BBO:Expression.
+BBO:has_expressionElementRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_expressionElement;
+	 sh:or ([sh:class BBO:AdHocSubProcess]
+	[sh:class BBO:ComplexGateway]
+	[sh:class BBO:ConditionalEventDefinition]
+	[sh:class BBO:ConditionalSequenceFlow]
+	[sh:class BBO:TimerEventDefinition]).
+BBO:has_eventDefinitionDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_eventDefinition;
+	sh:class BBO:Event.
+BBO:has_eventDefinitionRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_eventDefinition;
+	sh:class BBO:EventDefinition.
+BBO:has_containerDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_container;
+	sh:class BBO:FlowElement.
+BBO:has_containerRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_container;
+	sh:class BBO:FlowElementsContainer.
+BBO:has_leaderDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_leader;
+	sh:class BBO:Group.
+BBO:has_leaderRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_leader;
+	sh:class BBO:Person.
+BBO:has_callableElementDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_callableElement;
+	sh:class BBO:InputOutputBinding.
+BBO:has_callableElementRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_callableElement;
+	sh:class BBO:CallableElement.
+BBO:has_flowElementsDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_flowElements;
+	sh:class BBO:FlowElementsContainer.
+BBO:has_flowElementsRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_flowElements;
+	sh:class BBO:FlowElements.
+BBO:has_renderingDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_rendering;
+	sh:or ([sh:class BBO:GlobalUserTask]
+	[sh:class BBO:UserTask]).
+BBO:has_renderingRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_rendering;
+	sh:class BBO:Rendering.
+BBO:has_groupDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_group;
+	sh:class BBO:Person.
+BBO:has_groupRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_group;
+	sh:class BBO:Group.
+BBO:has_incomingDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_incoming;
+	sh:class BBO:FlowNode.
+BBO:has_incomingRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_incoming;
+	sh:class BBO:SequenceFlow.
+BBO:has_inputResourceRefDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_inputResourceRef;
+	sh:class BBO:InputOutputBinding.
+BBO:has_inputResourceRefRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_inputResourceRef;
+	sh:class BBO:Resource.
+BBO:has_interfaceOperationDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_interfaceOperation;
+	sh:class BBO:Interface.
+BBO:has_interfaceOperationRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_interfaceOperation;
+	sh:class BBO:Operation.
+BBO:has_outputResourceRefDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_outputResourceRef;
+	sh:class BBO:InputOutputBinding.
+BBO:has_outputResourceRefRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_outputResourceRef;
+	sh:class BBO:Resource.
+BBO:has_inputSetDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_inputSet;
+	sh:class BBO:InputOutputSpecification.
+BBO:has_inputSetRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_inputSet;
+	sh:class BBO:InputSet.
+BBO:has_ioBindingDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_ioBinding;
+	sh:class BBO:CallableElement.
+BBO:has_ioBindingRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_ioBinding;
+	sh:class BBO:InputOutputBinding.
+BBO:has_superiorDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_superior;
+	sh:class BBO:Job.
+BBO:has_superiorRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_superior;
+	sh:class BBO:Job.
+BBO:has_targetDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_target;
+	sh:class BBO:LinkEventDefinition.
+BBO:has_targetRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_target;
+	sh:class BBO:LinkEventDefinition.
+BBO:has_loopActivityDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_loopActivity;
+	sh:class BBO:LoopCharacteristics.
+BBO:has_loopActivityRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_loopActivity;
+	sh:class BBO:Activity.
+BBO:has_messageRefDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_messageRef;
+	sh:or ([sh:class BBO:MessageEventDefinition]
+	[sh:class BBO:ReceiveTask]
+	[sh:class BBO:SendTask]).
+BBO:has_messageRefRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_messageRef;
+	sh:class BBO:Message.
+BBO:has_operationRefDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_operationRef;
+	sh:or ([sh:class BBO:MessageEventDefinition]
+	[sh:class BBO:ReceiveTask]
+	[sh:class BBO:SendTask]
+	[sh:class BBO:ServiceTask]).
+BBO:has_operationRefRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_operationRef;
+	sh:class BBO:Operation.
+BBO:has_inputResourceItemDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_inputResourceItem;
+	sh:class BBO:MultiInstanceLoopCharacteristics.
+BBO:has_inputResourceItemRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_inputResourceItem;
+	sh:class BBO:Resource.
+BBO:has_loopCardinalityDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_loopCardinality;
+	sh:class BBO:MultiInstanceLoopCharacteristics.
+BBO:has_loopCardinalityRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_loopCardinality;
+	sh:class BBO:Expression.
+BBO:has_loopResourceInputRefDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_loopResourceInputRef;
+	sh:class BBO:MultiInstanceLoopCharacteristics.
+BBO:has_loopResourceInputRefRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_loopResourceInputRef;
+	sh:class BBO:ResourceCollection.
+BBO:has_loopResourceOutputRefDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_loopResourceOutputRef;
+	sh:class BBO:MultiInstanceLoopCharacteristics.
+BBO:has_loopResourceOutputRefRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_loopResourceOutputRef;
+	sh:class BBO:ResourceCollection.
+BBO:has_noneBehaviorEventRefDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_noneBehaviorEventRef;
+	sh:class BBO:MultiInstanceLoopCharacteristics.
+BBO:has_noneBehaviorEventRefRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_noneBehaviorEventRef;
+	sh:class BBO:EventDefinition.
+BBO:groupsDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:groups;
+	sh:class BBO:Group.
+BBO:groupsRange a sh:NodeShape;
+	sh:targetObjectOf BBO:groups;
+	sh:class BBO:Person.
+BBO:has_oneBehaviorEventRefDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_oneBehaviorEventRef;
+	sh:class BBO:MultiInstanceLoopCharacteristics.
+BBO:has_oneBehaviorEventRefRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_oneBehaviorEventRef;
+	sh:class BBO:EventDefinition.
+BBO:has_outputResourceItemDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_outputResourceItem;
+	sh:class BBO:MultiInstanceLoopCharacteristics.
+BBO:has_outputResourceItemRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_outputResourceItem;
+	sh:class BBO:Resource.
+BBO:has_inMessageRefDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_inMessageRef;
+	sh:class BBO:Operation.
+BBO:has_inMessageRefRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_inMessageRef;
+	sh:class BBO:Message.
+BBO:has_nextFlowNodeDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_nextFlowNode;
+	sh:class BBO:FlowNode.
+BBO:has_nextFlowNodeRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_nextFlowNode;
+	sh:class BBO:FlowNode.
+BBO:has_operationInterfaceDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_operationInterface;
+	sh:class BBO:Operation.
+BBO:has_operationInterfaceRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_operationInterface;
+	sh:class BBO:Interface.
+BBO:has_outMessageRefDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_outMessageRef;
+	sh:class BBO:Operation.
+BBO:has_outMessageRefRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_outMessageRef;
+	sh:class BBO:Message.
+BBO:has_supportedInterfaceRefsDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_supportedInterfaceRefs;
+	sh:class BBO:CallableElement.
+BBO:has_supportedInterfaceRefsRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_supportedInterfaceRefs;
+	sh:class BBO:Interface.
+BBO:has_parameterDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_parameter;
+	sh:class BBO:ParameterValueBinding.
+BBO:has_parameterRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_parameter;
+	sh:class BBO:Parameter.
+BBO:has_parameterExpectedValueDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_parameterExpectedValue;
+	sh:class BBO:ParameterValueBinding.
+BBO:has_parameterExpectedValueRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_parameterExpectedValue;
+	sh:class BBO:ParameterExpectedValue.
+BBO:has_parameterValueDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_parameterValue;
+	sh:class BBO:ParameterValueBinding.
+BBO:has_parameterValueRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_parameterValue;
+	sh:class BBO:ParameterValue.
+BBO:has_outgoingDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_outgoing;
+	sh:class BBO:FlowNode.
+BBO:has_outgoingRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_outgoing;
+	sh:class BBO:SequenceFlow.
+BBO:has_jobDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_job;
+	sh:class BBO:Person .
+BBO:has_jobRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_job;
+	sh:class BBO:Job.
+BBO:is_associatedWithDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:is_associatedWith;
+	sh:class BBO:UserManual.
+BBO:is_associatedWithRange a sh:NodeShape;
+	sh:targetObjectOf BBO:is_associatedWith;
+	sh:class BBO:MaterialResource.
+BBO:has_propertyElementDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_propertyElement;
+	sh:class BBO:Property.
+BBO:has_propertyElementRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_propertyElement;
+	 sh:or ([sh:class BBO:Process]
+	[sh:class BBO:Activity]
+	[sh:class BBO:Event]).
+BBO:has_outputSetDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_outputSet;
+	sh:class BBO:InputOutputSpecification.
+BBO:has_outputSetRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_outputSet;
+	sh:class BBO:OutputSet.
+BBO:has_parameterValueBindingInputDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_parameterValueBindingInput;
+	sh:class BBO:InputOutputSpecification.
+BBO:has_parameterValueBindingInputRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_parameterValueBindingInput;
+	sh:class BBO:ParameterValueBinding.
+BBO:has_parameterValueBindingOutputDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_parameterValueBindingOutput;
+	sh:class BBO:InputOutputSpecification.
+BBO:has_parameterValueBindingOutputRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_parameterValueBindingOutput;
+	sh:class BBO:ParameterValueBinding.
+BBO:has_previousFlowNodeDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_previousFlowNode;
+	sh:class BBO:FlowNode.
+BBO:has_previousFlowNodeRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_previousFlowNode;
+	sh:class BBO:FlowNode.
+BBO:has_propertyDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_property;
+	sh:or ([sh:class BBO:Process]
+	[sh:class BBO:Event]
+	[sh:class BBO:Activity]).
+BBO:has_propertyRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_property;
+	sh:class BBO:Property.
+BBO:has_renderingTaskDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_renderingTask;
+	sh:class BBO:Rendering.
+BBO:has_renderingTaskRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_renderingTask;
+	 sh:or ([sh:class BBO:GlobalUserTask]
+	[sh:class BBO:UserTask]).
+BBO:has_stateDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_state;
+	sh:class BBO:Resource.
+BBO:has_stateRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_state;
+	sh:class BBO:ResourceState.
+BBO:has_resourceInputRefsDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_resourceInputRefs;
+	sh:class BBO:InputSet.
+BBO:has_resourceInputRefsRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_resourceInputRefs;
+	sh:class BBO:Resource.
+BBO:has_resourceInputsDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_resourceInputs;
+	sh:class BBO:InputOutputSpecification.
+BBO:has_resourceInputsRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_resourceInputs;
+	sh:class BBO:Resource.
+BBO:has_resourceOutputRefsDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_resourceOutputRefs;
+	sh:class BBO:OutputSet.
+BBO:has_resourceOutputRefsRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_resourceOutputRefs;
+	sh:class BBO:Resource.
+BBO:has_resourceOutputsDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_resourceOutputs;
+	sh:class BBO:InputOutputSpecification.
+BBO:has_resourceOutputsRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_resourceOutputs;
+	sh:class BBO:Resource.
+BBO:has_sourceDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_source;
+	sh:class BBO:LinkEventDefinition.
+BBO:has_sourceRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_source;
+	sh:class BBO:LinkEventDefinition.
+BBO:has_subordinateDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_subordinate;
+	sh:class BBO:Job.
+BBO:has_subordinateRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_subordinate;
+	sh:class BBO:Job.
+BBO:has_conditionExpressionDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_conditionExpression;
+	sh:class BBO:SequenceFlow.
+BBO:has_conditionExpressionRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_conditionExpression;
+	sh:class BBO:Expression.
+BBO:has_defaultElementDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_defaultElement;
+	sh:class BBO:DefaultSequenceFlow.
+BBO:has_defaultElementRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_defaultElement;
+	 sh:or ([sh:class BBO:Activity]
+	[sh:class BBO:ExclusiveGateway]
+	[sh:class BBO:InclusiveGateway]
+	[sh:class BBO:ComplexGateway]).
+BBO:has_sourceRefDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_sourceRef;
+	sh:class BBO:SequenceFlow.
+BBO:has_sourceRefRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_sourceRef;
+	sh:class BBO:FlowNode.
+BBO:has_targetRefDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_targetRef;
+	sh:class BBO:SequenceFlow.
+BBO:has_targetRefRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_targetRef;
+	sh:class BBO:FlowNode.
+BBO:is_composedOfDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:is_composedOf;
+	sh:class BBO:WorkProduct.
+BBO:is_composedOfRange a sh:NodeShape;
+	sh:targetObjectOf BBO:is_composedOf;
+	sh:class BBO:Resource.
+BBO:is_installedOnDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:is_installedOn;
+	sh:class BBO:SoftwareResource.
+BBO:is_installedOnRange a sh:NodeShape;
+	sh:targetObjectOf BBO:is_installedOn;
+	sh:class BBO:Computer.
+BBO:has_loopConditionDomain a sh:NodeShape;
+	sh:targetSubjectOf BBO:has_loopCondition;
+	sh:class BBO:StandardLoopCharacteristics.
+BBO:has_loopConditionRange a sh:NodeShape;
+	sh:targetObjectOf BBO:has_loopCondition;
+	sh:class BBO:Expression.
+BBO:MinMaxShape_Activity a sh:NodeShape ;
+	sh:targetClass BBO:Activity ;
+	sh:property [sh:path BBO:has_activityLoopCharacteristics ;
+	sh:maxCount 1 ;
+	sh:class BBO:LoopCharacteristics;
+	];
+	sh:property [sh:path BBO:has_default ;
+	sh:maxCount 1 ;
+	sh:class BBO:SequenceFlow;
+	];
+	sh:property [sh:path BBO:has_ioSpecification ;
+	sh:maxCount 1 ;
+	sh:class BBO:InputOutputSpecification;
+	].
+BBO:MinMaxShape_WorkProcedureDocument a sh:NodeShape ;
+	sh:targetClass BBO:WorkProcedureDocument ;
+	sh:property [sh:path BBO:describes ;
+	sh:minCount 1 ;
+	sh:class BBO:Process;
+	];
+	sh:property [sh:path BBO:describes ;
+	sh:minCount 1 ;
+	sh:class BBO:Activity;
+	].
+BBO:MinMaxShape_AdHocSubProcess a sh:NodeShape ;
+	sh:targetClass BBO:AdHocSubProcess ;
+	sh:property [sh:path BBO:has_completionCondition ;
+	sh:minCount 1 ;
+	sh:maxCount 1 ;
+	sh:class BBO:Expression;
+	].
+BBO:MinMaxShape_BoundaryEvent a sh:NodeShape ;
+	sh:targetClass BBO:BoundaryEvent ;
+	sh:property 
+	[
+		sh:path BBO:is_attachedToRef ;
+		sh:minCount 1 ;
+		sh:maxCount 1 ;
+		sh:class BBO:Activity;
+	].
+BBO:MinMaxShape_CallableElement a sh:NodeShape ;
+	sh:targetClass BBO:CallableElement ;
+	sh:property [sh:path BBO:has_ioSpecification ;
+	sh:maxCount 1 ;
+	sh:class BBO:InputOutputSpecification;
+	].
+BBO:MinMaxShape_CallActivity a sh:NodeShape ;
+	sh:targetClass BBO:CallActivity ;
+	sh:property [sh:path BBO:has_calledElementRef ;
+	sh:maxCount 1 ;
+	sh:class BBO:CallableElement;
+	].
+BBO:MinMaxShape_Cell a sh:NodeShape ;
+	sh:targetClass BBO:Cell ;
+	sh:property [sh:path BBO:is_partOf ;
+	sh:maxCount 1 ;
+	sh:class BBO:Shop;
+	].
+BBO:MinMaxShape_CompensateEventDefinition a sh:NodeShape ;
+	sh:targetClass BBO:CompensateEventDefinition ;
+	sh:property [sh:path BBO:has_activityRef ;
+	sh:maxCount 1 ;
+	sh:class BBO:Activity;
+	].
+BBO:MinMaxShape_ComplexBehaviorDefinition a sh:NodeShape ;
+	sh:targetClass BBO:ComplexBehaviorDefinition ;
+	sh:property [sh:path BBO:has_condition ;
+	sh:minCount 1 ;
+	sh:maxCount 1 ;
+	sh:class BBO:FormalExpression;
+	];
+	sh:property [sh:path BBO:has_event ;
+	sh:maxCount 1 ;
+	sh:class BBO:ImplicitThrowEvent;
+	];
+	sh:property [sh:path BBO:has_multiInstanceLoopCharacteristics ;
+	sh:minCount 1 ;
+	sh:maxCount 1 ;
+	sh:class BBO:MultiInstanceLoopCharacteristics;
+	].
+BBO:MinMaxShape_ComplexGateway a sh:NodeShape ;
+	sh:targetClass BBO:ComplexGateway ;
+	sh:property [sh:path BBO:has_activationCondition ;
+	sh:maxCount 1 ;
+	sh:class BBO:Expression;
+	];
+	sh:property [sh:path BBO:has_default ;
+	sh:maxCount 1 ;
+	sh:class BBO:SequenceFlow;
+	].
+BBO:MinMaxShape_ConditionalEventDefinition a sh:NodeShape ;
+	sh:targetClass BBO:ConditionalEventDefinition ;
+	sh:property [sh:path BBO:has_condition ;
+	sh:minCount 1 ;
+	sh:maxCount 1 ;
+	sh:class BBO:Expression;
+	].
+BBO:MinMaxShape_ErrorEventDefinition a sh:NodeShape ;
+	sh:targetClass BBO:ErrorEventDefinition ;
+	sh:property [sh:path BBO:has_errorRef ;
+	sh:maxCount 1 ;
+	sh:class BBO:Error;
+	].
+BBO:MinMaxShape_EscalationEventDefinition a sh:NodeShape ;
+	sh:targetClass BBO:EscalationEventDefinition ;
+	sh:property [sh:path BBO:has_escalationRef ;
+	sh:maxCount 1 ;
+	sh:class BBO:Escalation;
+	].
+BBO:MinMaxShape_EventDefinition a sh:NodeShape ;
+	sh:targetClass BBO:EventDefinition ;
+	sh:property [sh:path BBO:has_eventDefinitionEvent ;
+	sh:maxCount 1 ;
+	sh:class BBO:Event;
+	].
+BBO:MinMaxShape_ExclusiveGateway a sh:NodeShape ;
+	sh:targetClass BBO:ExclusiveGateway ;
+	sh:property [sh:path BBO:has_default ;
+	sh:maxCount 1 ;
+	sh:class BBO:SequenceFlow;
+	].
+BBO:MinMaxShape_Expression a sh:NodeShape ;
+	sh:targetClass BBO:Expression ;
+	sh:property [sh:path BBO:has_expressionElement ;
+	sh:maxCount 1 ;
+	sh:class BBO:AdHocSubProcess;
+	];
+	sh:property [sh:path BBO:has_expressionElement ;
+	sh:maxCount 1 ;
+	sh:class BBO:ComplexGateway;
+	];
+	sh:property [sh:path BBO:has_expressionElement ;
+	sh:maxCount 1 ;
+	sh:class BBO:ConditionalEventDefinition;
+	];
+	sh:property [sh:path BBO:has_expressionElement ;
+	sh:maxCount 1 ;
+	sh:class BBO:ConditionalSequenceFlow;
+	];
+	sh:property [sh:path BBO:has_expressionElement ;
+	sh:maxCount 1 ;
+	sh:class BBO:TimerEventDefinition;
+	].
+BBO:MinMaxShape_Factory a sh:NodeShape ;
+	sh:targetClass BBO:Factory ;
+	sh:property [sh:path BBO:is_partOf ;
+	sh:maxCount 1 ;
+	sh:class BBO:Enterprise;
+	].
+BBO:MinMaxShape_FlowElement a sh:NodeShape ;
+	sh:targetClass BBO:FlowElement ;
+	sh:property [sh:path BBO:has_container ;
+	sh:minCount 1 ;
+	sh:maxCount 1 ;
+	sh:class BBO:FlowElementsContainer;
+	].
+BBO:MinMaxShape_Group a sh:NodeShape ;
+	sh:targetClass BBO:Group ;
+	sh:property [sh:path BBO:has_leader ;
+	sh:maxCount 1 ;
+	sh:class BBO:Person;
+	];
+	sh:property [sh:path BBO:groups ;
+	sh:minCount 2 ;
+	sh:class BBO:Person;
+	].
+BBO:MinMaxShape_InclusiveGateway a sh:NodeShape ;
+	sh:targetClass BBO:InclusiveGateway ;
+	sh:property [sh:path BBO:has_default ;
+	sh:maxCount 1 ;
+	sh:class BBO:SequenceFlow;
+	].
+BBO:MinMaxShape_InputOutputBinding a sh:NodeShape ;
+	sh:targetClass BBO:InputOutputBinding ;
+	sh:property [sh:path BBO:has_callableElement ;
+	sh:maxCount 1 ;
+	sh:class BBO:CallableElement;
+	];
+	sh:property [sh:path BBO:has_inputResourceRef ;
+	sh:minCount 1 ;
+	sh:maxCount 1 ;
+	sh:class BBO:Resource;
+	];
+	sh:property [sh:path BBO:has_outputResourceRef ;
+	sh:minCount 1 ;
+	sh:maxCount 1 ;
+	sh:class BBO:Resource;
+	].
+BBO:MinMaxShape_Interface a sh:NodeShape ;
+	sh:targetClass BBO:Interface ;
+	sh:property [sh:path BBO:has_interfaceOperation ;
+	sh:minCount 1 ;
+	sh:class BBO:Operation;
+	].
+BBO:MinMaxShape_InputOutputSpecification a sh:NodeShape ;
+	sh:targetClass BBO:InputOutputSpecification ;
+	sh:property [sh:path BBO:has_inputSet ;
+	sh:minCount 1 ;
+	sh:class BBO:InputSet;
+	];
+	sh:property [sh:path BBO:has_outputSet ;
+	sh:minCount 1 ;
+	sh:class BBO:OutputSet;
+	].
+BBO:MinMaxShape_InputSet a sh:NodeShape ;
+	sh:targetClass BBO:InputSet ;
+	sh:property [sh:path BBO:has_ioSpecification ;
+	sh:minCount 1 ;
+	sh:maxCount 1 ;
+	sh:class BBO:InputOutputSpecification;
+	].
+BBO:MinMaxShape_Job a sh:NodeShape ;
+	sh:targetClass BBO:Job ;
+	sh:property [sh:path BBO:has_superior ;
+	sh:maxCount 1 ;
+	sh:class BBO:Job;
+	].
+BBO:MinMaxShape_LinkEventDefinition a sh:NodeShape ;
+	sh:targetClass BBO:LinkEventDefinition ;
+	sh:property [sh:path BBO:has_target ;
+	sh:maxCount 1 ;
+	sh:class BBO:LinkEventDefinition;
+	].
+BBO:MinMaxShape_LoopCharacteristics a sh:NodeShape ;
+	sh:targetClass BBO:LoopCharacteristics ;
+	sh:property [sh:path BBO:has_loopActivity ;
+	sh:maxCount 1 ;
+	sh:class BBO:Activity;
+	].
+BBO:MinMaxShape_MessageEventDefinition a sh:NodeShape ;
+	sh:targetClass BBO:MessageEventDefinition ;
+	sh:property [sh:path BBO:has_messageRef ;
+	sh:maxCount 1 ;
+	sh:class BBO:Message;
+	];
+	sh:property [sh:path BBO:has_operationRef ;
+	sh:maxCount 1 ;
+	sh:class BBO:Operation;
+	].
+BBO:MinMaxShape_MultiInstanceLoopCharacteristics a sh:NodeShape ;
+	sh:targetClass BBO:MultiInstanceLoopCharacteristics ;
+	sh:property [sh:path BBO:has_completionCondition ;
+	sh:maxCount 1 ;
+	sh:class BBO:Expression;
+	];
+	sh:property [sh:path BBO:has_inputResourceItem ;
+	sh:maxCount 1 ;
+	sh:class BBO:Resource;
+	];
+	sh:property [sh:path BBO:has_loopCardinality ;
+	sh:maxCount 1 ;
+	sh:class BBO:Expression;
+	];
+	sh:property [sh:path BBO:has_loopResourceInputRef ;
+	sh:maxCount 1 ;
+	sh:class BBO:ResourceCollection;
+	];
+	sh:property [sh:path BBO:has_loopResourceOutputRef ;
+	sh:maxCount 1 ;
+	sh:class BBO:ResourceCollection;
+	];
+	sh:property [sh:path BBO:has_noneBehaviorEventRef ;
+	sh:maxCount 1 ;
+	sh:class BBO:EventDefinition;
+	];
+	sh:property [sh:path BBO:has_oneBehaviorEventRef ;
+	sh:maxCount 1 ;
+	sh:class BBO:EventDefinition;
+	];
+	sh:property [sh:path BBO:has_outputResourceItem ;
+	sh:maxCount 1 ;
+	sh:class BBO:Resource;
+	].
+BBO:MinMaxShape_Operation a sh:NodeShape ;
+	sh:targetClass BBO:Operation ;
+	sh:property [sh:path BBO:has_errorRef ;
+	sh:maxCount 1 ;
+	sh:class BBO:Error;
+	];
+	sh:property [sh:path BBO:has_inMessageRef ;
+	sh:minCount 1 ;
+	sh:maxCount 1 ;
+	sh:class BBO:Message;
+	];
+	sh:property [sh:path BBO:has_operationInterface ;
+	sh:minCount 1 ;
+	sh:maxCount 1 ;
+	sh:class BBO:Interface;
+	];
+	sh:property [sh:path BBO:has_outMessageRef ;
+	sh:maxCount 1 ;
+	sh:class BBO:Message;
+	].
+BBO:MinMaxShape_OutputSet a sh:NodeShape ;
+	sh:targetClass BBO:OutputSet ;
+	sh:property [sh:path BBO:has_ioSpecification ;
+	sh:minCount 1 ;
+	sh:maxCount 1 ;
+	sh:class BBO:InputOutputSpecification;
+	].
+BBO:MinMaxShape_ParameterValueBinding a sh:NodeShape ;
+	sh:targetClass BBO:ParameterValueBinding ;
+	sh:property [sh:path BBO:has_parameter ;
+	sh:minCount 1 ;
+	sh:maxCount 1 ;
+	sh:class BBO:Parameter;
+	];
+	sh:property [sh:path BBO:has_parameterExpectedValue ;
+	sh:maxCount 1 ;
+	sh:class BBO:ParameterExpectedValue;
+	];
+	sh:property [sh:path BBO:has_parameterValue ;
+	sh:maxCount 1 ;
+	sh:class BBO:ParameterValue;
+	];
+	sh:property [sh:path BBO:has_parameter ;
+	sh:minCount 1 ;
+	sh:maxCount 1 ;
+	sh:class BBO:Parameter;
+	];
+	sh:property [sh:path BBO:has_parameterExpectedValue ;
+	sh:maxCount 1 ;
+	sh:class BBO:ParameterExpectedValue;
+	];
+	sh:property [sh:path BBO:has_parameterValue ;
+	sh:maxCount 1 ;
+	sh:class BBO:ParameterValue;
+	].
+BBO:MinMaxShape_Person  a sh:NodeShape ;
+	sh:targetClass BBO:Person  ;
+	sh:property [sh:path BBO:has_job ;
+	sh:minCount 1 ;
+	sh:maxCount 1 ;
+	sh:class BBO:Job;
+	].
+BBO:MinMaxShape_Property a sh:NodeShape ;
+	sh:targetClass BBO:Property ;
+	sh:property [sh:path BBO:has_propertyElement ;
+	sh:minCount 1 ;
+	sh:maxCount 1 ;
+	sh:class BBO:Process;
+	];
+	sh:property [sh:path BBO:has_propertyElement ;
+	sh:minCount 1 ;
+	sh:maxCount 1 ;
+	sh:class BBO:Activity;
+	];
+	sh:property [sh:path BBO:has_propertyElement ;
+	sh:minCount 1 ;
+	sh:maxCount 1 ;
+	sh:class BBO:Event;
+	].
+BBO:MinMaxShape_ReceiveTask a sh:NodeShape ;
+	sh:targetClass BBO:ReceiveTask ;
+	sh:property [sh:path BBO:has_messageRef ;
+	sh:maxCount 1 ;
+	sh:class BBO:Message;
+	];
+	sh:property [sh:path BBO:has_operationRef ;
+	sh:maxCount 1 ;
+	sh:class BBO:Operation;
+	].
+BBO:MinMaxShape_Rendering a sh:NodeShape ;
+	sh:targetClass BBO:Rendering ;
+	sh:property [sh:path BBO:has_renderingTask ;
+	sh:maxCount 1 ;
+	sh:class BBO:GlobalUserTask;
+	];
+	sh:property [sh:path BBO:has_renderingTask ;
+	sh:maxCount 1 ;
+	sh:class BBO:UserTask;
+	].
+BBO:MinMaxShape_Resource a sh:NodeShape ;
+	sh:targetClass BBO:Resource ;
+	sh:property [sh:path BBO:has_state ;
+	sh:maxCount 1 ;
+	sh:class BBO:ResourceState;
+	].
+BBO:MinMaxShape_SendTask a sh:NodeShape ;
+	sh:targetClass BBO:SendTask ;
+	sh:property [sh:path BBO:has_messageRef ;
+	sh:maxCount 1 ;
+	sh:class BBO:Message;
+	];
+	sh:property [sh:path BBO:has_operationRef ;
+	sh:maxCount 1 ;
+	sh:class BBO:Operation;
+	].
+BBO:MinMaxShape_SequenceFlow a sh:NodeShape ;
+	sh:targetClass BBO:SequenceFlow ;
+	sh:property [sh:path BBO:has_conditionExpression ;
+	sh:maxCount 1 ;
+	sh:class BBO:Expression;
+	];
+	sh:property [sh:path BBO:has_sourceRef ;
+	sh:minCount 1 ;
+	sh:maxCount 1 ;
+	sh:class BBO:FlowNode;
+	];
+	sh:property [sh:path BBO:has_targetRef ;
+	sh:minCount 1 ;
+	sh:maxCount 1 ;
+	sh:class BBO:FlowNode;
+	].
+	
+	
+BBO:MinMaxShape_DefaultSequenceFlow a sh:NodeShape ;
+	sh:targetClass BBO:DefaultSequenceFlow ;	
+	sh:property [sh:path BBO:has_defaultElement ;
+	sh:minCount 1 ;
+	sh:maxCount 1 ;
+	].
+
+	
+	
+	
+BBO:MinMaxShape_WorkProduct a sh:NodeShape ;
+	sh:targetClass BBO:WorkProduct ;
+	sh:property [sh:path BBO:is_composedOf ;
+	sh:minCount 1 ;
+	sh:class BBO:Resource;
+	].
+BBO:MinMaxShape_SoftwareResource a sh:NodeShape ;
+	sh:targetClass BBO:SoftwareResource ;
+	sh:property [sh:path BBO:is_installedOn ;
+	sh:minCount 1 ;
+	sh:class BBO:Computer;
+	].
+BBO:MinMaxShape_ServiceTask a sh:NodeShape ;
+	sh:targetClass BBO:ServiceTask ;
+	sh:property [sh:path BBO:has_operationRef ;
+	sh:maxCount 1 ;
+	sh:class BBO:Operation;
+	].
+BBO:MinMaxShape_Shop a sh:NodeShape ;
+	sh:targetClass BBO:Shop ;
+	sh:property [sh:path BBO:is_partOf ;
+	sh:maxCount 1 ;
+	sh:class BBO:Factory;
+	].
+BBO:MinMaxShape_StandardLoopCharacteristics a sh:NodeShape ;
+	sh:targetClass BBO:StandardLoopCharacteristics ;
+	sh:property [sh:path BBO:has_loopCondition ;
+	sh:maxCount 1 ;
+	sh:class BBO:Expression;
+	].
+BBO:MinMaxShape_Station a sh:NodeShape ;
+	sh:targetClass BBO:Station ;
+	sh:property [sh:path BBO:is_partOf ;
+	sh:maxCount 1 ;
+	sh:class BBO:Cell;
+	].
