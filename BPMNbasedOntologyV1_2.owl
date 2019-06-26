@@ -25,6 +25,23 @@ Copyright © 2019 MELODI @ Toulouse Institute of Computer Science Research</rdfs
     <!-- 
     ///////////////////////////////////////////////////////////////////////////////////////
     //
+    // Annotation properties
+    //
+    ///////////////////////////////////////////////////////////////////////////////////////
+     -->
+
+    
+
+
+    <!-- http://www.geneontology.org/formats/oboInOwl#created_by -->
+
+    <owl:AnnotationProperty rdf:about="http://www.geneontology.org/formats/oboInOwl#created_by"/>
+    
+
+
+    <!-- 
+    ///////////////////////////////////////////////////////////////////////////////////////
+    //
     // Object Properties
     //
     ///////////////////////////////////////////////////////////////////////////////////////
@@ -838,6 +855,14 @@ true).</rdfs:comment>
     
 
 
+    <!-- http://BPMNbasedOntology#has_part -->
+
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_part">
+        <owl:inverseOf rdf:resource="http://BPMNbasedOntology#is_partOf"/>
+    </owl:ObjectProperty>
+    
+
+
     <!-- http://BPMNbasedOntology#has_prefix -->
 
     <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_prefix">
@@ -888,7 +913,7 @@ true).</rdfs:comment>
         </rdfs:domain>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#Property"/>
         <rdfs:comment xml:lang="en">Modeler-defined properties MAY be added to a Process. These properties are contained within the Process. All Tasks and Sub-Processes SHALL have access to these properties.</rdfs:comment>
-        <rdfs:label xml:lang="en">has_properties</rdfs:label>
+        <rdfs:label xml:lang="en">has_property</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -951,18 +976,6 @@ true).</rdfs:comment>
     
 
 
-    <!-- http://BPMNbasedOntology#has_resourceAssignmentExpression -->
-
-    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_resourceAssignmentExpression">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:comment xml:lang="en">This defines the Expression used for the Resource
-assignment (see below). Should not be specified when a
-resourceRef is provided.</rdfs:comment>
-        <rdfs:label xml:lang="en">has_resourceAssignmentExpression</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
     <!-- http://BPMNbasedOntology#has_resourceInputRef -->
 
     <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_resourceInputRef">
@@ -1017,37 +1030,6 @@ resourceRef is specified.</rdfs:comment>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#ResourceParameter"/>
         <rdfs:comment xml:lang="en">This model association specifies the definition of the parameters needed at runtime to resolve the Resource.</rdfs:comment>
         <rdfs:label xml:lang="en">has_resourceParameters</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://BPMNbasedOntology#has_resourceRef -->
-
-    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_resourceRef">
-        <rdf:type rdf:resource="http://www.w3.org/2002/07/owl#FunctionalProperty"/>
-        <rdfs:range rdf:resource="http://BPMNbasedOntology#Resource"/>
-        <rdfs:comment xml:lang="en">The Resource that is associated with Activity. Should not
-be specified when resourceAssignmentExpression is
-provided.</rdfs:comment>
-        <rdfs:label xml:lang="en">has_resourceRef</rdfs:label>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://BPMNbasedOntology#has_resources -->
-
-    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_resources">
-        <rdfs:domain>
-            <owl:Class>
-                <owl:unionOf rdf:parseType="Collection">
-                    <rdf:Description rdf:about="http://BPMNbasedOntology#Activity"/>
-                    <rdf:Description rdf:about="http://BPMNbasedOntology#GlobalTask"/>
-                    <rdf:Description rdf:about="http://BPMNbasedOntology#Process"/>
-                </owl:unionOf>
-            </owl:Class>
-        </rdfs:domain>
-        <rdfs:comment xml:lang="en">Defines the resource that will perform or will be responsible for the Process. The resource, e.g., a performer, can be specified in the form of a specific individual, a group, an organization role or position, or an organization. Note that the assigned resources of the Process does not determine the assigned resources of the Activities that are contained by the Process. See more details about resource assignment on page 154.</rdfs:comment>
-        <rdfs:label xml:lang="en">has_resources</rdfs:label>
     </owl:ObjectProperty>
     
 
@@ -1222,7 +1204,10 @@ The return type of the attribute timeDuration MUST conform to the ISO-8601 forma
 
     <!-- http://BPMNbasedOntology#has_unitOfMeasure -->
 
-    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_unitOfMeasure"/>
+    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#has_unitOfMeasure">
+        <rdfs:domain rdf:resource="http://BPMNbasedOntology#QuantitativeParameter"/>
+        <rdfs:range rdf:resource="http://BPMNbasedOntology#UnitOfMeasure"/>
+    </owl:ObjectProperty>
     
 
 
@@ -1299,14 +1284,6 @@ The return type of the attribute timeDuration MUST conform to the ISO-8601 forma
     <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#plays">
         <rdfs:domain rdf:resource="http://BPMNbasedOntology#Agent"/>
         <rdfs:range rdf:resource="http://BPMNbasedOntology#Role"/>
-    </owl:ObjectProperty>
-    
-
-
-    <!-- http://BPMNbasedOntology#processType -->
-
-    <owl:ObjectProperty rdf:about="http://BPMNbasedOntology#processType">
-        <rdfs:domain rdf:resource="http://BPMNbasedOntology#Process"/>
     </owl:ObjectProperty>
     
 
@@ -3680,7 +3657,7 @@ Any thrown Events can be caught by boundary Events on the Multi-Instance Activit
         <rdfs:subClassOf rdf:resource="http://BPMNbasedOntology#Parameter"/>
         <owl:disjointWith rdf:resource="http://BPMNbasedOntology#QuantitativeParameter"/>
         <rdfs:comment xml:lang="en">parameters that have only qualitative values</rdfs:comment>
-        <rdfs:label xml:lang="en">QualitativeResourceParameter</rdfs:label>
+        <rdfs:label xml:lang="en">QualitativeParameter</rdfs:label>
     </owl:Class>
     
 
@@ -3697,7 +3674,7 @@ Any thrown Events can be caught by boundary Events on the Multi-Instance Activit
             </owl:Restriction>
         </rdfs:subClassOf>
         <rdfs:comment xml:lang="en">parameters that have only quantitative values</rdfs:comment>
-        <rdfs:label xml:lang="en">QuantitativeResourceParameter</rdfs:label>
+        <rdfs:label xml:lang="en">QuantitativeParameter</rdfs:label>
     </owl:Class>
     
 
@@ -4532,21 +4509,15 @@ flow of the Process and does not have any incoming Sequence Flow, but can have a
     
 
 
-    <!-- 
-    ///////////////////////////////////////////////////////////////////////////////////////
-    //
-    // Annotations
-    //
-    ///////////////////////////////////////////////////////////////////////////////////////
-     -->
+    <!-- http://purl.obolibrary.org/obo/UO_0000000 -->
 
-    <rdf:Description rdf:about="http://BPMNbasedOntology#processType">
-        <rdfs:comment xml:lang="en">The processType attribute Provides additional information about the level of abstraction modeled by this Process.
-A public Process shows only those flow elements that are relevant to external consumers. Internal details are not modeled. These Processes are publicly visible and can be used within a Collaboration. Note that the public processType was named
-abstract in BPMN 1.2.
-A private Process is one that is internal to a specific organization. By default, the processType is “none,” meaning undefined.</rdfs:comment>
-        <rdfs:label xml:lang="en">processType</rdfs:label>
-    </rdf:Description>
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/UO_0000000"/>
+    
+
+
+    <!-- http://purl.obolibrary.org/obo/UO_0000046 -->
+
+    <owl:Class rdf:about="http://purl.obolibrary.org/obo/UO_0000046"/>
     
 
 
