@@ -1,0 +1,31 @@
+Key concept	N°	Competency question
+
+Process		1	Which sub-activities is an activity decomposed?
+		2	Which activities must precede a given activity?
+		3	What is the next/previous activity?
+		4	What is the duration of a given activity?
+		5	What activities need to be completed first in order to start this activity?
+		6	What activities happen before (or in parallel, or after) this activity?
+		7	When can the activity be started?
+		8	What is the first/last activity of a given process?
+		9	How many times should this activity be repeated?
+
+Agent		10	Who should/can perform a given activity?
+		11	Who does a particular employee report to?
+		12	Who supervises a particular employee?
+
+Input/Output specifications (Resource + Parameters)
+		13	Which resources are required by an activity?
+		14	Which resources are produced by a given activity?
+		15	What is the expected value for a given parameter?
+		16	What is the unit measure of a given parameter?
+		17	What is the type (or nature) of a resource?
+		18	Is there a user manual for a given tool?
+
+Work product	
+		19	What is the composition of a given product?
+		20	What are the activities related to the production of a given work product?
+
+Manufacturing facility	
+		21	Where the activity should be performed?
+		22	What are the activities supported by this place?
